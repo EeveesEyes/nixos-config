@@ -252,7 +252,7 @@
 	 mod = "Mod4";
 	in {
 	  "${mod}+Return" = "exec foot";
-	  "${mod}+p" = "{pkgs.wofi}/bin/wofi --show drun";
+	  "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
 
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+q" = "kill";
