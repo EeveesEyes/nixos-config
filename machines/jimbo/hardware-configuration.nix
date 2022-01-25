@@ -4,36 +4,33 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/5c29ff32-7186-4bfb-91ba-4bd14a72c7fa";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/5c29ff32-7186-4bfb-91ba-4bd14a72c7fa";
+    fsType = "ext4";
+  };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/55265801-0adc-4cde-9e88-a6c4a2a6c8c1";
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-uuid/55265801-0adc-4cde-9e88-a6c4a2a6c8c1";
 
-  fileSystems."/boot/efi" =
-    {
-      device = "/dev/disk/by-uuid/A809-ABDC";
-      fsType = "vfat";
-    };
+  fileSystems."/boot/efi" = {
+    device = "/dev/disk/by-uuid/A809-ABDC";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [{
-      device = "/dev/disk/by-partuuid/706747af-4066-461f-8eac-06339c68f0db";
-      randomEncryption = true;
-    }];
+  swapDevices = [{
+    device = "/dev/disk/by-partuuid/706747af-4066-461f-8eac-06339c68f0db";
+    randomEncryption = true;
+  }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

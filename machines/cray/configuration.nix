@@ -5,12 +5,12 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      <home-manager/nixos>
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    <home-manager/nixos>
+    ../../modules/sound.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -75,15 +75,6 @@
 
   services.printing.enable = true;
 
-  # Enable sound.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -96,10 +87,10 @@
   # allow evil closed-source code
   nixpkgs.config.allowUnfree = true;
 
-    virtualisation.podman = {
-	    enable=true;
-	    dockerCompat = true;
-    };
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   home-manager.users.fleaz = { pkgs, ... }: {
     home.packages = with pkgs; [
@@ -112,11 +103,13 @@
       wdisplays
       wofi
       firefox
+      go
+      tig
+      nixfmt
       discord
       gnome.gnome-keyring
       via
       docker-compose
-
 
       swaylock
       swayidle
@@ -129,7 +122,6 @@
       prusa-slicer
       htop
     ];
-
 
     programs.vim = {
       enable = true;
@@ -148,9 +140,7 @@
       userEmail = "mail@felixbreidenstein.de";
     };
 
-    programs.waybar = {
-    	enable = true;
-    };
+    programs.waybar = { enable = true; };
 
     programs.mako = {
       enable = true;
@@ -169,95 +159,85 @@
       };
     };
 
-	programs.foot = {
-	    enable = true;
-	    settings = {
-	      main = {
-		term = "xterm-256color";
-		font = "FiraCode:size=14";
-	      };
-	      scrollback = {
-		lines = 100000;
-	      };
-	      colors = {
-	        alpha = "0.98";
-		foreground = "B3B1AD";
-		background = "0A0E14";
-		regular0 = "01060E";
-		regular1 = "EA6C73";
-		regular2 = "91B362";
-		regular3 = "F9AF4F";
-		regular4 = "53BDFA";
-		regular5 = "FAE994";
-		regular6 = "90E1C6";
-		regular7 = "C7C7C7";
-		bright0 = "686868";
-		bright1 = "F07178";
-		bright2 = "C2D94C";
-		bright3 = "FFB454";
-		bright4 = "59C2FF";
-		bright5 = "FFEE99";
-		bright6 = "95E6CB";
-		bright7 = "FFFFFF";
-	      };
-	    };
-	  };
-
-
+    programs.foot = {
+      enable = true;
+      settings = {
+        main = {
+          term = "xterm-256color";
+          font = "FiraCode:size=14";
+        };
+        scrollback = { lines = 100000; };
+        colors = {
+          alpha = "0.98";
+          foreground = "B3B1AD";
+          background = "0A0E14";
+          regular0 = "01060E";
+          regular1 = "EA6C73";
+          regular2 = "91B362";
+          regular3 = "F9AF4F";
+          regular4 = "53BDFA";
+          regular5 = "FAE994";
+          regular6 = "90E1C6";
+          regular7 = "C7C7C7";
+          bright0 = "686868";
+          bright1 = "F07178";
+          bright2 = "C2D94C";
+          bright3 = "FFB454";
+          bright4 = "59C2FF";
+          bright5 = "FFEE99";
+          bright6 = "95E6CB";
+          bright7 = "FFFFFF";
+        };
+      };
+    };
 
     wayland.windowManager.sway = {
       enable = true;
 
       config = {
         modifier = "Mod4";
-	input = {
-		"17498:8800:KBDFans_DZ60" = {
-			xkb_layout = "eu";
-		};
-		#"1133:49295:Logitech_G403_HERO_Gaming_Mouse" = {
-		#	pointer_accel = "1";
-		#};
-	};
+        input = {
+          "17498:8800:KBDFans_DZ60" = { xkb_layout = "eu"; };
+          #"1133:49295:Logitech_G403_HERO_Gaming_Mouse" = {
+          #	pointer_accel = "1";
+          #};
+        };
         output = {
           "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
-	  "DVI-D-1" = {
-	    mode = "1920x1200";
-	    transform = "270";
-	    position = "0,0";
-	  };
-	  "HDMI-A-1" = {
-	  mode = "3840x2160";
-	  scale = "1.2";
-	  position = "1200,0";
-	  };
-	  "DP-1" = {
-	  mode = "3840x2160";
-	  scale = "1.2";
-	  position = "4400,0";
-	  };
+          "DVI-D-1" = {
+            mode = "1920x1200";
+            transform = "270";
+            position = "0,0";
+          };
+          "HDMI-A-1" = {
+            mode = "3840x2160";
+            scale = "1.2";
+            position = "1200,0";
+          };
+          "DP-1" = {
+            mode = "3840x2160";
+            scale = "1.2";
+            position = "4400,0";
+          };
 
         };
-	gaps = {
-	  inner = 8;
-	};
-	window.border = 0;
-	workspaceAutoBackAndForth =  true;
-	terminal = "foot";
+        gaps = { inner = 8; };
+        window.border = 0;
+        workspaceAutoBackAndForth = true;
+        terminal = "foot";
 
-	bars = [ {
-            command = "${pkgs.waybar}/bin/waybar";
-        }];
+        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
 
-	keybindings = let 
-	 mod = "Mod4";
-	in {
-	  "${mod}+Return" = "exec foot";
-	  "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+        keybindings = let mod = "Mod4";
+        in {
+          "${mod}+Return" = "exec foot";
+          "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
 
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+q" = "kill";
-          "${mod}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-	  "${mod}+x" = "move workspace to output right";
+          "${mod}+Shift+e" =
+            "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+          "${mod}+x" = "move workspace to output right";
 
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
@@ -300,26 +280,22 @@
           "${mod}+Shift+9" = "move container to workspace 9";
           "${mod}+Shift+0" = "move container to workspace 10";
 
+          # Multimedia Keys
+          "XF86AudioMute" =
+            "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "XF86AudioRaiseVolume" =
+            "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          "XF86AudioLowerVolume" =
+            "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        };
 
-	# Multimedia Keys
-	"XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-	"XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
-	"XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
-	};
-
-    };
+      };
     };
   };
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    curl
-    git
-  ];
+  environment.systemPackages = with pkgs; [ neovim wget curl git ];
 
   programs.neovim.vimAlias = true;
 

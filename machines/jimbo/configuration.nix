@@ -7,14 +7,12 @@
 let
   home-manager = (import ./nix/sources.nix).home-manager;
   secretsFile = "/root.key";
-in
-{
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      "${home-manager}/nixos"
-    ];
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    "${home-manager}/nixos"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
@@ -38,7 +36,6 @@ in
   # copy the secret into the additional initramfs. `null` means same path
   boot.initrd.secrets."${secretsFile}" = null;
 
-
   networking.hostName = "jimbo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -49,13 +46,12 @@ in
   networking.useDHCP = false;
   networking.networkmanager.enable = true;
 
-
   hardware.opengl = {
     enable = true;
     driSupport = true;
   };
 
-    xdg = {
+  xdg = {
     portal = {
       enable = true;
       extraPortals = with pkgs; [
@@ -90,12 +86,7 @@ in
   };
 
   # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    git
-  ];
+  environment.systemPackages = with pkgs; [ vim wget curl git ];
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
@@ -117,7 +108,6 @@ in
 
       vscode
       vscode-extensions.vscodevim.vim
-
 
       wdisplays
       albert
@@ -163,7 +153,6 @@ in
       htop
     ];
 
-
     programs.neovim = {
       enable = true;
       vimAlias = true;
@@ -174,16 +163,14 @@ in
     };
 
     programs.zsh = {
-    	enable = true;
-	sessionVariables = {
-	  GOPATH = "/home/fleaz/workspace/go";
-	};
-	oh-my-zsh = {
-		enable = true;
-		plugins = [ "git" "fzf" ];
-		theme = "robbyrussell";
-	};
-	history.size = 10000;
+      enable = true;
+      sessionVariables = { GOPATH = "/home/fleaz/workspace/go"; };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "fzf" ];
+        theme = "robbyrussell";
+      };
+      history.size = 10000;
     };
 
     programs.git = {
@@ -192,9 +179,7 @@ in
       userEmail = "mail@felixbreidenstein.de";
     };
 
-    programs.waybar = {
-      enable = true;
-    };
+    programs.waybar = { enable = true; };
 
     programs.mako = {
       enable = true;
@@ -225,7 +210,6 @@ in
       };
     };
 
-
     services.blueman-applet.enable = true;
 
     programs.foot = {
@@ -235,9 +219,7 @@ in
           term = "xterm-256color";
           font = "FiraCode:size=14";
         };
-        scrollback = {
-          lines = 100000;
-        };
+        scrollback = { lines = 100000; };
         colors = {
           alpha = "0.98";
           foreground = "B3B1AD";
@@ -262,8 +244,6 @@ in
       };
     };
 
-
-
     wayland.windowManager.sway = {
       enable = true;
 
@@ -272,9 +252,7 @@ in
         focus.followMouse = false;
 
         input = {
-          "17498:8800:KBDFans_DZ60" = {
-            xkb_layout = "eu";
-          };
+          "17498:8800:KBDFans_DZ60" = { xkb_layout = "eu"; };
           #"1133:49295:Logitech_G403_HERO_Gaming_Mouse" = {
           #  pointer_accel = "1";
           #};
@@ -298,77 +276,73 @@ in
           };
 
         };
-        gaps = {
-          inner = 8;
-        };
+        gaps = { inner = 8; };
         window.border = 0;
         workspaceAutoBackAndForth = true;
         terminal = "foot";
 
-        bars = [{
-          command = "${pkgs.waybar}/bin/waybar";
-        }];
+        bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
 
-        keybindings =
-          let
-            mod = "Mod4";
-          in
-          {
-            "${mod}+Return" = "exec foot";
-            "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+        keybindings = let mod = "Mod4";
+        in {
+          "${mod}+Return" = "exec foot";
+          "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
 
-            "${mod}+Shift+c" = "reload";
-            "${mod}+Shift+q" = "kill";
-            "${mod}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-            "${mod}+x" = "move workspace to output right";
+          "${mod}+Shift+c" = "reload";
+          "${mod}+Shift+q" = "kill";
+          "${mod}+Shift+e" =
+            "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+          "${mod}+x" = "move workspace to output right";
 
-            "${mod}+h" = "focus left";
-            "${mod}+j" = "focus down";
-            "${mod}+k" = "focus up";
-            "${mod}+l" = "focus right";
+          "${mod}+h" = "focus left";
+          "${mod}+j" = "focus down";
+          "${mod}+k" = "focus up";
+          "${mod}+l" = "focus right";
 
-            "${mod}+Shift+h" = "move left";
-            "${mod}+Shift+j" = "move down";
-            "${mod}+Shift+k" = "move up";
-            "${mod}+Shift+l" = "move right";
+          "${mod}+Shift+h" = "move left";
+          "${mod}+Shift+j" = "move down";
+          "${mod}+Shift+k" = "move up";
+          "${mod}+Shift+l" = "move right";
 
-            "${mod}+s" = "split v";
-            "${mod}+w" = "split h";
+          "${mod}+s" = "split v";
+          "${mod}+w" = "split h";
 
-            "${mod}+t" = "layout tabbed";
-            "${mod}+r" = "mode resize";
+          "${mod}+t" = "layout tabbed";
+          "${mod}+r" = "mode resize";
 
-            "${mod}+f" = "fullscreen toggle";
-            "${mod}+Shift+space" = "floating toggle";
+          "${mod}+f" = "fullscreen toggle";
+          "${mod}+Shift+space" = "floating toggle";
 
-            "${mod}+1" = "workspace 1";
-            "${mod}+2" = "workspace 2";
-            "${mod}+3" = "workspace 3";
-            "${mod}+4" = "workspace 4";
-            "${mod}+5" = "workspace 5";
-            "${mod}+6" = "workspace 6";
-            "${mod}+7" = "workspace 7";
-            "${mod}+8" = "workspace 8";
-            "${mod}+9" = "workspace 9";
-            "${mod}+0" = "workspace 10";
+          "${mod}+1" = "workspace 1";
+          "${mod}+2" = "workspace 2";
+          "${mod}+3" = "workspace 3";
+          "${mod}+4" = "workspace 4";
+          "${mod}+5" = "workspace 5";
+          "${mod}+6" = "workspace 6";
+          "${mod}+7" = "workspace 7";
+          "${mod}+8" = "workspace 8";
+          "${mod}+9" = "workspace 9";
+          "${mod}+0" = "workspace 10";
 
-            "${mod}+Shift+1" = "move container to workspace 1";
-            "${mod}+Shift+2" = "move container to workspace 2";
-            "${mod}+Shift+3" = "move container to workspace 3";
-            "${mod}+Shift+4" = "move container to workspace 4";
-            "${mod}+Shift+5" = "move container to workspace 5";
-            "${mod}+Shift+6" = "move container to workspace 6";
-            "${mod}+Shift+7" = "move container to workspace 7";
-            "${mod}+Shift+8" = "move container to workspace 8";
-            "${mod}+Shift+9" = "move container to workspace 9";
-            "${mod}+Shift+0" = "move container to workspace 10";
+          "${mod}+Shift+1" = "move container to workspace 1";
+          "${mod}+Shift+2" = "move container to workspace 2";
+          "${mod}+Shift+3" = "move container to workspace 3";
+          "${mod}+Shift+4" = "move container to workspace 4";
+          "${mod}+Shift+5" = "move container to workspace 5";
+          "${mod}+Shift+6" = "move container to workspace 6";
+          "${mod}+Shift+7" = "move container to workspace 7";
+          "${mod}+Shift+8" = "move container to workspace 8";
+          "${mod}+Shift+9" = "move container to workspace 9";
+          "${mod}+Shift+0" = "move container to workspace 10";
 
-
-            # Multimedia Keys
-            "XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-            "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
-            "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
-          };
+          # Multimedia Keys
+          "XF86AudioMute" =
+            "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "XF86AudioRaiseVolume" =
+            "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          "XF86AudioLowerVolume" =
+            "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        };
 
       };
     };
