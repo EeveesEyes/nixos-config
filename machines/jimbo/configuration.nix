@@ -11,7 +11,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    "${home-manager}/nixos"
+    ../../home-manager/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -46,6 +46,13 @@ in {
   networking.useDHCP = false;
   networking.networkmanager.enable = true;
 
+   services.avahi = {
+  nssmdns = true;
+  enable = true;
+  ipv4 = true;
+  ipv6 = true;
+};
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -65,6 +72,7 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.splix ];
 
   # Enable sound.
   security.rtkit.enable = true;
@@ -86,7 +94,8 @@ in {
   };
 
   # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [ vim wget curl git ];
+  environment.systemPackages = with pkgs; [ vim wget curl git 
+];
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
