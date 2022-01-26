@@ -8,12 +8,12 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    <home-manager/nixos>
     ../../modules/sound.nix
     ../../modules/opengl.nix
     ../../modules/ssh.nix
     ../../modules/remote-builder.nix
     ../../users/fleaz.nix
+    ../../home-manager/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -33,6 +33,7 @@
 
   # Enable CUPS
   services.printing.enable = true;
+  services.printing.drivers = with pkgs; [ splix ];
 
   virtualisation.podman = {
     enable = true;
