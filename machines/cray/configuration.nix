@@ -2,7 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ sources ? import ../../nix
+, pkgs ? sources.pkgs {}
+, ... } :
 
 {
   imports = [
@@ -19,6 +21,11 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # for nvidia drivers
+  #nixpkgs.config.allowUnfree = true;
+
+  #services.xserver.videoDrivers = [ "nvidia" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
