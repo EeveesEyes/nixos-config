@@ -22,6 +22,7 @@ in {
       wdisplays
       albert
       firefox
+      evince
       chromium
       discord
       gnome.gnome-keyring
