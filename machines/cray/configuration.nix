@@ -14,6 +14,7 @@
     ../../modules/opengl.nix
     ../../modules/ssh.nix
     ../../modules/remote-builder.nix
+    ../../modules/earlyoom.nix
     ../../users/fleaz.nix
     ../../home-manager/default.nix
   ];

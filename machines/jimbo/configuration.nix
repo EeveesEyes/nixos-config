@@ -12,6 +12,12 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../home-manager/default.nix
+    ../../modules/earlyoom.nix
+    ../../modules/opengl.nix
+    ../../modules/remote-builder.nix
+    ../../modules/sound.nix
+    ../../modules/ssh.nix
+    ../../users/fleaz.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -85,13 +91,6 @@ in {
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fleaz = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
-  };
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [ vim wget curl git 
