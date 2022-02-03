@@ -10,6 +10,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/fonts.nix
     ../../modules/sound.nix
     ../../modules/opengl.nix
     ../../modules/ssh.nix
