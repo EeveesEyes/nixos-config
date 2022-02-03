@@ -28,11 +28,9 @@ in {
       gnome.gnome-keyring
       via
       docker-compose
-      rocketchat-desktop
       hicolor-icon-theme
       gnome3.adwaita-icon-theme
       cinnamon.nemo
-      awscli
       element-desktop
       signal-desktop
 
@@ -68,13 +66,13 @@ in {
       prusa-slicer
       htop
 
-      # hack
-      networkmanager
-      networkmanager-openvpn
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
-      # Not working with include
+      # Stuff only needed for work
       networkmanager
       networkmanager-openvpn
+      packer
+      rocketchat-desktop
+      awscli
     ];
 
 
