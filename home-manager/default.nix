@@ -59,7 +59,12 @@ in {
       albert
       foot
       wofi
+
       fira-code
+      dejavu_fonts
+      roboto
+      roboto-slab
+
       prusa-slicer
       htop
 
@@ -163,7 +168,7 @@ in {
         focus.followMouse = false;
 
         input = {
-          "17498:8800:KBDFans_DZ60" = { xkb_layout = "eu"; };
+          "type:keyboard" = { xkb_layout = "eu"; };
           #"1133:49295:Logitech_G403_HERO_Gaming_Mouse" = {
           #  pointer_accel = "1";
           #};
