@@ -110,22 +110,11 @@ in {
 
     };
 
-    services.redshift = {
+    services.gammastep = {
       enable = true;
-      package = pkgs.gammastep;
+      tray = true;
       latitude = "49.8";
       longitude = "8.6";
-      tray = true;
-      settings = {
-        brightness = {
-          day = "1";
-          night = "0.5";
-        };
-      };
-      temperature = {
-        night = 3500;
-        day = 5500;
-      };
     };
 
     services.blueman-applet.enable = true;
