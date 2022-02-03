@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   home-manager = (import ../nix/sources.nix).home-manager;
@@ -62,7 +62,16 @@ in {
       fira-code
       prusa-slicer
       htop
+
+      # hack
+      networkmanager
+      networkmanager-openvpn
+    ] ++ lib.optionals (config.networking.hostName == "jimbo") [
+      # Not working with include
+      networkmanager
+      networkmanager-openvpn
     ];
+
 
     programs.zsh = {
       enable = true;
