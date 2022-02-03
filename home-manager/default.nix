@@ -78,7 +78,11 @@ in {
 
     programs.zsh = {
       enable = true;
-      sessionVariables = { GOPATH = "/home/fleaz/workspace/go"; };
+      sessionVariables = {
+        GOPATH = "/home/fleaz/workspace/go";
+        EDITOR = "vim";
+        XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
+      };
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "fzf" ];
