@@ -43,7 +43,15 @@ in {
   boot.initrd.secrets."${secretsFile}" = null;
 
   networking.hostName = "jimbo"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  networking.extraHosts =
+  ''
+    10.32.4.64 cyberark.charite.de
+    10.32.4.64 cya-pvwa.charite.de
+    141.42.207.84 s-charitedigital.charite.de
+    10.32.4.65 cya-psmp.charite.de
+
+  '';
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -51,6 +59,7 @@ in {
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   networking.useDHCP = false;
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
    services.avahi = {
   nssmdns = true;
