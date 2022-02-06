@@ -18,7 +18,6 @@ in {
     nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       httpie
-      _1password-gui
 
       vscode
       vscode-extensions.vscodevim.vim
