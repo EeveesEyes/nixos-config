@@ -11,6 +11,7 @@ in {
   home-manager.users.fleaz = { pkgs, ... }: {
     imports = [
         modules/neovim.nix
+        modules/vscode.nix
     ];
 
     services.gnome-keyring.enable = true;
@@ -18,10 +19,6 @@ in {
     nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       httpie
-
-      vscode
-      vscode-extensions.vscodevim.vim
-
       wdisplays
       albert
       firefox
