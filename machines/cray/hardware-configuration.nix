@@ -22,6 +22,16 @@
     fsType = "vfat";
   };
 
+  fileSystems."/mnt/pool" = {
+      device = "//BART/Pool/";
+      fsType = "cifs";
+      options = let
+        # this line prevents hanging on network split
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+      in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/6a0a9641-00c5-490e-abcc-9efeaeaca1f8"; }];
 
