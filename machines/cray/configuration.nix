@@ -10,14 +10,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/fonts.nix
-    ../../modules/sound.nix
-    ../../modules/opengl.nix
-    ../../modules/ssh.nix
-    ../../modules/remote-builder.nix
-    ../../modules/earlyoom.nix
-    ../../users/fleaz.nix
-    ../../home-manager/default.nix
+    ../../roles/all.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -11,14 +11,7 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../home-manager/default.nix
-    ../../modules/earlyoom.nix
-    ../../modules/fonts.nix
-    ../../modules/opengl.nix
-    ../../modules/remote-builder.nix
-    ../../modules/sound.nix
-    ../../modules/ssh.nix
-    ../../users/fleaz.nix
+    ../../roles/all.nix
   ];
 
 
