@@ -7,10 +7,14 @@ in {
     "${home-manager}/nixos"
   ];
 
+
   home-manager.users.fleaz = { pkgs, ... }: {
     imports = [
         modules/neovim.nix
     ];
+
+    services.gnome-keyring.enable = true;
+
     nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       httpie
