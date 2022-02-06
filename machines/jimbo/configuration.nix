@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   home-manager = (import ./nix/sources.nix).home-manager;
@@ -20,6 +20,7 @@ in {
     ../../modules/ssh.nix
     ../../users/fleaz.nix
   ];
+
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
@@ -103,7 +104,8 @@ in {
   # services.xserver.libinput.enable = true;
 
   # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [ vim wget curl git 
+  environment.systemPackages = with pkgs; [
+    vim wget curl git 
 ];
 
   services.openssh.enable = true;
