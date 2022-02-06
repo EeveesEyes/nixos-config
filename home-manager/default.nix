@@ -27,6 +27,10 @@ in {
       discord
       gnome.gnome-keyring
       via
+      nextcloud-client
+      deluge
+      gnupg
+      gpicview
       docker-compose
       hicolor-icon-theme
       gnome3.adwaita-icon-theme
