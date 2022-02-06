@@ -1,4 +1,4 @@
-{ 
+{
   imports = [
     ../home-manager/default.nix
     ../modules/earlyoom.nix
@@ -9,5 +9,5 @@
     ../modules/ssh.nix
     ../users/fleaz.nix
   ];
- }
+}
 

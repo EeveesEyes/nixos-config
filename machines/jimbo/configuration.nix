@@ -7,7 +7,8 @@
 let
   home-manager = (import ./nix/sources.nix).home-manager;
   secretsFile = "/root.key";
-in {
+in
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -40,13 +41,13 @@ in {
   networking.hostName = "jimbo"; # Define your hostname.
 
   networking.extraHosts =
-  ''
-    10.32.4.64 cyberark.charite.de
-    10.32.4.64 cya-pvwa.charite.de
-    141.42.207.84 s-charitedigital.charite.de
-    10.32.4.65 cya-psmp.charite.de
+    ''
+      10.32.4.64 cyberark.charite.de
+      10.32.4.64 cya-pvwa.charite.de
+      141.42.207.84 s-charitedigital.charite.de
+      10.32.4.65 cya-psmp.charite.de
 
-  '';
+    '';
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -56,12 +57,12 @@ in {
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-   services.avahi = {
-  nssmdns = true;
-  enable = true;
-  ipv4 = true;
-  ipv6 = true;
-};
+  services.avahi = {
+    nssmdns = true;
+    enable = true;
+    ipv4 = true;
+    ipv6 = true;
+  };
 
   hardware.opengl = {
     enable = true;
@@ -98,8 +99,11 @@ in {
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    vim wget curl git 
-];
+    vim
+    wget
+    curl
+    git
+  ];
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;

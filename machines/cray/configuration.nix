@@ -3,8 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { sources ? import ../../nix
-, pkgs ? sources.pkgs {}
-, ... } :
+, pkgs ? sources.pkgs { }
+, ...
+}:
 
 {
   imports = [
@@ -42,32 +43,32 @@
     dockerCompat = true;
   };
 
-        # output = {
-        #   "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
-        #   "DVI-D-1" = {
-        #     mode = "1920x1200";
-        #     transform = "270";
-        #     position = "0,0";
-        #   };
-        #   "HDMI-A-1" = {
-        #     mode = "3840x2160";
-        #     scale = "1.2";
-        #     position = "1200,0";
-        #   };
-        #   "DP-1" = {
-        #     mode = "3840x2160";
-        #     scale = "1.2";
-        #     position = "4400,0";
-        #   };
+  # output = {
+  #   "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
+  #   "DVI-D-1" = {
+  #     mode = "1920x1200";
+  #     transform = "270";
+  #     position = "0,0";
+  #   };
+  #   "HDMI-A-1" = {
+  #     mode = "3840x2160";
+  #     scale = "1.2";
+  #     position = "1200,0";
+  #   };
+  #   "DP-1" = {
+  #     mode = "3840x2160";
+  #     scale = "1.2";
+  #     position = "4400,0";
+  #   };
 
 
-          # Multimedia Keys
-          # "XF86AudioMute" =
-          #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          # "XF86AudioRaiseVolume" =
-          #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
-          # "XF86AudioLowerVolume" =
-          #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
+  # Multimedia Keys
+  # "XF86AudioMute" =
+  #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+  # "XF86AudioRaiseVolume" =
+  #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+  # "XF86AudioLowerVolume" =
+  #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
