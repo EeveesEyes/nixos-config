@@ -6,5 +6,6 @@
       "networkmanager" # Access to networkmanager
     ];
     shell = pkgs.zsh;
+    hashedPassword = "$6$9dARC6e2RxgPC9f1$QfXpT71cXA7YiFhv75Nnq2OrbQ8xlHMzgrJdaBaETaAVHLX5j8QUAl71dxMlqD.CtTLxe566kL5Q6da7Kqnvp/";
   };
 }
