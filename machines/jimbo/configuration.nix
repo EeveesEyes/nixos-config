@@ -46,6 +46,7 @@ in
       10.32.4.64 cya-pvwa.charite.de
       141.42.207.84 s-charitedigital.charite.de
       10.32.4.65 cya-psmp.charite.de
+      10.10.37.136 homer.fleaz.me
 
     '';
 
