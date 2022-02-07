@@ -123,6 +123,11 @@ in
       tray = true;
       latitude = "49.8";
       longitude = "8.6";
+      temperature = {
+        day = 5500;
+        night = 3300;
+      };
+      
     };
 
     services.blueman-applet.enable = true;
