@@ -55,6 +55,7 @@ in
       python3Minimal
       pavucontrol
       playerctl
+      jq
 
       swaylock
       swayidle
@@ -90,6 +91,7 @@ in
         GOPATH = "/home/fleaz/workspace/go";
         EDITOR = "vim";
         XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
+        PATH = "$PATH:/home/fleaz/bin:/home/fleaz/workspace/go/bin";
       };
       oh-my-zsh = {
         enable = true;
