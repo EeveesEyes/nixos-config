@@ -4,23 +4,21 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1d2ce540-2fce-4621-8a4d-e05e09369bc3";
-    fsType = "ext4";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/60e06bf9-f4c4-4555-879b-23ade6599704";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/782C-3B0B";
-    fsType = "vfat";
-  };
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/2e85528d-0086-4835-9fc7-0e7a847d90bd";
 
   fileSystems."/mnt/pool" = {
     device = "//BART/Pool/";
@@ -33,10 +31,16 @@
       in
       [ "${automount_opts},credentials=/etc/nixos/smb-secrets" ];
   };
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/274B-0F7C";
+      fsType = "vfat";
+    };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/6a0a9641-00c5-490e-abcc-9efeaeaca1f8"; }];
+  swapDevices = [{
+    device = "/dev/disk/by-partuuid/c5586d55-aca1-4771-9695-1232ba83d3f6";
+    randomEncryption = true;
 
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  }];
+
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
