@@ -38,11 +38,6 @@
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ splix ];
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
-
   # output = {
   #   "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
   #   "DVI-D-1" = {

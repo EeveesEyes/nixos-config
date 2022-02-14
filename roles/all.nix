@@ -7,6 +7,7 @@
     ../modules/remote-builder.nix
     ../modules/sound.nix
     ../modules/ssh.nix
+    ../modules/docker.nix
     ../users/fleaz.nix
   ];
 }

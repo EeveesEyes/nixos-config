@@ -109,11 +109,6 @@ in
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
 
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    dockerSocket.enable = true;
-  };
 
   # List services that you want to enable:
 
