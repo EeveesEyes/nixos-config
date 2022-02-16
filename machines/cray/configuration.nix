@@ -42,10 +42,7 @@ in
   # copy the secret into the additional initramfs. `null` means same path
   boot.initrd.secrets."${secretsFile}" = null;
 
-  # for nvidia drivers
-  #nixpkgs.config.allowUnfree = true;
-
-  #services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
