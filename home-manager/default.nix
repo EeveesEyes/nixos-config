@@ -18,7 +18,9 @@ in
 
     services.gnome-keyring.enable = true;
 
+    # e.g. for 1password
     nixpkgs.config.allowUnfree = true;
+
     home.packages = with pkgs; [
       httpie
       wdisplays
@@ -66,11 +68,6 @@ in
       albert
       foot
       wofi
-
-      fira-code
-      dejavu_fonts
-      roboto
-      roboto-slab
 
       prusa-slicer
       htop
