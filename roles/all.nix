@@ -1,6 +1,7 @@
 {
   imports = [
     ../home-manager/default.nix
+    ../modules/avahi.nix
     ../modules/earlyoom.nix
     ../modules/fonts.nix
     ../modules/opengl.nix

@@ -56,12 +56,6 @@ in
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-  services.avahi = {
-    nssmdns = true;
-    enable = true;
-    ipv4 = true;
-    ipv6 = true;
-  };
 
   hardware.opengl = {
     enable = true;
