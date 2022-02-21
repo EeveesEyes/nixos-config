@@ -38,6 +38,9 @@ in
   # copy the secret into the additional initramfs. `null` means same path
   boot.initrd.secrets."${secretsFile}" = null;
 
+  programs.dconf.enable = true;
+
+
   networking.hostName = "jimbo"; # Define your hostname.
 
   networking.extraHosts =
@@ -63,16 +66,6 @@ in
   hardware.opengl = {
     enable = true;
     driSupport = true;
-  };
-
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
   };
 
   hardware.bluetooth.enable = true;

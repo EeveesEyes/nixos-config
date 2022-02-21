@@ -16,6 +16,15 @@ in
       modules/sway.nix
     ];
 
+    gtk = {
+      enable = true;
+      theme.name = "Adwaita";
+    };
+
+    xdg = {
+      enable = true;
+    };
+
     services.gnome-keyring.enable = true;
 
     # e.g. for 1password
@@ -89,6 +98,7 @@ in
         EDITOR = "vim";
         XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
         PATH = "$PATH:/home/fleaz/bin:/home/fleaz/workspace/go/bin";
+	DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       };
       oh-my-zsh = {
         enable = true;
