@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "mem_sleep_default=deep" ]; # Enable real deepsleep suspend
 
   fileSystems."/" =
     {
