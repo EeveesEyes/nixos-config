@@ -14,6 +14,8 @@ in
       modules/neovim.nix
       modules/vscode.nix
       modules/sway.nix
+    ] ++ lib.optionals (config.networking.hostName == "jimbo") [
+      modules/kanshi.nix
     ];
 
     gtk = {

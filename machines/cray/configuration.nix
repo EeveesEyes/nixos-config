@@ -61,37 +61,10 @@ in
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ splix ];
 
-  # output = {
-  #   "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
-  #   "DVI-D-1" = {
-  #     mode = "1920x1200";
-  #     transform = "270";
-  #     position = "0,0";
-  #   };
-  #   "HDMI-A-1" = {
-  #     mode = "3840x2160";
-  #     scale = "1.2";
-  #     position = "1200,0";
-  #   };
-  #   "DP-1" = {
-  #     mode = "3840x2160";
-  #     scale = "1.2";
-  #     position = "4400,0";
-  #   };
 
-
-  # Multimedia Keys
-  # "XF86AudioMute" =
-  #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-  # "XF86AudioRaiseVolume" =
-  #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
-  # "XF86AudioLowerVolume" =
-  #   "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
 
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ neovim wget curl git ];
-  programs.neovim.vimAlias = true;
+  environment.systemPackages = with pkgs; [ vim wget curl git ];
 
 
   # This value determines the NixOS release from which the default

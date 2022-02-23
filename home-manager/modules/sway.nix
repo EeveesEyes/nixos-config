@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixosConfig, lib, ... }:
 {
     wayland.windowManager.sway = {
       enable = true;
@@ -16,23 +16,24 @@
         };
         output = {
           "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
-          "DVI-D-1" = {
+	} // lib.optionals (nixosConfig.networking.hostName == "cray") {
+          "DP-1" = {
             mode = "1920x1200";
             transform = "270";
             position = "0,0";
           };
           "HDMI-A-1" = {
             mode = "3840x2160";
-            scale = "1.2";
+            scale = "1.3";
             position = "1200,0";
           };
-          "DP-1" = {
+          "DP-2" = {
             mode = "3840x2160";
-            scale = "1.2";
-            position = "4400,0";
+            scale = "1.3";
+            position = "4152,0";
           };
-
         };
+
         gaps = { inner = 8; };
         window.border = 0;
         workspaceAutoBackAndForth = true;
