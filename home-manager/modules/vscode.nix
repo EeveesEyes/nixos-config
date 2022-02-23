@@ -9,7 +9,7 @@
 
       # Terraform and HCL support
       hashicorp.terraform
-      
+
       # Python
       ms-python.python
 

@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -14,7 +15,8 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/60e06bf9-f4c4-4555-879b-23ade6599704";
+    {
+      device = "/dev/disk/by-uuid/60e06bf9-f4c4-4555-879b-23ade6599704";
       fsType = "ext4";
     };
 
@@ -32,7 +34,8 @@
       [ "${automount_opts},credentials=/etc/nixos/smb-secrets" ];
   };
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/274B-0F7C";
+    {
+      device = "/dev/disk/by-uuid/274B-0F7C";
       fsType = "vfat";
     };
 

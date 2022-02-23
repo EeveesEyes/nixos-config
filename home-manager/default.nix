@@ -100,7 +100,7 @@ in
         EDITOR = "vim";
         XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
         PATH = "$PATH:/home/fleaz/bin:/home/fleaz/workspace/go/bin";
-	DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+        DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       };
       oh-my-zsh = {
         enable = true;
@@ -138,7 +138,7 @@ in
         day = 5500;
         night = 3300;
       };
-      
+
     };
 
     services.blueman-applet.enable = true;
