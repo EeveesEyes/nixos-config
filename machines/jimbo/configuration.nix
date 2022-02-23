@@ -43,11 +43,6 @@ in
 
   networking.hostName = "jimbo"; # Define your hostname.
 
-  networking.extraHosts =
-    ''
-      10.10.37.136 homer.fleaz.me
-    '';
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
