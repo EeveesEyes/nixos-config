@@ -14,6 +14,7 @@ in
       modules/neovim.nix
       modules/vscode.nix
       modules/sway.nix
+      modules/git.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
     ];
