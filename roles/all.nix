@@ -8,6 +8,7 @@
     ../modules/sound.nix
     ../modules/ssh.nix
     ../modules/docker.nix
+    ../modules/virtualbox.nix
     ../users/fleaz.nix
   ];
 
