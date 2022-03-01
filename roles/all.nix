@@ -10,6 +10,7 @@
     ../modules/ssh.nix
     ../modules/docker.nix
     ../modules/virtualbox.nix
+    ../secrets/remote-builder.nix
     ../users/fleaz.nix
   ];
 
