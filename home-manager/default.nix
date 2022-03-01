@@ -85,6 +85,7 @@ in
 
       prusa-slicer
       htop
+      xdg-utils
 
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       # Stuff only needed for work
