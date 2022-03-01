@@ -16,7 +16,7 @@
       };
       output = {
         "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
-      } // lib.optionals (nixosConfig.networking.hostName == "cray") {
+      } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
         "DP-1" = {
           mode = "1920x1200";
           transform = "270";
