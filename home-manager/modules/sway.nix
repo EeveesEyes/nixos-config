@@ -10,9 +10,9 @@
 
       input = {
         "type:keyboard" = { xkb_layout = "eu"; };
-        #"1133:49295:Logitech_G403_HERO_Gaming_Mouse" = {
-        #  pointer_accel = "1";
-        #};
+	"1:1:AT_Translated_Set_2_keyboard" = {
+	  xkb_options = "caps:ctrl_modifier";
+	};
       };
       output = {
         "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
