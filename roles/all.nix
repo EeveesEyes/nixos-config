@@ -5,6 +5,7 @@
     ../modules/earlyoom.nix
     ../modules/fonts.nix
     ../modules/opengl.nix
+    ../modules/pam.nix
     ../modules/sound.nix
     ../modules/ssh.nix
     ../modules/docker.nix

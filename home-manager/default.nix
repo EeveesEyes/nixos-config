@@ -70,6 +70,7 @@ in
       pavucontrol
       playerctl
       jq
+      psmisc
 
       swaylock
       swayidle
