@@ -74,6 +74,7 @@ in
 
       swaylock
       swayidle
+      brightnessctl
       wl-clipboard
       mako
       waybar

@@ -128,6 +128,9 @@ in
           "XF86AudioNext" = "exec ${playerctl} next";
           "XF86AudioPlay" = "exec ${playerctl} play-pause";
           "XF86AudioPrev" = "exec ${playerctl} previous";
+
+          "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
+          "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
         };
 
     };
