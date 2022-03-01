@@ -145,7 +145,7 @@ in
 
     };
 
-    services.blueman-applet.enable = true;
+    services.blueman-applet.enable = config.networking.hostName == "jimbo";
 
     programs.foot = {
       enable = true;
