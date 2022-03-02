@@ -13,9 +13,9 @@ in
 
       input = {
         "type:keyboard" = { xkb_layout = "eu"; };
-	"1:1:AT_Translated_Set_2_keyboard" = {
-	  xkb_options = "caps:ctrl_modifier";
-	};
+        "1:1:AT_Translated_Set_2_keyboard" = {
+          xkb_options = "caps:ctrl_modifier";
+        };
       };
       output = {
         "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
@@ -44,13 +44,15 @@ in
 
       bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
 
-       startup = [
-          { command = ''${pkgs.swayidle}/bin/swayidle -w \
+      startup = [
+        {
+          command = ''${pkgs.swayidle}/bin/swayidle -w \
                            timeout 300 "${lockCmd}" \
                            timeout 600 "${pkgs.sway}/bin/swaymsg output * dpms off" \
                                 resume "${pkgs.sway}/bin/swaymsg output * dpms on" \
-                           before-sleep "${lockCmd}"''; }
-        ];
+                           before-sleep "${lockCmd}"'';
+        }
+      ];
 
 
 

@@ -1,4 +1,4 @@
 {
   # Allow swaylock to talk to PAM
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 }
