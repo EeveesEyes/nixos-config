@@ -4,6 +4,7 @@
 
 { sources ? import ../../nix
 , pkgs ? sources.pkgs { }
+, lib
 , ...
 }:
 
@@ -21,8 +22,6 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  nix.useSandbox = false;
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub = {
@@ -62,6 +61,12 @@ in
   services.printing.drivers = with pkgs; [ splix ];
 
 
+  programs.steam.enable = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-runtime"
+  ];
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [ vim wget curl git ];
