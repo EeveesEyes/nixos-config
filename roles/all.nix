@@ -19,7 +19,7 @@
 
   networking.extraHosts =
     ''
-      10.10.37.136 bart2.fleaz.me
+      10.10.37.2 bart2.fleaz.me
       10.10.37.145 homer.fleaz.me
     '';
 
