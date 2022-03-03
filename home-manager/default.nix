@@ -15,6 +15,7 @@ in
       modules/vscode.nix
       modules/sway.nix
       modules/git.nix
+      modules/gpg.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
     ];
