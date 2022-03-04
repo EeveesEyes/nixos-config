@@ -1,6 +1,6 @@
 { pkgs, nixosConfig, lib, ... }:
 let
-  lockCmd = "${pkgs.swaylock}/bin/swaylock -c 100000ff";
+  lockCmd = "${pkgs.swaylock}/bin/swaylock -c 645394";
 in
 {
   wayland.windowManager.sway = {
@@ -47,8 +47,8 @@ in
       startup = [
         {
           command = ''${pkgs.swayidle}/bin/swayidle -w \
-                           timeout 300 "${lockCmd}" \
-                           timeout 600 "${pkgs.sway}/bin/swaymsg output * dpms off" \
+                           timeout 600 "${lockCmd}" \
+                           timeout 900 "${pkgs.sway}/bin/swaymsg output * dpms off" \
                                 resume "${pkgs.sway}/bin/swaymsg output * dpms on" \
                            before-sleep "${lockCmd}"'';
         }
@@ -120,7 +120,7 @@ in
           "XF86AudioRaiseVolume" =
             "exec ${pactl} set-sink-volume @DEFAULT_SINK@ +5%";
           # Tools, AudioMute, AudioLowerVolume
-          "XF86Tools" = "exec killall -USR1 swayidle";
+          "XF86Tools" = "exec ${lockCmd}";
           "XF86AudioMute" =
             "exec ${pactl} set-sink-mute @DEFAULT_SINK@ toggle";
           "XF86AudioLowerVolume" =
