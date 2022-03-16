@@ -5,7 +5,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  home-manager = (import ./nix/sources.nix).home-manager;
   secretsFile = "/root.key";
 in
 {

@@ -18,6 +18,7 @@ in
       modules/gpg.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
+      ../secrets/codemonauts.nix
     ];
 
     gtk = {
@@ -33,6 +34,7 @@ in
 
     # e.g. for 1password
     nixpkgs.config.allowUnfree = true;
+
 
     home.packages = with pkgs; [
       httpie
@@ -54,6 +56,7 @@ in
       cinnamon.nemo
       element-desktop
       signal-desktop
+      nix-output-monitor
 
       dnsutils
       mtr
@@ -95,6 +98,8 @@ in
       packer
       rocketchat-desktop
       awscli
+      shared-2fa
+      igproxy-access
     ];
 
 
