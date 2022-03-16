@@ -11,7 +11,7 @@
     ../modules/ssh.nix
     ../modules/via.nix
     ../modules/virtualbox.nix
-    ../secrets/remote-builder.nix
+    #../secrets/remote-builder.nix
     ../users/fleaz.nix
   ];
 
