@@ -13,7 +13,9 @@ in
 
       input = {
         "type:keyboard" = { xkb_layout = "eu"; };
+        "type:mouse" = { pointer_accel = "-1"; };
         "1:1:AT_Translated_Set_2_keyboard" = {
+          # Remap borken ctrl key on internal keyboard
           xkb_options = "caps:ctrl_modifier";
         };
       };
