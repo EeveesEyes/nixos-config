@@ -9,6 +9,7 @@
     ../modules/pam.nix
     ../modules/sound.nix
     ../modules/ssh.nix
+    ../modules/steam.nix
     ../modules/via.nix
     ../modules/virtualbox.nix
     #../secrets/remote-builder.nix
