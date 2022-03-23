@@ -1,0 +1,199 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+	70% {
+		color: @light;
+	}
+
+	to {
+		color: @light;
+		background-color: @warning;
+	}
+}
+
+@keyframes blink-critical {
+	70% {
+		color: @light;
+	}
+
+	to {
+		color: @light;
+		background-color: @critical;
+	}
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Styles
+ * -------------------------------------------------------------------------- */
+
+/* COLORS */
+
+/* Gruvbox */
+@define-color light #ebdbb2;
+@define-color dark #1d2021;
+
+@define-color warning #fabd2f;
+@define-color critical #fb4934;
+
+@define-color red #fb4934;
+@define-color orange #fe8019;
+@define-color green #b8bb26;
+@define-color yellow #fabd2f;
+@define-color blue #83a598;
+@define-color purple #d3869b;
+@define-color teal #8ec07c;
+@define-color gray #928374;
+
+/* Reset all styles */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+	background: @dark;
+	color: @light;
+	font-family: Inconsolata, Inconsolata Nerd Font, FiraCode Nerd Font Mono;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+/* All modules */
+#battery,
+#clock,
+#cpu,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray {
+	background: transparent;
+	color: @light;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 3px;
+}
+
+/* All module that should blink */
+#mode
+#memory,
+#temperature,
+#battery {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+/* All critical modules */
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical {
+	color: @critical;
+}
+
+/* All critical modules that should blink */
+#mode,
+#memory.critical,
+#temperature.critical,
+#battery.critical.discharging {
+	animation-name: blink-critical;
+	animation-duration: 2s;
+}
+
+/* Each warning */
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning {
+	color: @warning;
+}
+
+/* Each warning that should blink */
+#battery.warning.discharging {
+	animation-name: blink-warning;
+	animation-duration: 3s;
+}
+
+/* And now modules themselves in their respective order */
+
+/* Workspaces stuff */
+#workspaces button {
+	/*font-weight: bold;*/
+	padding-left: 4px;
+	padding-right: 4px;
+	color: @light;
+	background: @dark;
+}
+
+#workspaces button.focused {
+	border-bottom: 2px solid @orange;
+}
+
+#workspaces button.urgent {
+	color: @orange;
+}
+
+#mode { /* Shows current Sway mode (resize etc.) */
+	padding-left: 10px;
+	color: @light;
+	background: @red;
+}
+
+#window {
+	margin-right: 30px;
+	margin-left: 30px;
+}
+
+#pulseaudio {
+	border-bottom: 2px solid @red;
+}
+
+#network {
+	border-bottom: 2px solid @orange;
+}
+
+#memory {
+	border-bottom: 2px solid @yellow;
+}
+
+#cpu {
+	border-bottom: 2px solid @green;
+}
+
+#temperature {
+	border-bottom: 2px solid @teal;
+}
+
+#battery {
+	border-bottom: 2px solid @blue;
+}
+
+#tray {
+}
+
+#clock {
+	border-bottom: 2px solid @light;
+}
+
+#pulseaudio.muted {
+	/* No styles */
+}
+

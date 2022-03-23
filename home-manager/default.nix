@@ -81,7 +81,6 @@ in
       brightnessctl
       wl-clipboard
       mako
-      waybar
       sway-contrib.grimshot
       albert
       foot
@@ -129,7 +128,103 @@ in
       userEmail = "mail@felixbreidenstein.de";
     };
 
-    programs.waybar = { enable = true; };
+    programs.waybar = {
+    enable = true;
+    settings = [ {
+      layer = "top";
+      position = "bottom";
+      height = 28;
+      modules-left = [
+        "sway/workspaces"
+        "sway/mode"
+        "sway/window"
+      ];
+      modules-center = [
+      ];
+      modules-right = [
+        "pulseaudio"
+        "network"
+        "memory"
+        "cpu"
+        "temperature"
+        "battery"
+        "tray"
+        "clock"
+      ];
+      modules = {
+        "battery" = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = " {capacity}%";
+          format-discharging = "{icon} {capacity}%";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+        };
+        "cpu" = {
+          format = "  {}";
+        };
+        "clock" = {
+          format = "{:%H:%M}";
+          tooltip = false;
+        };
+        "memory" = {
+          interval = 5;
+          format = "  {}%";
+          tooltip-format = "{used:0.1f}/{total:0.1f} GB";
+          states = {
+            warning = 70;
+            critical = 90;
+	 };
+	};
+        "network" = {
+          interface = "wl*";
+          format-wifi = "  {essid}";
+          format-icons = [
+            ""
+          ];
+          tooltip-format-wifi = "{frequency} MHz, {signaldBm} dBm";
+        };
+        "pulseaudio" = {
+          scroll-step = 1;
+          format = "{icon}  {volume}%";
+          format-bluetooth = "{icon} {volume}% ";
+          format-muted = "";
+          format-icons = {
+            headphones = "";
+            handsfree = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" ""];
+          };
+          on-click ="pavucontrol";
+        };
+        "sway/workspaces" = {
+          all-outputs = false;
+          disable-scroll = false;
+          format = "{name}";
+        };
+        "temperature" = {
+          format = " {temperatureC}°C";
+        };
+      };
+    } ];
+    style = builtins.readFile ./waybar.css;
+  };
+
 
     programs.mako = {
       enable = true;
