@@ -10,7 +10,7 @@
     ../modules/sound.nix
     ../modules/ssh.nix
     ../modules/steam.nix
-    ../modules/via.nix
+    # ../modules/via.nix broken
     ../modules/virtualbox.nix
     #../secrets/remote-builder.nix
     ../users/fleaz.nix
