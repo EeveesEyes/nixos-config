@@ -86,6 +86,9 @@ in
       albert
       foot
       wofi
+      unzip
+      whois
+      sublime-music
 
       prusa-slicer
       htop
