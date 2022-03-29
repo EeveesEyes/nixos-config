@@ -97,11 +97,12 @@ in
       nodejs
 
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
-      # Stuff only needed for work
       networkmanager
+
+      # Stuff only needed for work
       networkmanager-openvpn
       packer
-      rocketchat-desktop
+      chefdk
       awscli
       shared-2fa
       igproxy-access
