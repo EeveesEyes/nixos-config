@@ -112,10 +112,9 @@ in
     programs.zsh = {
       enable = true;
       sessionVariables = {
-        GOPATH = "/home/fleaz/workspace/go";
         EDITOR = "vim";
         XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
-        PATH = "$PATH:/home/fleaz/bin:/home/fleaz/workspace/go/bin";
+        PATH = "$PATH:/home/fleaz/bin";
         DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       };
       oh-my-zsh = {

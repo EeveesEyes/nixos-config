@@ -17,6 +17,9 @@
       "init" = {
         defaultBranch = "main";
       };
+      "pull" = {
+        rebase = "true";
+      };
     };
 
 
@@ -36,18 +39,6 @@
         };
       };
     }
-      {
-        condition = "gitdir:~/workspace/go/src/github.com/codemonauts/";
-        contents = {
-          user = {
-            email = "felix@codemonauts.com";
-            name = "Felix Breidenstein";
-          };
-          commit = {
-            gpgSign = false;
-          };
-        };
-      }
       {
         condition = "gitdir:~/kundendaten/";
         contents = {
