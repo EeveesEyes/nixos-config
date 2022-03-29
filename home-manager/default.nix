@@ -93,6 +93,9 @@ in
       htop
       xdg-utils
 
+      # for coc
+      nodejs
+
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       # Stuff only needed for work
       networkmanager
