@@ -58,6 +58,8 @@ in
       element-desktop
       signal-desktop
       nix-output-monitor
+      gvfs
+      samba
 
       dnsutils
       mtr
@@ -76,6 +78,9 @@ in
       playerctl
       jq
       psmisc
+      zip
+      nmap
+      vnstat
 
       swaylock
       swayidle
