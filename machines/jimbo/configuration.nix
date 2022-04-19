@@ -37,9 +37,6 @@ in
   # copy the secret into the additional initramfs. `null` means same path
   boot.initrd.secrets."${secretsFile}" = null;
 
-  programs.dconf.enable = true;
-
-
   networking.hostName = "jimbo"; # Define your hostname.
 
   # Set your time zone.

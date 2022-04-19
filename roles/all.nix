@@ -16,6 +16,9 @@
     ../users/fleaz.nix
   ];
 
+  # GTK settings stuff for e.g. themes
+  programs.dconf.enable = true;
+
 
   # Temporary hacks that don't deserve their own module
 
