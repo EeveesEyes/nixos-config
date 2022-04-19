@@ -22,20 +22,15 @@ in
       output = {
         "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
-        "DP-1" = {
-          mode = "1920x1200";
-          transform = "270";
-          position = "0,0";
-        };
         "HDMI-A-1" = {
           mode = "3840x2160";
           scale = "1.3";
-          position = "1200,0";
+          position = "0,0";
         };
-        "DP-2" = {
+        "DP-1" = {
           mode = "3840x2160";
           scale = "1.3";
-          position = "4153,0";
+          position = "2952,0";
         };
       };
 
