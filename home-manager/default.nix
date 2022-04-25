@@ -101,6 +101,7 @@ in
 
       # for coc
       nodejs
+      rnix-lsp
 
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       networkmanager

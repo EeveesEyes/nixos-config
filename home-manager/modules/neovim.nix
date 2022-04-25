@@ -35,12 +35,14 @@
       # blockcomments
       tcomment_vim
 
+      # Nix support
+      vim-nix
+
       # Go plugin from fatih
       vim-go
 
       # Coc language server support
       coc-nvim
-      coc-go
       coc-python
     ];
     extraConfig = ''
