@@ -30,7 +30,7 @@ in
         "DP-1" = {
           mode = "3840x2160";
           scale = "1.3";
-          position = "2952,0";
+          position = "2953,0";
         };
       };
 
