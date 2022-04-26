@@ -23,8 +23,8 @@
 
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/2e85528d-0086-4835-9fc7-0e7a847d90bd";
 
-  fileSystems."/mnt/pool" = {
-    device = "//BART/Pool/";
+  fileSystems."/mnt/share" = {
+    device = "//BART/share/";
     fsType = "cifs";
     options =
       let
@@ -32,8 +32,21 @@
         automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
       in
-      [ "${automount_opts},credentials=/etc/nixos/smb-secrets" ];
+      [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
   };
+
+  fileSystems."/mnt/media" = {
+    device = "//BART/media/";
+    fsType = "cifs";
+    options =
+      let
+        # this line prevents hanging on network split
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+      in
+      [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
+  };
+
   fileSystems."/boot/efi" =
     {
       device = "/dev/disk/by-uuid/274B-0F7C";
