@@ -113,6 +113,7 @@ in
       awscli
       shared-2fa
       igproxy-access
+      sqlstrip
     ];
 
 
