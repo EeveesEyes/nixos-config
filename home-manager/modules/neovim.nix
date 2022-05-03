@@ -6,6 +6,8 @@
       (python3.withPackages (ps: with ps; [
         black
         flake8
+        pylint
+        jedi
       ]))
     ];
     vimAlias = true;
@@ -43,7 +45,7 @@
 
       # Coc language server support
       coc-nvim
-      coc-python
+      coc-pyright
     ];
     extraConfig = ''
       set nocompatible
