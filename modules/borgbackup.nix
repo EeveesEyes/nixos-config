@@ -20,6 +20,7 @@
         "/home/fleaz/.thunderbird"
         "/home/fleaz/.mozilla"
         "/home/fleaz/.vscode"
+        "/home/fleaz/.local"
       ];
       extraCreateArgs = "--stats";
       repo = "fleaz@borg.cysec.de:${config.networking.hostName}";
