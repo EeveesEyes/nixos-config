@@ -20,6 +20,7 @@ in
         };
       };
       output = {
+        "eDP-1".bg = "/home/fleaz/Nextcloud/wallpaper/NixOS-trans-wallpaper.png fill";
         "*".bg = "/home/fleaz/Downloads/spongebob.jpg fill";
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
         "HDMI-A-1" = {
