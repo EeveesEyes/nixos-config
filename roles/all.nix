@@ -12,6 +12,7 @@
     ../modules/steam.nix
     # ../modules/via.nix broken
     ../modules/virtualbox.nix
+    ../modules/borgbackup.nix
     #../secrets/remote-builder.nix
     ../users/fleaz.nix
   ];
