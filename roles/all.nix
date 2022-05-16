@@ -10,23 +10,18 @@
     ../modules/sound.nix
     ../modules/ssh.nix
     ../modules/steam.nix
-    # ../modules/via.nix broken
+    ../modules/via.nix
     ../modules/virtualbox.nix
     ../modules/borgbackup.nix
     #../secrets/remote-builder.nix
     ../users/fleaz.nix
   ];
 
+  # needed for Steam and VIA
+  nixpkgs.config.allowUnfree = true;
+
   # GTK settings stuff for e.g. themes
   programs.dconf.enable = true;
-
-
-  # Temporary hacks that don't deserve their own module
-
-  networking.extraHosts =
-    ''
-      10.10.37.2 bart2.fleaz.me
-    '';
 
 }
 
