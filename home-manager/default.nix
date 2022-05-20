@@ -14,6 +14,7 @@ in
     imports = [
       modules/neovim.nix
       modules/vscode.nix
+      modules/direnv.nix
       modules/sway.nix
       modules/git.nix
       modules/gpg.nix
