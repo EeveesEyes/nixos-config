@@ -18,6 +18,7 @@ in
       modules/sway.nix
       modules/git.nix
       modules/gpg.nix
+      modules/udiskie.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
       ../secrets/codemonauts.nix
@@ -71,6 +72,7 @@ in
       silver-searcher
       thunderbird-wayland
       mosh
+      evolution
       mpv
       poetry
       go
