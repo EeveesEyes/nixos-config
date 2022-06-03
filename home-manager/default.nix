@@ -137,7 +137,10 @@ in
         plugins = [ "git" "fzf" ];
         theme = "robbyrussell";
       };
-      history.size = 10000;
+      history = {
+        share = false; # every terminal has it's own history
+        size = 10000;
+      };
     };
 
     programs.git = {
