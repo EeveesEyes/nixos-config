@@ -22,6 +22,8 @@ in
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
       ../secrets/codemonauts.nix
+    ] ++ lib.optionals (config.networking.hostName == "milhouse") [
+      modules/kanshi.nix
     ];
 
     gtk = {
@@ -117,6 +119,8 @@ in
       shared-2fa
       igproxy-access
       sqlstrip
+    ] ++ lib.optionals (config.networking.hostName == "milhouse") [
+      networkmanager
     ];
 
 
