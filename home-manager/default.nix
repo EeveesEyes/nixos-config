@@ -49,7 +49,6 @@ in
       evince
       chromium
       discord
-      gnome.gnome-keyring
       via
       nextcloud-client
       deluge
@@ -57,7 +56,6 @@ in
       gpicview
       docker-compose
       hicolor-icon-theme
-      gnome3.adwaita-icon-theme
       cinnamon.nemo
       element-desktop
       signal-desktop
@@ -74,7 +72,6 @@ in
       silver-searcher
       thunderbird-wayland
       mosh
-      evolution
       mpv
       poetry
       go
@@ -101,6 +98,7 @@ in
       sublime-music
 
       unstable.prusa-slicer
+      unstable.cura
       htop
       xdg-utils
 
@@ -119,6 +117,8 @@ in
       shared-2fa
       igproxy-access
       sqlstrip
+      pwgen
+      mysql-client
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       networkmanager
     ];
