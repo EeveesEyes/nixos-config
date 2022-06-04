@@ -1,7 +1,17 @@
-{
-  services.kanshi = {
-    enable = true;
-    profiles = {
+{ nixosConfig, ... }:
+let
+  machines = {
+    milhouse = {
+      "laptop" = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            scale = 1.0;
+          }
+        ];
+      };
+    };
+    jimbo = {
       "laptop" = {
         outputs = [
           {
@@ -30,6 +40,13 @@
         ];
       };
     };
+  };
+in
+{
+  services.kanshi = {
+    enable = true;
+    #profiles = lookup machines "milhouse";
+    profiles = machines."${nixosConfig.networking.hostName}";
   };
 
 }
