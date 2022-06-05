@@ -17,6 +17,9 @@
     ../users/fleaz.nix
   ];
 
+  # Set your time zone.
+  time.timeZone = "Europe/Berlin";
+
   # needed for Steam and VIA
   nixpkgs.config.allowUnfree = true;
 

@@ -2,51 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ sources ? import ../../nix
-, pkgs ? sources.pkgs { }
-, lib
-, ...
-}:
-
-let
-  home-manager = (import ./nix/sources.nix).home-manager;
-  secretsFile = "/root.key";
-in
+{ pkgs, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../roles/all.nix
+    ../../modules/luks.nix
+    ../../modules/grub.nix
   ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    device = "nodev";
-    efiSupport = true;
-    enableCryptodisk = true;
-    configurationLimit = 5;
-  };
-
-  # enable passing of keyfile between grub and initrd
-  boot.initrd.luks.devices."cryptroot" = {
-    fallbackToPassword = true;
-    keyFile = secretsFile;
-  };
-  # copy the secret into the additional initramfs. `null` means same path
-  boot.initrd.secrets."${secretsFile}" = null;
 
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-  time.hardwareClockInLocalTime = true; #Be compatible with Windows
-
+  time.hardwareClockInLocalTime = true; #Be compatible with Windows Dualboot
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config

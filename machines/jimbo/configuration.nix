@@ -3,44 +3,16 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
-
-let
-  secretsFile = "/root.key";
-in
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../roles/all.nix
+    ../../modules/luks.nix
+    ../../modules/grub.nix
   ];
 
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    device = "nodev";
-    efiSupport = true;
-    enableCryptodisk = true;
-    configurationLimit = 5;
-  };
-
-  # enable passing of keyfile between grub and initrd
-  boot.initrd.luks.devices."cryptroot" = {
-    fallbackToPassword = true;
-    keyFile = secretsFile;
-  };
-  # copy the secret into the additional initramfs. `null` means same path
-  boot.initrd.secrets."${secretsFile}" = null;
-
   networking.hostName = "jimbo"; # Define your hostname.
-
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   networking.useDHCP = false;
