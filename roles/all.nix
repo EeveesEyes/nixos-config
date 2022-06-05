@@ -1,7 +1,9 @@
 {
   imports = [
     ../home-manager/default.nix
+
     ../modules/avahi.nix
+    ../modules/cups.nix
     ../modules/docker.nix
     ../modules/earlyoom.nix
     ../modules/fonts.nix
@@ -13,7 +15,9 @@
     ../modules/via.nix
     ../modules/virtualbox.nix
     ../modules/borgbackup.nix
+
     ../secrets/remote-builder.nix
+
     ../users/fleaz.nix
   ];
 
@@ -26,5 +30,7 @@
   # GTK settings stuff for e.g. themes
   programs.dconf.enable = true;
 
+  # List packages installed in system profile. To search, run:
+  environment.systemPackages = with pkgs; [ vim wget curl git ];
 }
 
