@@ -240,6 +240,8 @@ in
         };
         "temperature" = {
           format = " {temperatureC}°C";
+          hwmon-path = "/sys/class/hwmon/hwmon3/temp1_input";
+          critical-threshold = 75;
         };
       };
     } ];
