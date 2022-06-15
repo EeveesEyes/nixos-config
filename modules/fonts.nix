@@ -13,6 +13,7 @@
     enableDefaultFonts = true;
     fontDir.enable = true;
     fonts = with pkgs; [
+      nerdfonts
       dejavu_fonts
       fira-code
     ];
