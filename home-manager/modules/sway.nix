@@ -57,7 +57,7 @@ in
       keybindings =
         let
           mod = "Mod4";
-          pactl = "${pkgs.pulseaudioLight}/bin/pactl";
+          pactl = "${pkgs.pulseaudio}/bin/pactl";
           playerctl = "${pkgs.playerctl}/bin/playerctl";
         in
         {
