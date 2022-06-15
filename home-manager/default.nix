@@ -19,6 +19,7 @@ in
       modules/git.nix
       modules/gpg.nix
       modules/udiskie.nix
+      modules/discord.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
       ../secrets/codemonauts.nix
@@ -51,7 +52,6 @@ in
       firefox
       evince
       chromium
-      discord
       via
       nextcloud-client
       deluge
