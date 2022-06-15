@@ -28,7 +28,10 @@ in
 
     gtk = {
       enable = true;
-      theme.name = "Adwaita";
+      theme = {
+        name = "Adwaita";
+        package = pkgs.gnome3.adwaita-icon-theme;
+      };
     };
 
     xdg = {
