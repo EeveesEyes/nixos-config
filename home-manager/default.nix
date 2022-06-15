@@ -57,7 +57,6 @@ in
       deluge
       gnupg
       gpicview
-      docker-compose
       hicolor-icon-theme
       cinnamon.nemo
       element-desktop
