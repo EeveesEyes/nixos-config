@@ -4,6 +4,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../roles/all.nix
+    ../../roles/laptop.nix
     ../../modules/luks.nix
     ../../modules/grub.nix
   ];
@@ -19,8 +20,6 @@
     enable = true;
     driSupport = true;
   };
-
-  hardware.bluetooth.enable = true;
 
   services.openssh.enable = true;
   programs.ssh.startAgent = true;

@@ -4,8 +4,9 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../roles/all.nix
-    ../../modules/luks.nix
-    ../../modules/grub.nix
+      ../../roles/laptop.nix
+      ../../modules/luks.nix
+      ../../modules/grub.nix
     ];
 
   networking.hostName = "milhouse"; # Define your hostname.

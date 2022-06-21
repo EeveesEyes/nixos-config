@@ -274,7 +274,8 @@ in
 
     };
 
-    services.blueman-applet.enable = config.networking.hostName == "jimbo";
+    # Enable blueman-applet when the machine has bluetooth enabled
+    services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
 
     programs.foot = {
       enable = true;
