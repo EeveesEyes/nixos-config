@@ -103,6 +103,7 @@ in
       unstable.cura
       htop
       xdg-utils
+      moreutils
 
       # for coc
       nodejs
@@ -177,8 +178,8 @@ in
       modules = {
         "battery" = {
           states = {
-            warning = 30;
-            critical = 15;
+            warning = 20;
+            critical = 10;
           };
           format = " {capacity}%";
           format-discharging = "{icon} {capacity}%";
@@ -207,7 +208,7 @@ in
           format = "  {}%";
           tooltip-format = "{used:0.1f}/{total:0.1f} GB";
           states = {
-            warning = 70;
+            warning = 80;
             critical = 90;
 	 };
 	};
