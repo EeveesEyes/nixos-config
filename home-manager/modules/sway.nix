@@ -28,7 +28,7 @@ in
           scale = "1.3";
           position = "0,0";
         };
-        "DP-1" = {
+        "DP-2" = {
           mode = "3840x2160";
           scale = "1.3";
           position = "2953,0";
