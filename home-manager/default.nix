@@ -104,6 +104,7 @@ in
       htop
       xdg-utils
       moreutils
+      insomnia
 
       # for coc
       nodejs
