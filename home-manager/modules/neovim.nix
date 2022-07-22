@@ -61,6 +61,8 @@
       set expandtab
       set cursorline
       let mapleader = ","
+      set ignorecase
+      set smartcase
 
       " Autosave when focus is lost
       :au FocusLost * :wa
