@@ -22,11 +22,8 @@
       # Colorscheme
       gruvbox-nvim
 
-      # Fileexplorer in the sidebar
-      nvim-tree-lua
-
-      # Fancy icons for sidebar
-      nvim-web-devicons
+      # Better support for netrw
+      vim-vinegar
 
       # Bar at the top for all open buffers
       bufferline-nvim
@@ -60,9 +57,11 @@
       set softtabstop=4
       set expandtab
       set cursorline
+      set scrolloff=5
       let mapleader = ","
       set ignorecase
       set smartcase
+      set colorcolumn=120
 
       " Autosave when focus is lost
       :au FocusLost * :wa
@@ -104,7 +103,6 @@
 
       lua << EOF
         require("bufferline").setup{}
-        require("nvim-tree").setup{}
       EOF
     '';
   };
