@@ -70,7 +70,6 @@ in
       tig
       ncdu
       fd
-      fzf
       silver-searcher
       thunderbird-wayland
       mosh
