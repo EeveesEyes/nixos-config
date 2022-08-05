@@ -97,6 +97,7 @@ in
       unzip
       whois
       sublime-music
+      fzf
 
       unstable.prusa-slicer
       unstable.cura
@@ -126,15 +127,15 @@ in
       networkmanager
     ];
 
+    home.sessionVariables = {
+      EDITOR = "vim";
+      XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
+      PATH = "$PATH:/home/fleaz/bin";
+      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+    };
 
     programs.zsh = {
       enable = true;
-      sessionVariables = {
-        EDITOR = "vim";
-        XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
-        PATH = "$PATH:/home/fleaz/bin";
-        DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-      };
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "fzf" ];
