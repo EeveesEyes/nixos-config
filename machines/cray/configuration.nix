@@ -21,6 +21,12 @@
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ splix ];
 
+  # AMD OpenGL Support
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
+
   system.stateVersion = "21.11"; # Did you read the comment?
 
 }
