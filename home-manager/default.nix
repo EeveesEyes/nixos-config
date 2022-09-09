@@ -41,7 +41,7 @@ in
 
     services.gnome-keyring.enable = true;
 
-    # e.g. for 1password
+    # e.g. for  vscode
     nixpkgs.config.allowUnfree = true;
 
 
@@ -100,7 +100,6 @@ in
       fzf
 
       unstable.prusa-slicer
-      unstable.cura
       htop
       xdg-utils
       moreutils
@@ -127,12 +126,6 @@ in
       networkmanager
     ];
 
-    home.sessionVariables = {
-      EDITOR = "vim";
-      XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
-      PATH = "$PATH:/home/fleaz/bin";
-      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-    };
 
     programs.zsh = {
       enable = true;

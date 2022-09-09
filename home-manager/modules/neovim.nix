@@ -62,6 +62,7 @@
       set ignorecase
       set smartcase
       set colorcolumn=120
+      set textwidth=120
 
       " Autosave when focus is lost
       :au FocusLost * :wa
