@@ -33,6 +33,14 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [ vim wget curl git ];
 
+  environment.variables = {
+    EDITOR = "nvim";
+    PATH = "$PATH:/home/fleaz/bin";
+    XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
+    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+
+  };
+
   networking.extraHosts = ''
   '';
 }
