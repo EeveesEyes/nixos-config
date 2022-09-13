@@ -4,5 +4,5 @@
   };
 
   # Allow access to device via udev rule
-  users.uers.fleaz.extraGroups = ["k40"];
+  users.users.fleaz.extraGroups = ["k40"];
 }
