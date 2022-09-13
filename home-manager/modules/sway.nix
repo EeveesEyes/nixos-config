@@ -129,8 +129,13 @@ in
           "XF86AudioPlay" = "exec ${playerctl} play-pause";
           "XF86AudioPrev" = "exec ${playerctl} previous";
 
+          # Laptop Brightness controll
           "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
           "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
+
+          # Lockscreen on laptop without macropad
+          "Control+Escape" = "exec ${lockCmd}";
+
         };
 
     };
