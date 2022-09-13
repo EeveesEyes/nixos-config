@@ -7,6 +7,7 @@
       ../../roles/laptop.nix
       ../../modules/luks.nix
       ../../modules/grub.nix
+      ../../modules/k40.nix
     ];
 
   networking.hostName = "milhouse"; # Define your hostname.
