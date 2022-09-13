@@ -3,6 +3,7 @@
 let
   home-manager = (import ../nix/sources.nix).home-manager;
   unstable = import <nixos-unstable> {};
+  fontSize = hiDPI : if hiDPI then "FiraCode:size=14" else "FiraCode:size=8";
 in
 {
   imports = [
@@ -277,7 +278,7 @@ in
       settings = {
         main = {
           term = "xterm-256color";
-          font = "FiraCode:size=14";
+          font = fontSize config.my.highDPI;
         };
         scrollback = { lines = 100000; };
         colors = {

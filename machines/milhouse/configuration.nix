@@ -18,5 +18,8 @@
 
   system.stateVersion = "21.11"; # Did you read the comment?
 
+  # Only 1080p :(
+  my.highDPI = false;
+
 }
 
