@@ -6,6 +6,7 @@
       "*.sql"
       "*.sql.gz"
       "*.sql.zst"
+      ".direnv/"
     ];
     userName = "fleaz";
     userEmail = "mail@felixbreidenstein.de";
@@ -20,10 +21,14 @@
       "pull" = {
         rebase = "true";
       };
+      "push" = {
+        autoSetupRemote = "true";
+      };
     };
 
 
     aliases = {
+      # checkout-pull-request from GitHub
       cpr = "!f() { git fetch origin refs/pull/$1/head && git checkout FETCH_HEAD; }; f";
     };
 
