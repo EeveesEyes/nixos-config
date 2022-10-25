@@ -67,6 +67,9 @@
       " Autosave when focus is lost
       :au FocusLost * :wa
 
+      " sync copy/paste buffer from vim with system buffer
+      set clipboard^=unnamed
+
       ""Hotkeys
       set pastetoggle=<F10>
       nnoremap <silent><cr> :nohlsearch<CR>
