@@ -24,6 +24,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  # Locale
+  i18n.defaultLocale = "en_DK.UTF-8";
+
   # needed for Steam and VIA
   nixpkgs.config.allowUnfree = true;
 
