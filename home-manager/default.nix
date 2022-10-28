@@ -77,7 +77,7 @@ in
       mpv
       poetry
       go
-      python3Minimal
+      python3
       pavucontrol
       playerctl
       jq
