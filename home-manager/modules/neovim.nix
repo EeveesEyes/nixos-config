@@ -20,7 +20,7 @@
       neoformat
 
       # Colorscheme
-      gruvbox-nvim
+      tokyonight-nvim
 
       # Better support for netrw
       vim-vinegar
@@ -50,7 +50,7 @@
       set termguicolors
       set background=dark
       set nu
-      colorscheme gruvbox
+      colorscheme tokyonight
       set hlsearch
       set tabstop=4
       set shiftwidth=4
