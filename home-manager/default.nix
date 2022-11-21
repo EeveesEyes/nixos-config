@@ -72,7 +72,7 @@ in
       ncdu
       fd
       silver-searcher
-      thunderbird-wayland
+      thunderbird
       mosh
       mpv
       poetry
