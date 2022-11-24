@@ -20,7 +20,7 @@
       neoformat
 
       # Colorscheme
-      tokyonight-nvim
+      papercolor-theme
 
       # Better support for netrw
       vim-vinegar
@@ -43,14 +43,19 @@
       # Coc language server support
       coc-nvim
       coc-pyright
+
+      # markdown
+      vim-markdown
+      tabular
     ];
     extraConfig = ''
       set nocompatible
       set mouse=a
       set termguicolors
       set background=dark
-      set nu
-      colorscheme tokyonight
+      set number
+      set laststatus=2
+      colorscheme PaperColor
       set hlsearch
       set tabstop=4
       set shiftwidth=4
