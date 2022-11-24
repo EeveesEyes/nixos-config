@@ -105,6 +105,7 @@ in
       xdg-utils
       moreutils
       insomnia
+      mumble
 
       # for coc
       nodejs
