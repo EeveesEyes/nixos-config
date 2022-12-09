@@ -63,7 +63,6 @@ in
       element-desktop
       signal-desktop
       nix-output-monitor
-      gvfs
       samba
 
       dnsutils
@@ -134,7 +133,7 @@ in
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "fzf" ];
-        theme = "robbyrussell";
+        theme = "kolo";
       };
       history = {
         share = false; # every terminal has it's own history
