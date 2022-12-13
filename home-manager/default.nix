@@ -76,7 +76,6 @@ in
       thunderbird
       mosh
       mpv
-      poetry
       go
       python3
       pavucontrol
@@ -101,7 +100,8 @@ in
       sublime-music
       fzf
 
-      unstable.prusa-slicer
+      #unstable.prusa-slicer
+      prusa-slicer
       htop
       xdg-utils
       moreutils
