@@ -1,4 +1,8 @@
-{pkgs, ...}:{
+{pkgs, config, ...}:
+let
+  consoleFont = hiDPI : if hiDPI then "Lat2-Terminus16" else "Lat2-Terminus20";
+in
+{
   imports = [
     ../home-manager/default.nix
 
@@ -43,6 +47,8 @@
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
 
   };
+
+  console.font = consoleFont config.my.highDPI;
 
   networking.extraHosts = ''
   '';
