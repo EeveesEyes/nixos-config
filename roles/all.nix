@@ -50,6 +50,12 @@ in
 
   console.font = consoleFont config.my.highDPI;
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   networking.extraHosts = ''
   '';
 }
