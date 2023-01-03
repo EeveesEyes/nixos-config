@@ -157,12 +157,13 @@ in
       height = 28;
       modules-left = [
         "sway/workspaces"
-        "sway/mode"
         "sway/window"
       ];
       modules-center = [
       ];
       modules-right = [
+        "sway/mode"
+        "disk"
         "pulseaudio"
         "network"
         "memory"
@@ -207,8 +208,8 @@ in
           states = {
             warning = 80;
             critical = 90;
-	 };
-	};
+         };
+        };
         "network" = {
           interface = "wl*";
           format-wifi = "  {essid}";
@@ -242,6 +243,11 @@ in
           format = " {temperatureC}°C";
           hwmon-path = "/sys/class/hwmon/hwmon3/temp1_input";
           critical-threshold = 75;
+        };
+        "disk" = {
+          interval= 30;
+          format= "{free} free";
+          path= "/";
         };
       };
     } ];
