@@ -99,6 +99,15 @@
         set undoreload=1000
       endif
 
+      " dont start with a fully folded document
+      set nofoldenable
+
+      " Remember cursor position
+      autocmd BufReadPost *
+       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+       \   exe "normal! g`\"" |
+       \ endif
+
       " vim-go
       au FileType go nmap <leader>r <Plug>(go-run)
       au FileType go nmap <leader>b <Plug>(go-build)
