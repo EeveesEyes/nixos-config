@@ -19,6 +19,7 @@ in
     ../modules/via.nix
     ../modules/virtualbox.nix
     ../modules/borgbackup.nix
+    ../modules/udisks2.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
