@@ -141,6 +141,9 @@ in
         share = false; # every terminal has it's own history
         size = 10000;
       };
+      shellAliases = {
+        "dl" = "ls -lhtr --color=always ~/Downloads | tail -n 10"; # Show the 10 newest Downloads
+      };
     };
 
     programs.git = {
