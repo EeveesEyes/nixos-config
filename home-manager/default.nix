@@ -99,6 +99,8 @@ in
       whois
       sublime-music
       fzf
+      ncmpcpp
+      acpi
 
       #unstable.prusa-slicer
       prusa-slicer
