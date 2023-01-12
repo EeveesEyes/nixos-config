@@ -24,7 +24,7 @@
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/2e85528d-0086-4835-9fc7-0e7a847d90bd";
 
   fileSystems."/mnt/share" = {
-    device = "//BART/share/";
+    device = "//10.10.37.1/share/";
     fsType = "cifs";
     options =
       let
@@ -36,7 +36,7 @@
   };
 
   fileSystems."/mnt/media" = {
-    device = "//BART/media/";
+    device = "//10.10.37.1/media/";
     fsType = "cifs";
     options =
       let
