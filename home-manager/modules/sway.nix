@@ -38,7 +38,7 @@ in
       gaps = { inner = 8; };
       window.border = 0;
       workspaceAutoBackAndForth = true;
-      terminal = "foot";
+      terminal = "kitty";
 
       bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
 
@@ -61,8 +61,9 @@ in
           playerctl = "${pkgs.playerctl}/bin/playerctl";
         in
         {
-          "${mod}+Return" = "exec foot";
+          "${mod}+Return" = "exec kitty";
           "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+          "${mod}+Shift+p" = "exec ${pkgs.albert}/bin/albert toggle";
 
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+q" = "kill";

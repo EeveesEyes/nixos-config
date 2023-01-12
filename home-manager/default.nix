@@ -3,7 +3,7 @@
 let
   home-manager = (import ../nix/sources.nix).home-manager;
   unstable = import <nixos-unstable> {};
-  fontSize = hiDPI : if hiDPI then "FiraCode:size=14" else "FiraCode:size=8";
+  fontSize = hiDPI : if hiDPI then 14 else 8;
 in
 {
   imports = [
@@ -93,7 +93,6 @@ in
       mako
       sway-contrib.grimshot
       albert
-      foot
       wofi
       unzip
       whois
@@ -286,35 +285,22 @@ in
     # Enable blueman-applet when the machine has bluetooth enabled
     services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
 
-    programs.foot = {
+    programs.kitty = {
       enable = true;
+      font = {
+        name = "Fira Code";
+        size = fontSize config.my.highDPI;
+      };
       settings = {
-        main = {
-          term = "xterm-256color";
-          font = fontSize config.my.highDPI;
-        };
-        scrollback = { lines = 100000; };
-        colors = {
-          alpha = "0.98";
-          foreground = "B3B1AD";
-          background = "0A0E14";
-          regular0 = "01060E";
-          regular1 = "EA6C73";
-          regular2 = "91B362";
-          regular3 = "F9AF4F";
-          regular4 = "53BDFA";
-          regular5 = "FAE994";
-          regular6 = "90E1C6";
-          regular7 = "C7C7C7";
-          bright0 = "686868";
-          bright1 = "F07178";
-          bright2 = "C2D94C";
-          bright3 = "FFB454";
-          bright4 = "59C2FF";
-          bright5 = "FFEE99";
-          bright6 = "95E6CB";
-          bright7 = "FFFFFF";
-        };
+        disable_ligatures = "always";
+        scrollback_lines = 50000;
+        detect_urls = true;
+        url_color = "#0087bd";
+        url_style = "curly";
+        copy_on_select = "clipboard";
+        confirm_os_window_close = 0;
+        background_opacity = "0.98";
+        background = "#0A0E14";
       };
     };
 
