@@ -288,6 +288,10 @@ in
 
     programs.kitty = {
       enable = true;
+      theme = "Argonaut";
+      environment = {
+        "TERM" = "xterm-256color";
+      };
       font = {
         name = "Fira Code";
         size = fontSize config.my.highDPI;
@@ -301,7 +305,7 @@ in
         copy_on_select = "clipboard";
         confirm_os_window_close = 0;
         background_opacity = "0.98";
-        background = "#0A0E14";
+        enable_audio_bell = "no";
       };
     };
 
