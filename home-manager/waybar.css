@@ -147,6 +147,10 @@
 	border-bottom: 2px solid @orange;
 }
 
+#workspaces button.visible:not(.focused) {
+	border-bottom: 2px solid @gray;
+}
+
 #workspaces button.urgent {
 	color: @orange;
 }
