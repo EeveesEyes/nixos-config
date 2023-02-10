@@ -3,6 +3,8 @@
     enable = true;
     withPython3 = true;
     extraPackages = with pkgs; [
+        nil
+        nixpkgs-fmt
       (python3.withPackages (ps: with ps; [
         black
         flake8
@@ -47,6 +49,9 @@
       # markdown
       vim-markdown
       tabular
+
+      vim-terraform
+      vim-nix
     ];
     extraConfig = ''
       set nocompatible
@@ -98,6 +103,14 @@
         set undolevels=100
         set undoreload=1000
       endif
+
+      " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+      " delays and poor user experience
+      set updatetime=300
+
+      " Always show the signcolumn, otherwise it would shift the text each time
+      " diagnostics appear/become resolved
+      set signcolumn=yes
 
       " dont start with a fully folded document
       set nofoldenable
