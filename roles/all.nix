@@ -20,6 +20,7 @@ in
     ../modules/virtualbox.nix
     ../modules/borgbackup.nix
     ../modules/udisks2.nix
+    ../modules/samba.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
