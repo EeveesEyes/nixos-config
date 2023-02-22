@@ -11,9 +11,9 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
   boot.kernelParams = [ "mem_sleep_default=deep" ]; # Enable real deepsleep suspend
+  boot.extraModulePackages = [config.boot.kernelPackages.ddcci-driver];
+  boot.kernelModules = ["kvm-intel" "i2c-dev" "ddcci_backlight"];
 
   fileSystems."/" =
     {
