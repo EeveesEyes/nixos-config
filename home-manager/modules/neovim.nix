@@ -1,4 +1,24 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
+  home.file.".config/nvim/coc-settings.json".text = ''
+    {
+        "diagnostic.virtualText": true,
+        "diagnostic.checkCurrentLine": false,
+        "diagnostic.virtualTextCurrentLineOnly": false,
+        "diagnostic.messageTarget": "",
+
+        "suggest.noselect": true,
+
+        "languageserver": {
+          "nix": {
+            "command": "nil",
+            "filetypes": ["nix"],
+            "rootPatterns": ["flake.nix"]
+          }
+        }
+    }
+    '';
+
   programs.neovim = {
     enable = true;
     withPython3 = true;
