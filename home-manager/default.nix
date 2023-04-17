@@ -109,6 +109,7 @@ in
       moreutils
       insomnia
       mumble
+      inkscape
 
       # for coc
       nodejs
