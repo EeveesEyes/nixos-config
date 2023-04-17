@@ -8,6 +8,9 @@
       ../../modules/luks.nix
       ../../modules/grub.nix
       ../../modules/k40.nix
+
+    # import hardware specific settings
+    <nixos-hardware/lenoxo/x270>
     ];
 
   networking.hostName = "milhouse"; # Define your hostname.

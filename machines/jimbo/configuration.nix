@@ -7,6 +7,9 @@
     ../../roles/laptop.nix
     ../../modules/luks.nix
     ../../modules/grub.nix
+
+    # import hardware specific settings
+    <nixos-hardware/dell/xps/13-9300>
   ];
 
   networking.hostName = "jimbo"; # Define your hostname.
