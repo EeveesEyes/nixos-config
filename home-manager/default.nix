@@ -21,6 +21,7 @@ in
       modules/gpg.nix
       modules/udiskie.nix
       modules/discord.nix
+      modules/devenv.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
       ../secrets/codemonauts.nix
