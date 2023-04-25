@@ -29,6 +29,10 @@ in
       modules/kanshi.nix
     ];
 
+    nixpkgs.overlays = [
+      (import ../overlay/default.nix)
+    ];
+
     home.stateVersion = "21.11";
 
     gtk = {
@@ -111,10 +115,14 @@ in
       insomnia
       mumble
       inkscape
+      guvcview
 
       # for coc
       nodejs
       rnix-lsp
+
+      # from my overlay
+      studio-link
 
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       networkmanager
