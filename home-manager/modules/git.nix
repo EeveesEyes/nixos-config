@@ -15,6 +15,9 @@
       signByDefault = true;
     };
     extraConfig = {
+      "core" = {
+        pager = "less -F -X";
+      };
       "init" = {
         defaultBranch = "main";
       };
