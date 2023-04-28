@@ -1,7 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  unstable = import <nixos-unstable> { };
+in
+{
 
   programs.vscode = {
     enable = true;
+    package = unstable.vscodium;
     extensions = with pkgs.vscode-extensions; [
       # Dark Theme
       dracula-theme.theme-dracula
