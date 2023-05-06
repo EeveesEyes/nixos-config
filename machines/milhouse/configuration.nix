@@ -10,7 +10,7 @@
       ../../modules/k40.nix
 
     # import hardware specific settings
-    <nixos-hardware/lenoxo/x270>
+    <nixos-hardware/lenovo/thinkpad/x270>
     ];
 
   networking.hostName = "milhouse"; # Define your hostname.
