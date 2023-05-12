@@ -115,6 +115,7 @@ in
       mumble
       inkscape
       guvcview
+      vnstat
 
       # for coc
       nodejs
