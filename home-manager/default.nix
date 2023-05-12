@@ -137,6 +137,7 @@ in
       sqlstrip
       pwgen
       mysql-client
+      unstable.timewarrior
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       networkmanager
     ];
