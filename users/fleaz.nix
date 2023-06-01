@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  programs.zsh.enable = true;
+
   users.users.fleaz = {
     isNormalUser = true;
     extraGroups = [

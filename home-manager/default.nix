@@ -271,7 +271,7 @@ in
     };
 
 
-    programs.mako = {
+    services.mako = {
       enable = true;
       groupBy = "app-name";
       defaultTimeout = 5000;
