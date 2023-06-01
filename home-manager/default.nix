@@ -130,7 +130,6 @@ in
       # Stuff only needed for work
       networkmanager-openvpn
       packer
-      chefdk
       awscli
       shared-2fa
       igproxy-access
