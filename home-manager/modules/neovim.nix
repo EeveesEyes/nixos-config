@@ -210,6 +210,9 @@
       let g:go_highlight_operators = 1
       let g:go_highlight_build_constraints = 1
 
+      " neoformat
+      let g:neoformat_python_black = { 'args': ['-l 120'] }
+
       lua << EOF
         require("bufferline").setup{}
       EOF
