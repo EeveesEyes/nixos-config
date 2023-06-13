@@ -137,6 +137,8 @@ in
       pwgen
       mysql-client
       unstable.timewarrior
+      chef-devkit #Formely known as chefdk but this package has a throw
+
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       networkmanager
     ];
