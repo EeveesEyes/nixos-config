@@ -21,6 +21,7 @@ in
     ../modules/borgbackup.nix
     ../modules/udisks2.nix
     ../modules/samba.nix
+    ../modules/gc.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
@@ -51,14 +52,9 @@ in
 
   console.font = consoleFont config.my.highDPI;
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
   # weekly trim
   services.fstrim.enable = true;
+
 
   networking.extraHosts = ''
   '';
