@@ -8,6 +8,7 @@ in
   boot.initrd.luks.devices."cryptroot" = {
     fallbackToPassword = true;
     keyFile = secretsFile;
+    allowDiscards = true; # Allow TRIM
   };
 
   # copy the secret into the additional initramfs. `null` means same path

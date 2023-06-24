@@ -47,7 +47,6 @@ in
     PATH = "$PATH:/home/fleaz/bin";
     XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-
   };
 
   console.font = consoleFont config.my.highDPI;
@@ -57,6 +56,9 @@ in
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
+
+  # weekly trim
+  services.fstrim.enable = true;
 
   networking.extraHosts = ''
   '';
