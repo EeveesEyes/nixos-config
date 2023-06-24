@@ -67,7 +67,7 @@ in
       gpicview
       hicolor-icon-theme
       cinnamon.nemo
-      element-desktop
+      element-desktop-wayland
       signal-desktop
       nix-output-monitor
       samba

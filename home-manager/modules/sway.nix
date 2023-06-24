@@ -62,7 +62,7 @@ in
         in
         {
           "${mod}+Return" = "exec foot";
-          "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun";
+          "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show run";
 
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+q" = "kill";
