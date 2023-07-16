@@ -20,11 +20,11 @@
 
       # BAT 0 - Internal battery
       START_CHARGE_THRESH_BAT0 = 60;
-      STOP_CHARGE_THRESH_BAT0 = 90;
+      STOP_CHARGE_THRESH_BAT0 = 95;
 
       # BAT 1 - External Battery
       START_CHARGE_THRESH_BAT1 = 60;
-      STOP_CHARGE_THRESH_BAT1 = 90;
+      STOP_CHARGE_THRESH_BAT1 = 95;
     };
 
   };
