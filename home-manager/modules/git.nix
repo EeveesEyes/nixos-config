@@ -36,10 +36,10 @@
     };
 
     includes = [{
-      condition = "gitdir:~/codemonauts/";
+      condition = "gitdir:~/denic/";
       contents = {
         user = {
-          email = "felix@codemonauts.com";
+          email = "breidenstein@denic.de";
           name = "Felix Breidenstein";
         };
         commit = {
@@ -47,18 +47,6 @@
         };
       };
     }
-      {
-        condition = "gitdir:~/kundendaten/";
-        contents = {
-          user = {
-            email = "felix@codemonauts.com";
-            name = "Felix Breidenstein";
-          };
-          commit = {
-            gpgSign = false;
-          };
-        };
-      }
     ];
   };
 }
