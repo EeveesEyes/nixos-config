@@ -22,6 +22,7 @@ in
     ../modules/udisks2.nix
     ../modules/samba.nix
     ../modules/gc.nix
+    ../modules/headscale.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
