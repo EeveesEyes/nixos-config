@@ -7,6 +7,7 @@
       "*.sql.gz"
       "*.sql.zst"
       ".direnv/"
+      ".venv/"
     ];
     userName = "fleaz";
     userEmail = "mail@felixbreidenstein.de";
