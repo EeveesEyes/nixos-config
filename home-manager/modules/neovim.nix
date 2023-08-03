@@ -1,30 +1,13 @@
 { pkgs, ... }:
 {
-  home.file.".config/nvim/coc-settings.json".text = ''
-    {
-        "diagnostic.virtualText": true,
-        "diagnostic.checkCurrentLine": false,
-        "diagnostic.virtualTextCurrentLineOnly": false,
-        "diagnostic.messageTarget": "",
-
-        "suggest.noselect": true,
-
-        "languageserver": {
-          "nix": {
-            "command": "nil",
-            "filetypes": ["nix"],
-            "rootPatterns": ["flake.nix"]
-          }
-        }
-    }
-    '';
-
   programs.neovim = {
     enable = true;
     withPython3 = true;
     extraPackages = with pkgs; [
         nil
         nixpkgs-fmt
+        gopls
+        pyright
       (python3.withPackages (ps: with ps; [
         black
         flake8
@@ -62,16 +45,16 @@
       # Go plugin from fatih
       vim-go
 
-      # Coc language server support
-      coc-nvim
-      coc-pyright
-
       # markdown
       vim-markdown
       tabular
 
-      vim-terraform
-      vim-nix
+      # lsp and completion
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+
     ];
     extraConfig = ''
       set nocompatible
@@ -124,68 +107,6 @@
         set undoreload=1000
       endif
 
-      " COC
-
-      " Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
-      " delays and poor user experience
-      set updatetime=300
-
-      " Use tab for trigger completion with characters ahead and navigate
-      " NOTE: There's always complete item selected by default, you may want to enable
-      " no select by `"suggest.noselect": true` in your configuration file
-      " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-      " other plugin before putting this into your config
-      inoremap <silent><expr> <TAB>
-            \ coc#pum#visible() ? coc#pum#next(1) :
-            \ CheckBackspace() ? "\<Tab>" :
-            \ coc#refresh()
-      inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-      " Make <CR> to accept selected completion item or notify coc.nvim to format
-      " <C-g>u breaks current undo, please make your own choice
-      inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-      function! CheckBackspace() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~# '\s'
-      endfunction
-
-      " Use <c-space> to trigger completion
-      if has('nvim')
-        inoremap <silent><expr> <c-space> coc#refresh()
-      else
-        inoremap <silent><expr> <c-@> coc#refresh()
-      endif
-
-      " Use `[g` and `]g` to navigate diagnostics
-      " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-      nmap <silent> [g <Plug>(coc-diagnostic-prev)
-      nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-      " GoTo code navigation
-      nmap <silent> gd <Plug>(coc-definition)
-      nmap <silent> gy <Plug>(coc-type-definition)
-      nmap <silent> gi <Plug>(coc-implementation)
-      nmap <silent> gr <Plug>(coc-references)
-
-      " Use K to show documentation in preview window
-      nnoremap <silent> K :call ShowDocumentation()<CR>
-
-      function! ShowDocumentation()
-        if CocAction('hasProvider', 'hover')
-          call CocActionAsync('doHover')
-        else
-          call feedkeys('K', 'in')
-        endif
-      endfunction
-
-      " Highlight the symbol and its references when holding the cursor
-      autocmd CursorHold * silent call CocActionAsync('highlight')
-
-      " Symbol renaming
-      nmap <leader>rn <Plug>(coc-rename)
-
       " Always show the signcolumn, otherwise it would shift the text each time
       " diagnostics appear/become resolved
       set signcolumn=yes
@@ -209,12 +130,119 @@
       let g:go_highlight_types = 1
       let g:go_highlight_operators = 1
       let g:go_highlight_build_constraints = 1
+      " Don't use gopls from vim-go
+      let g:go_gopls_enabled = 0
 
       " neoformat
       let g:neoformat_python_black = { 'args': ['-l 120'] }
 
+
       lua << EOF
         require("bufferline").setup{}
+
+        require('lspconfig').gopls.setup{}
+        require('lspconfig').pyright.setup{}
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+          desc = 'LSP actions',
+          callback = function()
+            local bufmap = function(mode, lhs, rhs)
+              local opts = {buffer = true}
+              vim.keymap.set(mode, lhs, rhs, opts)
+            end
+
+            -- Displays hover information about the symbol under the cursor
+            bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+
+            -- Jump to the definition
+            bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+
+            -- Jump to declaration
+            bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+            -- Lists all the implementations for the symbol under the cursor
+            bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+
+            -- Jumps to the definition of the type symbol
+            bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+
+            -- Lists all the references 
+            bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+
+            -- Displays a function's signature information
+            bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+
+            -- Renames all references to the symbol under the cursor
+            bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+
+            -- Selects a code action available at the current cursor position
+            bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+            bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+
+            -- Show diagnostics in a floating window
+            bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+
+            -- Move to the previous diagnostic
+            bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+
+            -- Move to the next diagnostic
+            bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+          end
+        })
+
+        vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+        local cmp = require('cmp')
+        local select_opts = {behavior = cmp.SelectBehavior.Select}
+        cmp.setup({
+          sources = {
+            {name = 'path'},
+            {name = 'nvim_lsp', keyword_length = 1},
+            {name = 'buffer', keyword_length = 3},
+            {name = 'luasnip', keyword_length = 2},
+          },
+          window = {
+            documentation = cmp.config.window.bordered()
+          },
+          formatting = {
+            fields = {'menu', 'abbr', 'kind'}
+          },
+          mapping = {
+              ['<CR>'] = cmp.mapping.confirm({select = false}),
+              ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+              ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+              ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+              ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+              ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+              ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
+              ['<C-e>'] = cmp.mapping.abort(),
+              ['<C-y>'] = cmp.mapping.confirm({select = true}),
+              ['<CR>'] = cmp.mapping.confirm({select = false}),
+              ['<Tab>'] = cmp.mapping(function(fallback)
+                local col = vim.fn.col('.') - 1
+
+                if cmp.visible() then
+                  cmp.select_next_item(select_opts)
+                elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+                  fallback()
+                else
+                  cmp.complete()
+                end
+              end, {'i', 's'}),
+              ['<S-Tab>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                  cmp.select_prev_item(select_opts)
+                else
+                  fallback()
+                end
+              end, {'i', 's'}),
+
+
+          }
+        })
+
       EOF
     '';
   };
