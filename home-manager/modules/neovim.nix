@@ -138,15 +138,12 @@
       " neoformat
       let g:neoformat_python_black = { 'args': ['-l 120'] }
 
-<<<<<<< HEAD
-=======
       " Set name of tmux pane
       autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim " . expand("%:t") . "'")
       autocmd VimLeave * call system("tmux rename-window 'tmux'")
 
       " Enter goyo mode
       nmap <Leader>gy :Goyo 50%x100%<CR>
->>>>>>> c3f5e69 (neovim: Added goyo and tmux pane renaming)
 
       lua << EOF
         require("bufferline").setup{}
