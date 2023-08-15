@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
-
+{ config
+, pkgs
+, ...
+}:
 {
   imports = [
     modules/neovim.nix
     modules/git.nix
+    modules/tmux.nix
+
+    ../secrets/denic.nix
   ];
 
   home.username = "felix";
@@ -14,8 +19,6 @@
     sensu-go-cli
     kubectl
     krew
-    tmux
-    tmuxPlugins.gruvbox
     silver-searcher
     fd
     subversionClient
@@ -44,22 +47,14 @@
     };
     shellAliases = {
       "dl" = "ls -lhtr --color=always ~/Downloads | tail -n 10"; # Show the 10 newest Downloads
-      "notes" = "vim ~/denic/notes.md"; # Open my work notes
       "buzzer" = "ssh -i Nextcloud/Privat/id_door door@door.w17.io buzzer";
       "k" = "kubectl";
-      "windesk2" = "xfreerdp /u:felixb /w:1920 /h:1080 /v:w12243";
     };
     initExtra = ''
-      export EDITOR="vim";
+      export EDITOR="nvim";
       export PATH="$PATH:$HOME/.krew/bin:$HOME/bin:$HOME/go/bin";
       source <(kubectl completion zsh)
     '';
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "fleaz";
-    userEmail = "mail@felixbreidenstein.de";
   };
 
   programs.foot = {
@@ -95,19 +90,7 @@
   };
 
   home.file = { };
-
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/felix/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-  };
+  home.sessionVariables = { };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
