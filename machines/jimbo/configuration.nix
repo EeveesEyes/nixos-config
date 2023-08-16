@@ -7,6 +7,7 @@
     ../../roles/laptop.nix
     ../../modules/luks.nix
     ../../modules/grub.nix
+    ../../modules/k40.nix
 
     # import hardware specific settings
     <nixos-hardware/dell/xps/13-9300>
