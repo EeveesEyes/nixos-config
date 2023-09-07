@@ -1,6 +1,7 @@
-{
+{pkgs, ...}:{
   programs.git = {
     enable = true;
+    package = pkgs.gitSVN;
     ignores = [
       ".vscode"
       "*.sql"
