@@ -24,7 +24,6 @@ in
       modules/devenv.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
-      ../secrets/codemonauts.nix
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       modules/kanshi.nix
     ];
@@ -130,14 +129,8 @@ in
       # Stuff only needed for work
       networkmanager-openvpn
       packer
-      awscli
-      shared-2fa
-      igproxy-access
-      sqlstrip
       pwgen
       mysql-client
-      unstable.timewarrior
-      chef-devkit #Formely known as chefdk but this package has a throw
 
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       networkmanager
