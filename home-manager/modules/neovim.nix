@@ -57,6 +57,8 @@
 
       vim-terraform
       goyo-vim
+
+      conflict-marker-vim
     ];
     extraConfig = ''
       set nocompatible
@@ -78,6 +80,7 @@
       set smartcase
       set colorcolumn=120
       set textwidth=120
+      set nowrap
 
       " Autosave when focus is lost
       :au FocusLost * :wa
