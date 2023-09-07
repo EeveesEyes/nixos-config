@@ -15,15 +15,20 @@
   home.homeDirectory = "/home/felix";
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  # e.g. for  obsidian
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     sensu-go-cli
     kubectl
     krew
+    kubectx
     silver-searcher
     fd
     subversionClient
     tig
     freerdp
+    obsidian
 
     # for coc
     nodejs
