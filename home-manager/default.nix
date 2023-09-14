@@ -115,6 +115,7 @@ in
       inkscape
       guvcview
       vnstat
+      gnome.gedit
 
       # for coc
       nodejs
