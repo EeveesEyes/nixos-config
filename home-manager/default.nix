@@ -3,7 +3,6 @@
 let
   home-manager = (import ../nix/sources.nix).home-manager;
   unstable = import <nixos-unstable> { };
-  fontSize = hiDPI: if hiDPI then "FiraCode:size=14" else "FiraCode:size=8";
 in
 {
   imports = [
@@ -22,40 +21,17 @@ in
       modules/udiskie.nix
       modules/discord.nix
       modules/devenv.nix
+      modules/overlay.nix
+      modules/zsh.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       modules/kanshi.nix
     ];
 
-    nixpkgs.overlays = [
-      (import ../overlay/default.nix)
-    ];
-
-    home.stateVersion = "21.11";
-
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita";
-        package = pkgs.gnome3.adwaita-icon-theme;
-      };
-    };
-
-    xdg = {
-      enable = true;
-    };
-
-    services.gnome-keyring.enable = true;
-
-    # e.g. for  vscode
-    nixpkgs.config.allowUnfree = true;
-
-
     home.packages = with pkgs; [
       httpie
       wdisplays
-      albert
       firefox
       evince
       chromium
@@ -116,27 +92,44 @@ in
       guvcview
       vnstat
       gnome.gedit
+      pwgen
 
       # for coc
       nodejs
       rnix-lsp
 
+      # kubernetes stuff
+      kubectl
+      krew
+      kubectx
+
       # from my overlay
       studio-link
+      #george-decker
 
-    ] ++ lib.optionals (config.networking.hostName == "jimbo") [
+    ] ++ lib.optionals (sysConfig.networking.hostname == "jimbo") [
       networkmanager
-
-      # Stuff only needed for work
-      networkmanager-openvpn
-      packer
-      pwgen
-      mysql-client
-
-    ] ++ lib.optionals (config.networking.hostName == "milhouse") [
+    ] ++ lib.optionals (sysConfig.networking.hostname == "milhouse") [
       networkmanager
     ];
+    home.stateVersion = "21.11";
 
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Adwaita";
+        package = pkgs.gnome3.adwaita-icon-theme;
+      };
+    };
+
+    xdg = {
+      enable = true;
+    };
+
+    services.gnome-keyring.enable = true;
+
+    # e.g. for  vscode
+    nixpkgs.config.allowUnfree = true;
 
     programs.zsh = {
       enable = true;
@@ -294,37 +287,4 @@ in
     # Enable blueman-applet when the machine has bluetooth enabled
     services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
 
-    programs.foot = {
-      enable = true;
-      settings = {
-        main = {
-          term = "xterm-256color";
-          font = fontSize config.my.highDPI;
-        };
-        scrollback = { lines = 100000; };
-        colors = {
-          alpha = "0.98";
-          foreground = "B3B1AD";
-          background = "0A0E14";
-          regular0 = "01060E";
-          regular1 = "EA6C73";
-          regular2 = "91B362";
-          regular3 = "F9AF4F";
-          regular4 = "53BDFA";
-          regular5 = "FAE994";
-          regular6 = "90E1C6";
-          regular7 = "C7C7C7";
-          bright0 = "686868";
-          bright1 = "F07178";
-          bright2 = "C2D94C";
-          bright3 = "FFB454";
-          bright4 = "59C2FF";
-          bright5 = "FFEE99";
-          bright6 = "95E6CB";
-          bright7 = "FFFFFF";
-        };
-      };
-    };
-
-  };
-}
+  }
