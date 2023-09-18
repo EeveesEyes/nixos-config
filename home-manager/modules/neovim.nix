@@ -8,7 +8,6 @@
         nixpkgs-fmt
         gopls
         pyright
-        vimwiki-markdown
       (python3.withPackages (ps: with ps; [
         black
         flake8
@@ -56,14 +55,9 @@
       cmp-nvim-lsp
       cmp-buffer
 
-      vim-terraform
-      goyo-vim
-
       conflict-marker-vim
-      vimwiki
-
-
     ];
+
     extraConfig = ''
       set nocompatible
       set mouse=a
@@ -144,19 +138,6 @@
 
       " neoformat
       let g:neoformat_python_black = { 'args': ['-l 120'] }
-
-      " Enter goyo mode
-      nmap <Leader>gy :Goyo 50%x100%<CR>
-
-      let g:vimwiki_list = [{
-        \ 'path': '~/workspace/vimwiki',
-        \ 'template_path': '~/workspace/vimwiki/templates/',
-        \ 'template_default': 'default',
-        \ 'syntax': 'markdown',
-        \ 'ext': '.md',
-        \ 'path_html': '~/workspace/vimwiki/site_html/',
-        \ 'custom_wiki2html': 'vimwiki_markdown',
-        \ 'template_ext': '.tpl'}]
 
       lua << EOF
         require("bufferline").setup{}
