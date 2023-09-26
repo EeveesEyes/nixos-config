@@ -19,11 +19,15 @@
     kubectl
     krew
     kubectx
+    kubernetes-helm
     silver-searcher
     fd
     subversionClient
     tig
     freerdp
+    mattermost-desktop
+    joplin # cli
+    firefox
 
     # for coc
     nodejs
@@ -31,7 +35,6 @@
 
     # for zsh-fzf plugin
     fzf
-    firefox
   ];
 
   home.username = "felix";
@@ -65,6 +68,9 @@
     Timer = {
       OnBootSec = "3h";
       OnUnitActiveSec = "3h";
+    };
+    Install = {
+      WantedBy= ["timers.target"];
     };
   };
 }
