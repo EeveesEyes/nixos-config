@@ -23,6 +23,7 @@ in
       modules/devenv.nix
       modules/overlay.nix
       modules/zsh.nix
+      modules/foot.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
     ] ++ lib.optionals (config.networking.hostName == "milhouse") [
@@ -107,9 +108,9 @@ in
       studio-link
       #george-decker
 
-    ] ++ lib.optionals (sysConfig.networking.hostname == "jimbo") [
+    ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       networkmanager
-    ] ++ lib.optionals (sysConfig.networking.hostname == "milhouse") [
+    ] ++ lib.optionals (config.networking.hostName == "milhouse") [
       networkmanager
     ];
     home.stateVersion = "21.11";
@@ -287,4 +288,5 @@ in
     # Enable blueman-applet when the machine has bluetooth enabled
     services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
 
-  }
+  };
+}

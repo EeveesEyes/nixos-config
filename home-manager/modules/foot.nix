@@ -1,4 +1,4 @@
-{ config
+{ nixosConfig
 , ...
 }:
 let
@@ -10,7 +10,7 @@ in
     settings = {
       main = {
         term = "xterm-256color";
-        font = fontSize config.my.highDPI;
+        font = fontSize nixosConfig.my.highDPI;
       };
       scrollback = { lines = 100000; };
       colors = {
