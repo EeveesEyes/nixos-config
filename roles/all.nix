@@ -12,7 +12,6 @@ in
     ../modules/earlyoom.nix
     ../modules/fonts.nix
     ../modules/opengl.nix
-    ../modules/pam.nix
     ../modules/sound.nix
     ../modules/ssh.nix
     ../modules/steam.nix
@@ -23,6 +22,7 @@ in
     ../modules/samba.nix
     ../modules/gc.nix
     ../modules/headscale.nix
+    ../modules/sway.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
