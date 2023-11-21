@@ -23,6 +23,7 @@ in
     ../modules/gc.nix
     ../modules/headscale.nix
     ../modules/sway.nix
+    ../modules/nixld.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
@@ -41,7 +42,7 @@ in
   # GTK settings stuff for e.g. themes
   programs.dconf.enable = true;
 
-  # List packages installed in system profile. To search, run:
+  # List packages installed in system profile
   environment.systemPackages = with pkgs; [ vim wget curl git ];
 
   environment.variables = {
