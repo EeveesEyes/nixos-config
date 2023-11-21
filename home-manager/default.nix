@@ -67,6 +67,12 @@ in
       zip
       nmap
       vnstat
+      whois
+      sipcalc
+      vnstat
+      strace
+      usbutils
+      pciutils
 
       swaylock
       swayidle
