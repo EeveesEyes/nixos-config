@@ -14,14 +14,14 @@ in
       input = {
         "type:keyboard" = { xkb_layout = "eu"; };
         "type:mouse" = { pointer_accel = "-1"; };
+        "type:touchpad" = { tap = "enabled"; };
         "1:1:AT_Translated_Set_2_keyboard" = {
-          # Remap borken ctrl key on internal keyboard
+          # Remap borken ctrl key on internal keyboard for XPS
           xkb_options = "caps:ctrl_modifier";
         };
       };
       output = {
-        "eDP-1".bg = "/home/fleaz/Nextcloud/wallpaper/NixOS-trans-wallpaper.png fill";
-        "*".bg = "/home/fleaz/Nextcloud/wallpaper/spongebob.jpg fill";
+        "*".bg = "/etc/nixos/wallpaper.jpg fill";
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
         "HDMI-A-1" = {
           mode = "3840x2160";
