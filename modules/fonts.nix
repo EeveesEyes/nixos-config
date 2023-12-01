@@ -10,9 +10,9 @@
         serif = [ "DejaVu Serif" ];
       };
     };
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       nerdfonts
       dejavu_fonts
       fira-code
