@@ -18,6 +18,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOOQB+LpTMWkmrx/ve1gxfzCM3CAsWpYkQ5QBRH1Vqf8 fleaz@cray"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOufg1IAWXQBbUPTc3W3vORxFc94/MbbaYzpimqI+M/J fleaz@jimbo"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKpdn6umACgFp2zucdvjHclYVZxUxWNZZvM7/h6HcJ+x fleaz@milhouse"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAO0UjGRIPO9zPwulEXVK8/pUIninT2H8gW2YlGlHwKH fleaz@smithers"
     ];
   };
 }
