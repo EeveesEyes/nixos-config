@@ -1,5 +1,6 @@
+{lib, config, ...}:
 {
-  services.tlp = {
+  services.tlp = lib.mkIf config.my.includeTLP {
     enable = true;
     settings = {
       TLP_DEFAULT_MODE = "AC";

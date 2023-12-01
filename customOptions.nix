@@ -5,4 +5,10 @@ options.my.highDPI = lib.mkOption {
     default = true;
     type = lib.types.bool;
   };
+
+options.my.includeTLP = lib.mkOption {
+    description = "If the device should get TLP";
+    default = true;
+    type = lib.types.bool;
+  };
 }
