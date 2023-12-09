@@ -114,7 +114,7 @@ in
 
       # from my overlay
       studio-link
-      #george-decker
+      python3.pkgs.brother-ql
 
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       networkmanager
