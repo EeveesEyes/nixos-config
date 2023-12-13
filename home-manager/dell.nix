@@ -10,6 +10,7 @@
     modules/foot.nix
     modules/overlay.nix
     modules/zsh.nix
+    modules/manual.nix
 
     ../secrets/denic.nix
     ../customOptions.nix
