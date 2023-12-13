@@ -14,6 +14,9 @@
   # disable the include of TLP because we get the fancy AMD one from nixos-hardwware
   my.includeTLP = false;
 
+  # Don't wake from sleep if plugged into AC
+  hardware.framework.amd-7040.preventWakeOnAC = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
