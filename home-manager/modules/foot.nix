@@ -11,6 +11,7 @@ in
       main = {
         term = "xterm-256color";
         font = fontSize nixosConfig.my.highDPI;
+        pad = "3x3";
       };
       scrollback = { lines = 100000; };
       colors = {
