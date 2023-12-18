@@ -26,6 +26,7 @@ in
       modules/zsh.nix
       modules/foot.nix
       modules/manual.nix
+      modules/tig.nix
       ../secrets/ssh-config.nix
     ] ++ lib.optionals (config.networking.hostName == "jimbo") [
       modules/kanshi.nix
