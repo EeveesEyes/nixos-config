@@ -6,7 +6,6 @@
       ./hardware-configuration.nix
       ../../roles/all.nix
       ../../roles/laptop.nix
-      ../../modules/k40.nix
 
       # import hardware specific settings
       <nixos-hardware/framework/13-inch/7040-amd>
