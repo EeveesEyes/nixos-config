@@ -21,7 +21,6 @@ in
     ../modules/udisks2.nix
     ../modules/samba.nix
     ../modules/gc.nix
-    ../modules/headscale.nix
     ../modules/sway.nix
     ../modules/nixld.nix
 
