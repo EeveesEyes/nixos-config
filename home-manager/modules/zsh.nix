@@ -8,6 +8,7 @@
     };
     history = {
       share = false; # every terminal has it's own history
+      extended = true;
       size = 10000;
     };
     shellAliases = {
