@@ -18,6 +18,14 @@
       "beep" = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"; # play "ding" for long running jobs
     };
     initExtra = ''
+      autoload -U colors && colors
+
+      function is_ssh(){
+        if [ ! -z $SSH_CLIENT ]; then
+          echo %{$fg[red]%}SSH-Session on $(hostname -s)%{$reset_color%}
+        fi
+      }
+      RPS1='$(is_ssh) $(kubectx_prompt_info)'
       export EDITOR="nvim";
       export PATH="$PATH:$HOME/.krew/bin:$HOME/bin:$HOME/go/bin";
       source <(kubectl completion zsh)
