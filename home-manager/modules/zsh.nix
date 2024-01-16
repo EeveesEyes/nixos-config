@@ -3,7 +3,7 @@
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "fzf" ];
+      plugins = [ "git" "fzf" "kubectx" ];
       theme = "kolo";
     };
     history = {
