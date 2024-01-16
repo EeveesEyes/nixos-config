@@ -1,16 +1,10 @@
-{ nixosConfig
-, ...
-}:
-let
-  fontSize = hiDPI: if hiDPI then "FiraCode:size=14" else "FiraCode:size=8";
-in
 {
   programs.foot = {
     enable = true;
     settings = {
       main = {
         term = "xterm-256color";
-        font = fontSize nixosConfig.my.highDPI;
+        font = "FiraCode:size=14";
         pad = "3x3";
       };
       scrollback = { lines = 100000; };
