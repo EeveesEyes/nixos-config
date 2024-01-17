@@ -56,6 +56,9 @@
       cmp-buffer
 
       conflict-marker-vim
+
+      #saltstack
+      salt-vim
     ];
 
     extraConfig = ''
