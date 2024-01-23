@@ -166,7 +166,7 @@ in
       longitude = "8.6";
       temperature = {
         day = 5500;
-        night = 3300;
+        night = 2500;
       };
 
     };
