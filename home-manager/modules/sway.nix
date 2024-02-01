@@ -1,6 +1,6 @@
 { pkgs, nixosConfig, lib, ... }:
 let
-  lockCmd = "${pkgs.swaylock}/bin/swaylock -c 645394";
+  lockCmd = "${pkgs.swaylock}/bin/swaylock -i /etc/nixos/lockscreen.png";
 in
 {
   wayland.windowManager.sway = {
