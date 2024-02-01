@@ -59,6 +59,9 @@
 
       #saltstack
       salt-vim
+
+      # show marks
+      vim-signature
     ];
 
     extraConfig = ''
@@ -82,6 +85,7 @@
       set colorcolumn=120
       set textwidth=120
       set nowrap
+      set viminfo='1000,f1
 
       " Autosave when focus is lost
       :au FocusLost * :wa
