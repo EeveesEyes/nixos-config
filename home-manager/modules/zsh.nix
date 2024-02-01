@@ -18,6 +18,7 @@
       "buzzer" = "ssh -i Nextcloud/Privat/id_door door@door.w17.io buzzer";
       "beep" = "paplay /usr/share/sounds/freedesktop/stereo/complete.oga"; # play "ding" for long running jobs
       "dig" = "dig +short";
+      "cal" = "ncal -b";
     };
     initExtra = ''
       autoload -U colors && colors
