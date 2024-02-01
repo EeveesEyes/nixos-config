@@ -36,6 +36,8 @@
 
     # for zsh-fzf plugin
     fzf
+
+    bitwarden
   ];
 
   home.username = "felix";
