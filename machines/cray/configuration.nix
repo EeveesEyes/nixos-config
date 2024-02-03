@@ -3,6 +3,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./tunnel-backbone.nix
+    ./tunnel-cccda.nix
     ../../roles/all.nix
     ../../modules/luks.nix
     ../../modules/grub.nix
@@ -17,45 +19,6 @@
   networking.hostName = "cray"; # Define your hostname.
   networking.interfaces.enp4s0.useDHCP = true;
   networking.interfaces.enp4s0.wakeOnLan.enable = true;
-
-  #boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
-  systemd.network = {
-    enable = true;
-    netdevs = {
-      "10-wg-backbone" = {
-        netdevConfig = {
-          Kind = "wireguard";
-          MTUBytes = "1300";
-          Name = "wg-backbone";
-        };
-        extraConfig = ''
-          [WireGuard]
-          PrivateKeyFile=/etc/secrets/wireguard
-          ListenPort=9918
-
-          [WireGuardPeer]
-          PublicKey=JjJrLv6ocRIgPGPz6TUexPj0eUSKPDEQFye4397nbwM=
-          AllowedIPs=192.168.8.0/24
-          Endpoint=marge.fleaz.me:50200
-        '';
-      };
-    };
-    networks = {
-      # See also man systemd.network
-      "40-wg0".extraConfig = ''
-        [Match]
-        Name=wg-backbone
-
-        [Network]
-        DHCP=no
-        IPv6AcceptRA=false
-
-        # IP addresses the client interface will have
-        [Address]
-        Address=192.168.8.13/24
-      '';
-    };
-  };
 
   # Enable CUPS
   services.printing.enable = true;
