@@ -1,7 +1,7 @@
 {config,...}:
 {
   programs.ssh.knownHosts = {
-    "borg.cysec.de" = { publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOwKHZZiJ/GgDmAbO2VdGNJIcBQKnFQNXBBzyrsK+ZE0"; };
+    "borg.cased.de" = { publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOwKHZZiJ/GgDmAbO2VdGNJIcBQKnFQNXBBzyrsK+ZE0"; };
   };
 
   services.borgbackup.jobs = {
@@ -23,7 +23,7 @@
         "/home/fleaz/.local"
       ];
       extraCreateArgs = "--stats";
-      repo = "fleaz@borg.cysec.de:${config.networking.hostName}";
+      repo = "fleaz@borg.cased.de:${config.networking.hostName}";
       environment = { BORG_RSH = "ssh -i /home/fleaz/.ssh/id_borgbackup"; };
       encryption = {
         mode = "repokey-blake2";
