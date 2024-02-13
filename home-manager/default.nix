@@ -92,6 +92,8 @@ in
       fzf
       ncmpcpp
       acpi
+      joplin # cli
+      joplin-desktop # gui
 
       unstable.prusa-slicer
       htop

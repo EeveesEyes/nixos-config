@@ -28,6 +28,7 @@
     freerdp
     mattermost-desktop
     joplin # cli
+    joplin-desktop # gui
     firefox
 
     # for coc
