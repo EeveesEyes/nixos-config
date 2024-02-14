@@ -39,6 +39,9 @@
     fzf
 
     bitwarden
+
+    # denic tooling from overlay
+    gohome
   ];
 
   home.username = "felix";
