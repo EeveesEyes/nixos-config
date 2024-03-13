@@ -23,12 +23,12 @@ in
       output = {
         "*".bg = "/etc/nixos/wallpaper.jpg fill";
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
-        "HDMI-A-1" = {
+        "DP-2" = {
           mode = "3840x2160";
           scale = "1.3";
           position = "0,0";
         };
-        "DP-2" = {
+        "HDMI-A-1" = {
           mode = "3840x2160";
           scale = "1.3";
           position = "2953,0";
