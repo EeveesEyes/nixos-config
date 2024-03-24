@@ -12,6 +12,7 @@
         black
         flake8
         pylint
+        isort
         jedi
       ]))
     ];
@@ -144,7 +145,13 @@
       let g:go_gopls_enabled = 0
 
       " neoformat
-      let g:neoformat_python_black = { 'args': ['-l 120'] }
+      let g:neoformat_run_all_formatters = 1
+      let g:neoformat_python_black = {
+            \ 'exe': 'black',
+            \ 'stdin': 1,
+            \ 'args': ['-q', '-l 120', '-'],
+            \ }
+      let g:neoformat_enabled_python = ['black', 'isort']
 
       lua << EOF
         require("bufferline").setup{}
