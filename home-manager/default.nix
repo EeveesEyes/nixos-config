@@ -109,7 +109,7 @@ in
 
       # for coc
       nodejs
-      rnix-lsp
+      #rnix-lsp
 
       # kubernetes stuff
       kubectl

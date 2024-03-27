@@ -33,7 +33,7 @@
 
     # for coc
     nodejs
-    rnix-lsp
+    #rnix-lsp
 
     # for zsh-fzf plugin
     fzf
