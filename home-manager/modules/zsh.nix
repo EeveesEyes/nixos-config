@@ -32,6 +32,7 @@
       export EDITOR="nvim";
       export PATH="$PATH:$HOME/.krew/bin:$HOME/bin:$HOME/go/bin";
       source <(kubectl completion zsh)
+      eval "$(direnv hook zsh)"
     '';
   };
 
