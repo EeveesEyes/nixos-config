@@ -31,6 +31,10 @@
       };
       compression = "auto,zstd";
       startAt = "hourly";
+      prune.keep = {
+        daily = 30;
+        monthly = 6;
+      };
     };
   };
 }
