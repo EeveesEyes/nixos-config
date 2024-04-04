@@ -120,11 +120,10 @@ in
       studio-link
       python3.pkgs.brother-ql
 
-    ] ++ lib.optionals (config.networking.hostName == "jimbo") [
-      networkmanager
-    ] ++ lib.optionals (config.networking.hostName == "milhouse") [
+    ] ++ lib.optionals (config.my.isLaptop) [
       networkmanager
     ];
+
     home.stateVersion = "21.11";
 
     gtk = {

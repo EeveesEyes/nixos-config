@@ -14,6 +14,9 @@
   # disable the include of TLP because we get the fancy AMD one from nixos-hardwware
   my.includeTLP = false;
 
+  # Smithers is a laptop
+  my.isLaptop = true;
+
   # Don't wake from sleep if plugged into AC
   hardware.framework.amd-7040.preventWakeOnAC = true;
 
