@@ -1,22 +1,12 @@
 { nixosConfig, ... }:
 let
   machines = {
-    milhouse = {
-      "laptop" = {
+    smithers = {
+      "laptop-only" = {
         outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.0;
-          }
-        ];
-      };
-    };
-    jimbo = {
-      "laptop" = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            scale = 1.8;
+            scale = 1.3;
           }
         ];
       };
@@ -24,18 +14,17 @@ let
         outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.8;
+            status = "disable";
+          }
+          {
+            criteria = "DP-9";
+            scale = 1.3;
             position = "0,0";
           }
           {
-            criteria = "DP-3";
+            criteria = "DP-10";
             scale = 1.3;
-            position = "2133,0";
-          }
-          {
-            criteria = "DP-1";
-            scale = 1.3;
-            position = "5087,0";
+            position = "2952,0";
           }
         ];
       };
@@ -45,7 +34,6 @@ in
 {
   services.kanshi = {
     enable = true;
-    #profiles = lookup machines "milhouse";
     profiles = machines."${nixosConfig.networking.hostName}";
   };
 
