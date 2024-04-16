@@ -4,10 +4,10 @@
     enable = true;
     withPython3 = true;
     extraPackages = with pkgs; [
-        nil
-        nixpkgs-fmt
-        gopls
-        pyright
+      nil
+      nixpkgs-fmt
+      gopls
+      pyright
       (python3.withPackages (ps: with ps; [
         black
         flake8
@@ -141,6 +141,7 @@
       let g:go_highlight_types = 1
       let g:go_highlight_operators = 1
       let g:go_highlight_build_constraints = 1
+
       " Don't use gopls from vim-go
       let g:go_gopls_enabled = 0
 
@@ -158,6 +159,20 @@
 
         require('lspconfig').gopls.setup{}
         require('lspconfig').pyright.setup{}
+
+        require('lspconfig').nil_ls.setup {
+          autostart = true,
+          capabilities = caps,
+          cmd = { "nil" },
+          settings = {
+            ['nil'] = {
+              testSetting = 42,
+              formatting = {
+                command = { "nixpkgs-fmt" },
+              },
+            },
+          },
+        }
 
         vim.api.nvim_create_autocmd('LspAttach', {
           desc = 'LSP actions',
