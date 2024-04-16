@@ -28,9 +28,7 @@ in
       modules/manual.nix
       modules/tig.nix
       ../secrets/ssh-config.nix
-    ] ++ lib.optionals (config.networking.hostName == "jimbo") [
-      modules/kanshi.nix
-    ] ++ lib.optionals (config.networking.hostName == "milhouse") [
+    ] ++ lib.optionals (config.networking.hostName == "smithers") [
       modules/kanshi.nix
     ];
 
@@ -153,11 +151,6 @@ in
       enable = true;
       groupBy = "app-name";
       defaultTimeout = 5000;
-    };
-
-    services.kanshi = {
-      enable = true;
-
     };
 
     services.gammastep = {
