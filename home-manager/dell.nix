@@ -26,12 +26,7 @@
     subversionClient
     tig
     freerdp
-    mattermost-desktop
     firefox
-
-    # for coc
-    nodejs
-    #rnix-lsp
 
     # for zsh-fzf plugin
     fzf
