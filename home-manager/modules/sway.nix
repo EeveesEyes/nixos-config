@@ -33,6 +33,12 @@ in
           scale = "1.3";
           position = "2953,0";
         };
+      } // lib.optionalAttrs (nixosConfig.networking.hostName == "smithers") {
+        "eDP-1" = {
+          mode = "2256x1504";
+          scale = "1.3";
+          position = "0,0";
+        };
       };
 
       gaps = { inner = 8; };
