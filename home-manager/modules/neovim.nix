@@ -63,6 +63,9 @@
 
       # show marks
       vim-signature
+
+      # Session management
+      auto-session
     ];
 
     extraConfig = ''
@@ -155,6 +158,10 @@
       let g:neoformat_enabled_python = ['black', 'isort']
 
       lua << EOF
+        require("auto-session").setup {
+          auto_save_enabled = true;
+          auto_restore_enabled = true;
+        }
         require("bufferline").setup{}
 
         require('lspconfig').gopls.setup{}
