@@ -7,9 +7,9 @@
         height = 28;
         modules-left = [
           "sway/workspaces"
-          "sway/window"
         ];
         modules-center = [
+          "clock"
         ];
         modules-right = [
           "disk"
@@ -20,7 +20,6 @@
           "temperature"
           "battery"
           "tray"
-          "clock"
         ];
         modules = {
           "battery" = {
@@ -28,7 +27,7 @@
               warning = 20;
               critical = 10;
             };
-            format = " {capacity}%";
+            format = "  {capacity}%";
             format-discharging = "{icon} {capacity}%";
             format-icons = [
               ""

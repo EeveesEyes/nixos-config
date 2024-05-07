@@ -5,6 +5,7 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
 
     config = {
@@ -41,10 +42,50 @@ in
         };
       };
 
-      gaps = { inner = 8; };
-      window.border = 0;
+      gaps = { inner = 10; };
+      window.border = 2;
+      window.hideEdgeBorders = "smart";
       workspaceAutoBackAndForth = true;
       terminal = "foot";
+
+      colors = {
+        focused = {
+          border = "#4c7899";
+          background = "#285577";
+          text = "#ffffff";
+          indicator = "#2e9ef4";
+          childBorder = "#285577";
+        };
+        focusedInactive = {
+          border = "#333333";
+          background = "#5f676a";
+          text = "#ffffff";
+          indicator = "#484e50";
+          childBorder = "#5f676a";
+        };
+        unfocused = {
+          border = "#333333";
+          background = "#222222";
+          text = "#888888";
+          indicator = "#292d2e";
+          childBorder = "#900000";
+        };
+        urgent = {
+          border = "#2f343a";
+          background = "#900000";
+          text = "#ffffff";
+          indicator = "#900000";
+          childBorder = "#900000";
+        };
+        placeholder = {
+          border = "#000000";
+          background = "#0c0c0c";
+          text = "#ffffff";
+          indicator = "#000000";
+          childBorder = "#0c0c0c";
+        };
+      };
+
 
       bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
 
@@ -52,8 +93,8 @@ in
         {
           command = ''${pkgs.swayidle}/bin/swayidle -w \
                            timeout 600 "${lockCmd}" \
-                           timeout 900 "${pkgs.sway}/bin/swaymsg output * dpms off" \
-                                resume "${pkgs.sway}/bin/swaymsg output * dpms on" \
+                           timeout 900 "${pkgs.swayfx}/bin/swaymsg output * dpms off" \
+                                resume "${pkgs.swayfx}/bin/swaymsg output * dpms on" \
                            before-sleep "${lockCmd}"'';
         }
       ];
@@ -145,6 +186,13 @@ in
         };
 
     };
+    extraConfig = ''
+      blur enable
+      blur_radius 10
+
+      default_dim_inactive 0.2
+      corner_radius 15
+      '';
   };
 
 }
