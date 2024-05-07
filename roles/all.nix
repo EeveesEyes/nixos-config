@@ -1,6 +1,6 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 let
-  consoleFont = hiDPI : if hiDPI then "Lat2-Terminus16" else "Lat2-Terminus20";
+  consoleFont = hiDPI: if hiDPI then "Lat2-Terminus16" else "Lat2-Terminus20";
 in
 {
   imports = [
@@ -23,6 +23,7 @@ in
     ../modules/gc.nix
     ../modules/sway.nix
     ../modules/nixld.nix
+    ../modules/fwupd.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
@@ -59,7 +60,11 @@ in
   # Look mum, I'm using all the new shiny stuff!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # TMP
+  networking.firewall = {
+    allowedTCPPorts = [ 3000 ];
+  };
+
   networking.extraHosts = ''
   '';
 }
-
