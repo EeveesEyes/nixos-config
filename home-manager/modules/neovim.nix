@@ -30,6 +30,8 @@
 
       # Better support for netrw
       vim-vinegar
+      netrw-nvim
+      nvim-web-devicons
 
       # Bar at the top for all open buffers
       bufferline-nvim
@@ -66,6 +68,10 @@
 
       # Session management
       auto-session
+
+      # zoom into windows
+      zoomwintab-vim
+
     ];
 
     extraConfig = ''
@@ -158,6 +164,7 @@
       let g:neoformat_enabled_python = ['black', 'isort']
 
       lua << EOF
+        require'netrw'.setup{}
         require("auto-session").setup {
           auto_save_enabled = true;
           auto_restore_enabled = true;
