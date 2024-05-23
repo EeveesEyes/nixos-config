@@ -61,18 +61,18 @@
 .modules-right {
     padding: 3px;
 	background-color: @dark;
-    margin: 5px;
+    margin: 0 5px 5px 0;
     border-radius: 10px;
 }
 .modules-center {
     padding: 3px;
 	background-color: @dark;
-    margin: 5px;
+    margin: 0 0 5px 0;
     border-radius: 10px;
 }
 .modules-left {
     padding: 3px;
-    margin: 5px;
+    margin: 0 0 5px 5px;
 	background-color: @dark;
     border-radius: 10px;
 }
@@ -86,7 +86,8 @@
 #network,
 #pulseaudio,
 #temperature,
-#tray {
+#tray,
+#disk {
 	background: transparent;
 	color: @light;
 	padding-left: 10px;
