@@ -90,7 +90,6 @@ in
       fzf
       ncmpcpp
       acpi
-      joplin # cli
       joplin-desktop # gui
 
       unstable.prusa-slicer
@@ -105,18 +104,12 @@ in
       gnome.gedit
       pwgen
 
-      # for coc
-      nodejs
-      #rnix-lsp
+      nixpkgs-fmt
 
       # kubernetes stuff
       kubectl
       krew
       kubectx
-
-      # from my overlay
-      studio-link
-      python3.pkgs.brother-ql
 
     ] ++ lib.optionals (config.my.isLaptop) [
       networkmanager
