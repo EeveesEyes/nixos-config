@@ -21,17 +21,18 @@
     krew
     kubectx
     kubernetes-helm
+    k9s
     silver-searcher
     fd
     subversionClient
     tig
     freerdp
     firefox
+    bitwarden
 
     # for zsh-fzf plugin
     fzf
 
-    bitwarden
 
     # denic tooling from overlay
     gohome
