@@ -103,6 +103,7 @@ in
       vnstat
       gedit
       pwgen
+      magic-wormhole
 
       nixpkgs-fmt
 
