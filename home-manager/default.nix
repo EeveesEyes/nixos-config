@@ -101,7 +101,7 @@ in
       inkscape
       guvcview
       vnstat
-      gnome.gedit
+      gedit
       pwgen
 
       nixpkgs-fmt
