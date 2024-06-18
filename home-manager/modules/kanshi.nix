@@ -1,17 +1,18 @@
 { nixosConfig, ... }:
 let
   machines = {
-    smithers = {
-      "laptop-only" = {
-        outputs = [
-          {
-            criteria = "eDP-1";
-            scale = 1.3;
-          }
-        ];
-      };
-      "homeoffice" = {
-        outputs = [
+    smithers = [{
+      profile.name = "laptop-only";
+      profile.outputs = [
+        {
+          criteria = "eDP-1";
+          scale = 1.3;
+        }
+      ];
+    }
+      {
+        profile.name = "homeoffice";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             status = "disable";
@@ -27,14 +28,13 @@ let
             position = "2952,0";
           }
         ];
-      };
-    };
+      }];
   };
 in
 {
   services.kanshi = {
     enable = true;
-    profiles = machines."${nixosConfig.networking.hostName}";
+    settings = machines."${nixosConfig.networking.hostName}";
   };
 
 }

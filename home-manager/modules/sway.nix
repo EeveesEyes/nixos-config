@@ -8,6 +8,11 @@ in
     package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
 
+    # Sway can't find wallpaper.jpg and failes to build
+    # swayfx also has some problems:
+    # https://discourse.nixos.org/t/sway-fails-with-cannot-create-gles2-renderer-after-update/45703/2
+    checkConfig = false;
+
     config = {
       modifier = "Mod4";
       focus.followMouse = false;
