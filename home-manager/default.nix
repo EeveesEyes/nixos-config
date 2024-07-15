@@ -105,8 +105,6 @@ in
       pwgen
       magic-wormhole
 
-      nixpkgs-fmt
-
       # kubernetes stuff
       kubectl
       krew
