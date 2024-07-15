@@ -16,7 +16,6 @@ in
     ../modules/ssh.nix
     ../modules/steam.nix
     ../modules/via.nix
-    ../modules/virtualbox.nix
     ../modules/borgbackup.nix
     ../modules/udisks2.nix
     ../modules/samba.nix
@@ -24,6 +23,7 @@ in
     ../modules/sway.nix
     ../modules/nixld.nix
     ../modules/fwupd.nix
+    ../modules/lix.nix
 
     ../secrets/remote-builder.nix
     ../users/fleaz.nix
@@ -59,6 +59,9 @@ in
 
   # Look mum, I'm using all the new shiny stuff!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Enable proprietary firmware
+  hardware.enableAllFirmware = true;
 
   # TMP
   networking.firewall = {
