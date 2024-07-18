@@ -5,7 +5,7 @@
     withPython3 = true;
     extraPackages = with pkgs; [
       nil
-      nixfmt-classic
+      nixfmt-rfc-style
       gopls
       pyright
       (python3.withPackages (ps: with ps; [
@@ -182,7 +182,7 @@
             ['nil'] = {
               testSetting = 42,
               formatting = {
-                command = { "nixfmt-classic" },
+                command = { "nixfmt-rfc-style" },
               },
             },
           },
