@@ -5,11 +5,9 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
 
     # Sway can't find wallpaper.jpg and failes to build
-    # swayfx also has some problems:
     # https://discourse.nixos.org/t/sway-fails-with-cannot-create-gles2-renderer-after-update/45703/2
     checkConfig = false;
 
@@ -98,8 +96,8 @@ in
         {
           command = ''${pkgs.swayidle}/bin/swayidle -w \
                            timeout 600 "${lockCmd}" \
-                           timeout 900 "${pkgs.swayfx}/bin/swaymsg output * dpms off" \
-                                resume "${pkgs.swayfx}/bin/swaymsg output * dpms on" \
+                           timeout 900 "${pkgs.sway}/bin/swaymsg output * dpms off" \
+                                resume "${pkgs.sway}/bin/swaymsg output * dpms on" \
                            before-sleep "${lockCmd}"'';
         }
       ];
@@ -191,13 +189,6 @@ in
         };
 
     };
-    extraConfig = ''
-      blur enable
-      blur_radius 10
-
-      default_dim_inactive 0.2
-      corner_radius 15
-      '';
   };
 
 }
