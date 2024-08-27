@@ -40,12 +40,12 @@ in
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "smithers") {
         "eDP-1" = {
           mode = "2256x1504";
-          scale = "1.3";
+          scale = "1.2";
           position = "0,0";
         };
       };
 
-      gaps = { inner = 10; };
+      gaps = { inner = 5; };
       window.border = 2;
       window.hideEdgeBorders = "smart";
       workspaceAutoBackAndForth = true;
