@@ -66,6 +66,7 @@
 }
 .modules-center {
     padding: 3px;
+    padding-right: 10px;
 	background-color: @dark;
     margin: 0 0 5px 0;
     border-radius: 10px;
@@ -87,6 +88,7 @@
 #pulseaudio,
 #temperature,
 #tray,
+#idle_inhibitor,
 #disk {
 	background: transparent;
 	color: @light;
