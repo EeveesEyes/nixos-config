@@ -104,6 +104,11 @@ in
       gedit
       pwgen
       magic-wormhole
+      kicad
+      picocom
+      wirelesstools
+      xournal
+      nix-tree
 
       # kubernetes stuff
       kubectl
