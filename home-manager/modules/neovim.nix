@@ -72,6 +72,10 @@
       # zoom into windows
       zoomwintab-vim
 
+      # Telescope
+      plenary-nvim
+      telescope-nvim
+
     ];
 
     extraConfig = ''
@@ -162,6 +166,10 @@
             \ 'args': ['-q', '-l 120', '-'],
             \ }
       let g:neoformat_enabled_python = ['black', 'isort']
+
+      " Find files using Telescope
+      nnoremap <leader>ff <cmd>Telescope find_files<cr>
+      nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
       lua << EOF
         require'netrw'.setup{}

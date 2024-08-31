@@ -56,6 +56,7 @@ in
       ncdu
       fd
       silver-searcher
+      ripgrep
       thunderbird
       mosh
       mpv
