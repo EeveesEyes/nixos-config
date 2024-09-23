@@ -29,10 +29,10 @@
     freerdp
     firefox
     bitwarden
+    ripgrep
 
     # for zsh-fzf plugin
     fzf
-
 
     # denic tooling from overlay
     gohome
