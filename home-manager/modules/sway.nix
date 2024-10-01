@@ -1,6 +1,6 @@
 { pkgs, nixosConfig, lib, ... }:
 let
-  lockCmd = "${pkgs.swaylock}/bin/swaylock -i /etc/nixos/lockscreen.png";
+  lockCmd = "${pkgs.swaylock}/bin/swaylock -i /etc/nixos/wallpaper.png";
 in
 {
   wayland.windowManager.sway = {
@@ -25,7 +25,7 @@ in
         };
       };
       output = {
-        "*".bg = "/etc/nixos/wallpaper.jpg fill";
+        "*".bg = "/etc/nixos/wallpaper.png fill";
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
         "DP-2" = {
           mode = "3840x2160";
@@ -112,7 +112,7 @@ in
         in
         {
           "${mod}+Return" = "exec foot";
-          "${mod}+p" = "exec ${pkgs.wofi}/bin/wofi --show drun --gtk-dark";
+          "${mod}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun --gtk-dark";
 
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+q" = "kill";
@@ -125,10 +125,15 @@ in
           "${mod}+k" = "focus up";
           "${mod}+l" = "focus right";
 
+          
           "${mod}+Shift+h" = "move left";
+          "${mod}+Shift+left" = "move left";
           "${mod}+Shift+j" = "move down";
+          "${mod}+Shift+down" = "move down";
           "${mod}+Shift+k" = "move up";
+          "${mod}+Shift+up" = "move up";
           "${mod}+Shift+l" = "move right";
+          "${mod}+Shift+right" = "move right";
 
           "${mod}+s" = "split v";
           "${mod}+w" = "split h";
@@ -137,7 +142,7 @@ in
           "${mod}+r" = "mode resize";
 
           "${mod}+f" = "fullscreen toggle";
-          "${mod}+Shift+space" = "floating toggle";
+          "${mod}+space" = "floating toggle";
 
           "${mod}+1" = "workspace 1";
           "${mod}+2" = "workspace 2";

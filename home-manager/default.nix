@@ -10,71 +10,38 @@ in
   ];
 
 
-  home-manager.users.fleaz = { pkgs, ... }: {
+  home-manager.users.hagoromo = { pkgs, ... }: {
     imports = [
-      modules/neovim.nix
-      modules/vscode.nix
-      modules/direnv.nix
-      modules/sway.nix
-      modules/waybar.nix
-      modules/git.nix
-      modules/gpg.nix
-      modules/udiskie.nix
       modules/discord.nix
-      modules/devenv.nix
-      modules/overlay.nix
-      modules/zsh.nix
       modules/foot.nix
-      modules/manual.nix
+      modules/neovim.nix
+      modules/overlay.nix
+      modules/sway.nix
       modules/tig.nix
-      ../secrets/ssh-config.nix
-    ] ++ lib.optionals (config.networking.hostName == "smithers") [
-      modules/kanshi.nix
+      modules/vscode.nix
+      modules/waybar.nix
+      # ../secrets/ssh-config.nix
     ];
 
     home.packages = with pkgs; [
       httpie
-      wdisplays
-      firefox
       evince
-      chromium
+      vivaldi
       via
-      nextcloud-client
       deluge
-      gnupg
-      gpicview
       hicolor-icon-theme
       cinnamon.nemo
-      element-desktop
+      # element-desktop
       signal-desktop
-      nix-output-monitor
       samba
+      keepassxc
+      spotify
+      dropbox
+      protonmail-bridge
+      # darktable
 
-      dnsutils
-      mtr
-      tig
-      ncdu
-      fd
-      silver-searcher
-      ripgrep
+      # silver-searcher # source code searching tool
       thunderbird
-      mosh
-      mpv
-      go
-      python3
-      pavucontrol
-      playerctl
-      jq
-      psmisc
-      zip
-      nmap
-      vnstat
-      whois
-      sipcalc
-      vnstat
-      strace
-      usbutils
-      pciutils
 
       swaylock
       swayidle
@@ -82,67 +49,50 @@ in
       wl-clipboard
       mako
       sway-contrib.grimshot
-      albert
       foot
       wofi
-      unzip
-      whois
-      sublime-music
-      fzf
-      ncmpcpp
+      # sublime-music
+      # ncmpcpp
       acpi
-      unstable.joplin-desktop
+      adw-gtk3
+      # unstable.joplin-desktop
 
-      unstable.prusa-slicer
-      htop
-      xdg-utils
-      moreutils
+      # unstable.prusa-slicer
       insomnia
-      mumble
+      # mumble
       inkscape
-      guvcview
-      vnstat
-      gedit
       pwgen
-      magic-wormhole
-      kicad
-      picocom
-      wirelesstools
-      xournal
-      nix-tree
+      # kicad
+      # picocom
 
       # kubernetes stuff
-      kubectl
-      krew
-      kubectx
+      # kubectl
+      # krew
+      # kubectx
 
-    ] ++ lib.optionals (config.my.isLaptop) [
-      networkmanager
     ];
 
     home.stateVersion = "21.11";
 
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita";
-        package = pkgs.gnome3.adwaita-icon-theme;
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        gtk-theme = "adw-gtk3-dark";
       };
     };
 
     xdg = {
       enable = true;
-    };
-
-    services.gnome-keyring.enable = true;
-
-    # e.g. for  vscode
-    nixpkgs.config.allowUnfree = true;
-
-    programs.git = {
-      enable = true;
-      userName = "fleaz";
-      userEmail = "mail@felixbreidenstein.de";
+      mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "text/html" = "vivaldi-stable.desktop";
+          "x-scheme-handler/http" = "vivaldi-stable.desktop";
+          "x-scheme-handler/https" = "vivaldi-stable.desktop";
+          "x-scheme-handler/about" = "vivaldi-stable.desktop";
+          "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
+        };
+      };
     };
 
     services.mako = {

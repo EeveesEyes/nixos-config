@@ -10,8 +10,8 @@
       ".direnv/"
       ".venv/"
     ];
-    userName = "fleaz";
-    userEmail = "mail@felixbreidenstein.de";
+    userName = "EeveesEyes";
+    userEmail = "a@kailus.dev";
     signing = {
       key = "9166FF9DFC1F4637";
       signByDefault = true;

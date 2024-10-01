@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.discord];
+{ pkgs, ... }: {
+  home.packages = [ pkgs.discord ];
 
   home.file.".config/discord/settings.json" = {
     text = builtins.toJSON {

@@ -9,11 +9,11 @@
     settings = {
       default_session = {
         command = "sway";
-        user = "fleaz";
+        user = "hagoromo";
       };
       initial_session = {
         command = "sway";
-        user = "fleaz";
+        user = "hagoromo";
       };
     };
   };

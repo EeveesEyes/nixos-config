@@ -48,34 +48,36 @@
 @define-color gray #928374;
 
 * {
-    border: none;
+	border: none;
 	font-family: Inconsolata, Inconsolata Nerd Font, FiraCode Nerd Font Mono;
-    font-weight: bold;
+	font-weight: bold;
 	font-size: 14pt;
 	color: @light;
-    border-radius: 20px;
+	border-radius: 20px;
 	background: transparent;
 }
 
 /*-----module groups----*/
 .modules-right {
-    padding: 3px;
+	padding: 3px;
 	background-color: @dark;
-    margin: 0 5px 5px 0;
-    border-radius: 10px;
+	margin: 0 5px 5px 0;
+	border-radius: 10px;
 }
+
 .modules-center {
-    padding: 3px;
-    padding-right: 10px;
+	padding: 3px;
+	padding-right: 10px;
 	background-color: @dark;
-    margin: 0 0 5px 0;
-    border-radius: 10px;
+	margin: 0 0 5px 0;
+	border-radius: 10px;
 }
+
 .modules-left {
-    padding: 3px;
-    margin: 0 0 5px 5px;
+	padding: 3px;
+	margin: 0 0 5px 5px;
 	background-color: @dark;
-    border-radius: 10px;
+	border-radius: 10px;
 }
 
 /* All modules */
@@ -98,8 +100,7 @@
 }
 
 /* All module that should blink */
-#mode
-#memory,
+#mode #memory,
 #temperature,
 #battery {
 	animation-timing-function: linear;
@@ -161,3 +162,6 @@
 	color: @orange;
 }
 
+#tray menu {
+	background: @dark;
+}

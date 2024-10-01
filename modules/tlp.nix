@@ -1,4 +1,4 @@
-{lib, config, ...}:
+{ lib, config, ... }:
 {
   services.tlp = lib.mkIf config.my.includeTLP {
     enable = true;

@@ -1,33 +1,16 @@
-{ pkgs, config, ... }:
-let
-  consoleFont = hiDPI: if hiDPI then "Lat2-Terminus16" else "Lat2-Terminus20";
-in
-{
+{ pkgs, config, ... }: {
   imports = [
-    ../home-manager/default.nix
+    ../home-manager/base.nix
 
-    ../modules/avahi.nix
-    ../modules/cups.nix
+    ../customOptions.nix
     ../modules/docker.nix
-    ../modules/earlyoom.nix
     ../modules/fonts.nix
+    ../modules/gc.nix
+    ../modules/nixld.nix
     ../modules/opengl.nix
     ../modules/sound.nix
     ../modules/ssh.nix
-    ../modules/steam.nix
-    ../modules/via.nix
-    ../modules/borgbackup.nix
     ../modules/udisks2.nix
-    ../modules/samba.nix
-    ../modules/gc.nix
-    ../modules/sway.nix
-    ../modules/nixld.nix
-    ../modules/fwupd.nix
-    ../modules/lix.nix
-
-    ../secrets/remote-builder.nix
-    ../users/fleaz.nix
-    ../customOptions.nix
   ];
 
   # Set your time zone.
@@ -47,12 +30,9 @@ in
 
   environment.variables = {
     EDITOR = "nvim";
-    PATH = "$PATH:/home/fleaz/bin";
-    XDG_SCREENSHOTS_DIR = "/home/fleaz/screenshots/";
-    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+    PATH = "$PATH:/home/hagoromo/bin";
+    XDG_SCREENSHOTS_DIR = "/home/hagoromo/screenshots/";
   };
-
-  console.font = consoleFont config.my.highDPI;
 
   # weekly trim
   services.fstrim.enable = true;
@@ -65,7 +45,7 @@ in
 
   # TMP
   networking.firewall = {
-    allowedTCPPorts = [ 3000 ];
+    #   allowedTCPPorts = [ 3000 ];
   };
 
   networking.extraHosts = ''
