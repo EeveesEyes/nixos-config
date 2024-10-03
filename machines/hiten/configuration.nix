@@ -18,11 +18,13 @@
     ];
   # Smithers is a laptop
   my.isLaptop = true;
+  my.hwModel = "t480";
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.supportedFilesystems = [ "ntfs" ];
+  
   networking.hostName = "hiten";
 
   # This value determines the NixOS release from which the default

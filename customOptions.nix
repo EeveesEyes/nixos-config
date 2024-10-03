@@ -18,5 +18,11 @@
       default = false;
       type = lib.types.bool;
     };
+
+    hwModel = lib.mkOption {
+      description = "hw model";
+      default = "noModelSpecified";
+      type = lib.types.str;
+    };
   };
 }

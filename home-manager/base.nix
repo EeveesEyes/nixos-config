@@ -52,6 +52,7 @@ in
       strace
       usbutils
       pciutils
+      veracrypt
 
       albert
       unzip
@@ -70,6 +71,8 @@ in
       nixpkgs-fmt
     ] ++ lib.optionals (config.my.isLaptop) [
       networkmanager
+    ] ++ lib.optionals (config.my.hwModel == "t480") [
+      throttled
     ];
 
     home.stateVersion = "21.11";
