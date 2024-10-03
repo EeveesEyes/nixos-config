@@ -18,6 +18,4 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAJVYO7GTEvh+tvV/ywlnv1a7F8btnl/CFN1hEcLrJ6O hagoromo@hiten"
     ];
   };
-
-  security.sudo.extraConfig = "Defaults:hagoromo timestamp_timeout=10";
 }

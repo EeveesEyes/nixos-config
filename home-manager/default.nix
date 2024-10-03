@@ -45,6 +45,7 @@ in
 
       swaylock
       swayidle
+      sway-audio-idle-inhibit
       brightnessctl
       wl-clipboard
       mako

@@ -13,7 +13,7 @@
     userName = "EeveesEyes";
     userEmail = "a@kailus.dev";
     signing = {
-      key = "9166FF9DFC1F4637";
+      key = "6D5A0D835EC8769A";
       signByDefault = true;
     };
     extraConfig = {
@@ -36,19 +36,5 @@
       # checkout-pull-request from GitHub
       cpr = "!f() { git fetch origin refs/pull/$1/head && git checkout FETCH_HEAD; }; f";
     };
-
-    includes = [{
-      condition = "gitdir:~/denic/";
-      contents = {
-        user = {
-          email = "breidenstein@denic.de";
-          name = "Felix Breidenstein";
-        };
-        commit = {
-          gpgSign = false;
-        };
-      };
-    }
-    ];
   };
 }
