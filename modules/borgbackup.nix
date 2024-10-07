@@ -1,5 +1,4 @@
-{config,...}:
-{
+{config,...}:{
   programs.ssh.knownHosts = {
     "borg.cased.de" = { publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOwKHZZiJ/GgDmAbO2VdGNJIcBQKnFQNXBBzyrsK+ZE0"; };
   };
@@ -8,23 +7,23 @@
     home = {
       paths = "/home";
       exclude = [
-        "/home/fleaz/.cache"
-        "/home/fleaz/Downloads"
-        "/home/fleaz/VirtualBox VMs"
-        "/home/fleaz/repos"
-        "/home/fleaz/.config/Code"
-        "/home/fleaz/.config/Element"
-        "/home/fleaz/.config/Signal"
-        "/home/fleaz/.config/chromium"
-        "/home/fleaz/.config/discord"
-        "/home/fleaz/.thunderbird"
-        "/home/fleaz/.mozilla"
-        "/home/fleaz/.vscode"
-        "/home/fleaz/.local"
+        "/home/hagoromo/.cache"
+        "/home/hagoromo/Downloads"
+        "/home/hagoromo/VirtualBox VMs"
+        "/home/hagoromo/repos"
+        "/home/hagoromo/.config/Code"
+        "/home/hagoromo/.config/Element"
+        "/home/hagoromo/.config/Signal"
+        "/home/hagoromo/.config/chromium"
+        "/home/hagoromo/.config/discord"
+        "/home/hagoromo/.thunderbird"
+        "/home/hagoromo/.mozilla"
+        "/home/hagoromo/.vscode"
+        "/home/hagoromo/.local"
       ];
       extraCreateArgs = "--stats";
       repo = "fleaz@borg.cased.de:${config.networking.hostName}";
-      environment = { BORG_RSH = "ssh -i /home/fleaz/.ssh/id_borgbackup"; };
+      environment = { BORG_RSH = "ssh -i /home/hagoromo/.ssh/id_borgbackup"; };
       encryption = {
         mode = "repokey-blake2";
         passCommand = "cat /etc/secrets/borgbackup.txt";

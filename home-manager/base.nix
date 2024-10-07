@@ -84,8 +84,8 @@ in
     };
 
     services.gnome-keyring.enable = true;
-
-    # e.g. for  vscode
+    
+    # e.g. for  veracrypt
     nixpkgs.config.allowUnfree = true;
 
     programs.git = {

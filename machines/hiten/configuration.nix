@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, ... }:{
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -16,7 +14,7 @@
       # import hardware specific settings
       <nixos-hardware/lenovo/thinkpad/t480>
     ];
-  # Smithers is a laptop
+  # Hiten is a laptop
   my.isLaptop = true;
   my.hwModel = "t480";
 

@@ -1,7 +1,7 @@
 {
   home.file."tig_config" = {
     enable=true;
-    target="/home/fleaz/.config/tig/config";
+    target="/home/hagoromo/.config/tig/config";
     text=''
       # Use Git's default (reverse chronological) order, never automatically
       # use topo-order for the commit graph

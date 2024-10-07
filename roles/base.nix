@@ -32,13 +32,20 @@
     EDITOR = "nvim";
     PATH = "$PATH:/home/hagoromo/bin";
     XDG_SCREENSHOTS_DIR = "/home/hagoromo/screenshots/";
+    NIXOS_CONFIG_PATH = "/home/hagoromo/.config/nixos-config";
   };
+
+  environment.interactiveShellInit = ''
+    alias get-config-kaguya="scp hagoromo@192.168.178.190:/etc/nixos/hardware-configuration.nix /home/hagoromo/.config/nixos-config/machines/kaguya/hardware-configuration.nix"
+    alias deploy-kaguya="nixos-rebuild --target-host hagoromo@192.168.178.190 --use-remote-sudo switch -I nixos-config=$NIXOS_CONFIG_PATH/machines/kaguya/configuration.nix"
+  '';
 
   # weekly trim
   services.fstrim.enable = true;
 
   # Look mum, I'm using all the new shiny stuff!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "root" "@wheel" ];
 
   # Enable proprietary firmware
   hardware.enableAllFirmware = true;

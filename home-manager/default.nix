@@ -35,7 +35,7 @@ in
       signal-desktop
       samba
       keepassxc
-      spotify
+      # spotify
       dropbox
       protonmail-bridge
       # darktable
@@ -73,6 +73,8 @@ in
 
     ];
 
+    # e.g. for  vscode / spotify
+    # nixpkgs.config.allowUnfree = true;
     home.stateVersion = "21.11";
 
     dconf.settings = {

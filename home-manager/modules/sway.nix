@@ -60,21 +60,21 @@ in
           background = "#285577";
           text = "#ffffff";
           indicator = "#2e9ef4";
-          childBorder = "#285577";
+          childBorder = "#fe8019";
         };
         focusedInactive = {
           border = "#333333";
           background = "#5f676a";
           text = "#ffffff";
           indicator = "#484e50";
-          childBorder = "#5f676a";
+          childBorder = "#ebdbb2";
         };
         unfocused = {
           border = "#333333";
           background = "#222222";
           text = "#888888";
           indicator = "#292d2e";
-          childBorder = "#ebdbb2";
+          childBorder = "#5f676a";
         };
         urgent = {
           border = "#fabd2f";

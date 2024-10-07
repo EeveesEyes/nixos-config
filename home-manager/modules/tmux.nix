@@ -6,7 +6,7 @@
     plugins = [
       pkgs.tmuxPlugins.gruvbox
     ];
-    shell = "/home/felix/.nix-profile/bin/zsh";
+    shell = "/home/hagoromo/.nix-profile/bin/zsh";
     terminal = "xterm-256color";
     extraConfig = ''
       # switch panes using Alt-hjkl without prefix
