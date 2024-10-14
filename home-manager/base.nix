@@ -29,46 +29,43 @@ in
       gnupg
       gpicview
       nix-output-monitor
-
-      dnsutils
-      mtr
-      tig
-      ncdu
-      fd
-      ripgrep
-      mosh
-      mpv
-      go
-      python3
-      pavucontrol
-      playerctl
-      jq
-      psmisc
-      zip
-      nmap
-      vnstat
-      whois
-      sipcalc
-      strace
-      usbutils
-      pciutils
       veracrypt
 
-      albert
-      unzip
-      whois
+      python3
+      go
+
+      dnsutils
+      fd
       fzf
-      acpi
-      htop
-      xdg-utils
-      moreutils
-      guvcview
       gedit
+      guvcview
+      htop
+      jq
       magic-wormhole
-      wirelesstools
-      xournal
+      moreutils
+      mosh
+      mpv
+      mtr
+      ncdu
       nix-tree
       nixpkgs-fmt
+      nmap
+      pavucontrol
+      pciutils
+      playerctl
+      psmisc
+      ripgrep
+      sipcalc
+      strace
+      tig
+      unzip
+      usbutils
+      vnstat
+      whois
+      wirelesstools
+      xdg-utils
+      xournal
+      zip
     ] ++ lib.optionals (config.my.isLaptop) [
       networkmanager
     ] ++ lib.optionals (config.my.hwModel == "t480") [

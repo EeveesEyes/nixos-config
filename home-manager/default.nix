@@ -16,9 +16,10 @@ in
       modules/foot.nix
       modules/neovim.nix
       modules/overlay.nix
-      modules/sway.nix
       modules/tig.nix
       modules/vscode.nix
+      modules/mako.nix
+      modules/sway.nix
       modules/waybar.nix
       # ../secrets/ssh-config.nix
     ];
@@ -31,11 +32,10 @@ in
       deluge
       hicolor-icon-theme
       cinnamon.nemo
-      # element-desktop
       signal-desktop
       samba
       keepassxc
-      # spotify
+      # spotify # doesnt work. ick anyways
       dropbox
       protonmail-bridge
       # darktable
@@ -52,25 +52,11 @@ in
       sway-contrib.grimshot
       foot
       wofi
-      # sublime-music
-      # ncmpcpp
       acpi
       adw-gtk3
-      # unstable.joplin-desktop
-
-      # unstable.prusa-slicer
       insomnia
-      # mumble
       inkscape
       pwgen
-      # kicad
-      # picocom
-
-      # kubernetes stuff
-      # kubectl
-      # krew
-      # kubectx
-
     ];
 
     # e.g. for  vscode / spotify
@@ -94,14 +80,11 @@ in
           "x-scheme-handler/https" = "vivaldi-stable.desktop";
           "x-scheme-handler/about" = "vivaldi-stable.desktop";
           "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
+          "x-scheme-handler/mailto" = "userapp-Thunderbird-3CSQV2.desktop";
+          "message/rfc822" = "userapp-Thunderbird-3CSQV2.desktop";
+          "x-scheme-handler/mid" = "userapp-Thunderbird-3CSQV2.desktop";
         };
       };
-    };
-
-    services.mako = {
-      enable = true;
-      groupBy = "app-name";
-      defaultTimeout = 5000;
     };
 
     services.gammastep = {

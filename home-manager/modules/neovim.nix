@@ -30,7 +30,6 @@
 
       # Better support for netrw
       vim-vinegar
-      netrw-nvim
       nvim-web-devicons
 
       # Bar at the top for all open buffers

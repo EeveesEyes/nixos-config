@@ -8,7 +8,6 @@ in
 
     ../modules/earlyoom.nix
     ../modules/samba.nix
-    ../modules/spotify.nix
     ../modules/sway.nix
 #   ../modules/avahi.nix
 #   ../modules/borgbackup.nix

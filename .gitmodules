@@ -1,6 +1,6 @@
 [submodule "secrets"]
 	path = secrets
-	url = git@git.rainbownerds.de:felix/nixos-secrets.git
+	url = git@github.com:EeveesEyes/nixos-secrets.git
 [submodule "overlay"]
 	path = overlay
-	url = git@git.rainbownerds.de:felix/overlay.git
+	url = git@github.com:EeveesEyes/nixos-overlay.git
