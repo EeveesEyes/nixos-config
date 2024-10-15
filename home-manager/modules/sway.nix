@@ -53,46 +53,7 @@ in
       window.hideEdgeBorders = "smart";
       workspaceAutoBackAndForth = true;
       terminal = "foot";
-
-      colors = {
-        focused = {
-          border = "#fe8019";
-          background = "#285577";
-          text = "#ffffff";
-          indicator = "#2e9ef4";
-          childBorder = "#fe8019";
-        };
-        focusedInactive = {
-          border = "#333333";
-          background = "#5f676a";
-          text = "#ffffff";
-          indicator = "#484e50";
-          childBorder = "#ebdbb2";
-        };
-        unfocused = {
-          border = "#333333";
-          background = "#222222";
-          text = "#888888";
-          indicator = "#292d2e";
-          childBorder = "#5f676a";
-        };
-        urgent = {
-          border = "#fabd2f";
-          background = "#900000";
-          text = "#ffffff";
-          indicator = "#900000";
-          childBorder = "#900000";
-        };
-        placeholder = {
-          border = "#000000";
-          background = "#0c0c0c";
-          text = "#ffffff";
-          indicator = "#000000";
-          childBorder = "#0c0c0c";
-        };
-      };
-
-
+      
       bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
 
       startup = [
