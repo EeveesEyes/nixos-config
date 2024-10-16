@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-colors.url = "github:misterio77/nix-colors";
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
@@ -21,6 +22,7 @@
     , nixos-hardware
     , home-manager
     , agenix
+    , nix-colors
     , ...
     }@inputs:
     let
@@ -58,19 +60,19 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
           ];
-          specialArgs = { inherit inputs outputs overlays; };
+          specialArgs = { inherit inputs outputs overlays nix-colors; };
         in
         {
           hiten = nixpkgs.lib.nixosSystem {
             inherit specialArgs;
             modules = defaultModules ++ [
-              ./nixos/hiten
+              ./machines/hiten
             ];
           };
           kaguya = nixpkgs.lib.nixosSystem {
             inherit specialArgs;
             modules = defaultModules ++ [
-              ./nixos/kaguya
+              ./machines/kaguya
             ];
           };
         };
