@@ -1,94 +1,81 @@
-{ config, pkgs, lib, ... }:
-
-let
-  home-manager = (import ../nix/sources.nix).home-manager;
-  unstable = import <nixos-unstable> { };
-in
-{
+{ pkgs, ... }: {
   imports = [
-    "${home-manager}/nixos"
+    modules/devenv.nix
+    modules/direnv.nix
+    modules/git.nix
+    modules/gpg.nix
+    modules/manual.nix
+    modules/udiskie.nix
+    modules/zsh.nix
+    # ../secrets/ssh-config.nix
   ];
 
+  home.packages = with pkgs; [
+    wdisplays
+    firefox
+    nextcloud-client
+    gnupg
+    gpicview
+    nix-output-monitor
+    veracrypt
 
-  home-manager.users.hagoromo = { pkgs, ... }: {
-    imports = [
-      modules/devenv.nix
-      modules/direnv.nix
-      modules/git.nix
-      modules/gpg.nix
-      modules/manual.nix
-      modules/udiskie.nix
-      modules/zsh.nix
-      # ../secrets/ssh-config.nix
-    ];
+    python3
+    go
 
-    home.packages = with pkgs; [
-      wdisplays
-      firefox
-      nextcloud-client
-      gnupg
-      gpicview
-      nix-output-monitor
-      veracrypt
+    dnsutils
+    fd
+    fzf
+    gedit
+    guvcview
+    htop
+    jq
+    magic-wormhole
+    moreutils
+    mosh
+    mpv
+    mtr
+    ncdu
+    nix-tree
+    nixpkgs-fmt
+    nmap
+    pavucontrol
+    pciutils
+    playerctl
+    psmisc
+    ripgrep
+    sipcalc
+    strace
+    tig
+    unzip
+    usbutils
+    vnstat
+    whois
+    wirelesstools
+    xdg-utils
+    xournal
+    zip
+  ] ++ lib.optionals (config.my.isLaptop) [
+    networkmanager
+  ] ++ lib.optionals (config.my.hwModel == "t480") [
+    throttled
+  ];
 
-      python3
-      go
+  home.stateVersion = "21.11";
 
-      dnsutils
-      fd
-      fzf
-      gedit
-      guvcview
-      htop
-      jq
-      magic-wormhole
-      moreutils
-      mosh
-      mpv
-      mtr
-      ncdu
-      nix-tree
-      nixpkgs-fmt
-      nmap
-      pavucontrol
-      pciutils
-      playerctl
-      psmisc
-      ripgrep
-      sipcalc
-      strace
-      tig
-      unzip
-      usbutils
-      vnstat
-      whois
-      wirelesstools
-      xdg-utils
-      xournal
-      zip
-    ] ++ lib.optionals (config.my.isLaptop) [
-      networkmanager
-    ] ++ lib.optionals (config.my.hwModel == "t480") [
-      throttled
-    ];
+  gtk = {
+    enable = true;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
 
-    home.stateVersion = "21.11";
+  services.gnome-keyring.enable = true;
 
-    gtk = {
-      enable = true;
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-    };
+  # e.g. for  veracrypt
+  nixpkgs.config.allowUnfree = true;
 
-    services.gnome-keyring.enable = true;
-    
-    # e.g. for  veracrypt
-    nixpkgs.config.allowUnfree = true;
-
-    programs.git = {
-      enable = true;
-      userName = "EeveesEyes";
-      userEmail = "a@kailus.dev";
-    };
+  programs.git = {
+    enable = true;
+    userName = "EeveesEyes";
+    userEmail = "a@kailus.dev";
   };
 }

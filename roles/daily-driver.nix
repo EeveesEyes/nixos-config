@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    ../home-manager/default.nix
+    # ../home-manager/default.nix
 
     ../modules/earlyoom.nix
     ../modules/samba.nix

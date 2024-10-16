@@ -1,6 +1,6 @@
 { pkgs, config, ... }: {
   imports = [
-    ../home-manager/base.nix
+    # ../home-manager/base.nix
 
     ../customOptions.nix
     ../modules/docker.nix

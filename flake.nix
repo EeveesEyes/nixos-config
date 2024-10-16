@@ -37,8 +37,8 @@
         })
         defaultOverlay
       ];
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = (import ./home-manager/modules);
+      nixosModules = import ./modules;
+      homeManagerModules = (import ./home-manager);
       legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {
           inherit system overlays;

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:{
+{ inputs, config, lib, pkgs, ... }:{
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -12,7 +12,7 @@
       ../../users/hagoromo.nix
 
       # import hardware specific settings
-      <nixos-hardware/lenovo/thinkpad/t480>
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
     ];
   # Hiten is a laptop
   my.isLaptop = true;
