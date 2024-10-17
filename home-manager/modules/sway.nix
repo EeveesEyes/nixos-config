@@ -1,12 +1,8 @@
-{ pkgs, nixosConfig, lib, nix-colors, ... }:
+{ pkgs, nixosConfig, lib, ... }:
 let
   lockCmd = "${pkgs.swaylock}/bin/swaylock -i /etc/nixos/wallpaper.png";
 in
 {
-  imports = [
-    nix-colors.homeManagerModules.default
-  ];
-
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -60,11 +56,11 @@ in
 
       colors = {
         focused = {
-          border = "#${config.colorScheme.palette.base01}";
-          background = "#${config.colorScheme.palette.base02}";
-          text = "#${config.colorScheme.palette.base03}";
-          indicator = "#${config.colorScheme.palette.base04}";
-          childBorder = "#${config.colorScheme.palette.base05}";
+          border = "#fe8019";
+          background = "#285577";
+          text = "#ffffff";
+          indicator = "#2e9ef4";
+          childBorder = "#fe8019";
         };
         focusedInactive = {
           border = "#333333";

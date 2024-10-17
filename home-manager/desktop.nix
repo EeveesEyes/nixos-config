@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     modules/discord.nix
     modules/foot.nix
@@ -9,7 +9,7 @@
     modules/mako.nix
     modules/sway.nix
     modules/waybar.nix
-    modules/nix-colors.nix
+    # modules/nix-colors.nix
     # ../secrets/ssh-config.nix
   ];
 
@@ -48,10 +48,6 @@
     pwgen
   ];
 
-  # e.g. for  vscode / spotify
-  # nixpkgs.config.allowUnfree = true;
-  home.stateVersion = "21.11";
-
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -89,5 +85,5 @@
   };
 
   # Enable blueman-applet when the machine has bluetooth enabled
-  services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
+  # services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
 }

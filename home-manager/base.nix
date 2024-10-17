@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, osConfig, ... }:
+let cfg = osConfig.my; in
+{
   imports = [
     modules/devenv.nix
     modules/direnv.nix
@@ -54,13 +56,11 @@
     xdg-utils
     xournal
     zip
-  ] ++ lib.optionals (config.my.isLaptop) [
+  ] ++ lib.optionals (cfg.isLaptop) [
     networkmanager
-  ] ++ lib.optionals (config.my.hwModel == "t480") [
+  ] ++ lib.optionals (cfg.hwModel == "t480") [
     throttled
   ];
-
-  home.stateVersion = "21.11";
 
   gtk = {
     enable = true;
@@ -69,9 +69,6 @@
   };
 
   services.gnome-keyring.enable = true;
-
-  # e.g. for  veracrypt
-  nixpkgs.config.allowUnfree = true;
 
   programs.git = {
     enable = true;

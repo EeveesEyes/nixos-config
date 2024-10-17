@@ -71,6 +71,12 @@
             inherit specialArgs;
             modules = defaultModules ++ [
               ./machines/hiten/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.hagoromo = import ./machines/hiten/home.nix;
+              }
             ];
           };
           kaguya = nixpkgs.lib.nixosSystem {

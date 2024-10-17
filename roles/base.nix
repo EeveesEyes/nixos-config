@@ -1,8 +1,5 @@
 { pkgs, config, ... }: {
   imports = [
-    # ../home-manager/base.nix
-
-    ../customOptions.nix
     ../modules/docker.nix
     ../modules/fonts.nix
     ../modules/gc.nix
@@ -19,7 +16,7 @@
   # Locale
   i18n.defaultLocale = "en_DK.UTF-8";
 
-  # needed for Steam and VIA
+  nixpkgs.config.allowUnfreePredicate = _: true;
   nixpkgs.config.allowUnfree = true;
 
   # GTK settings stuff for e.g. themes

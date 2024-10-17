@@ -2,17 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, lib, pkgs, ... }:{
+{ inputs, config, lib, pkgs, ... }: {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../customOptions.nix
       ../../roles/base.nix
       ../../roles/daily-driver.nix
       ../../roles/laptop.nix
       ../../users/hagoromo.nix
 
       # import hardware specific settings
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
     ];
   # Hiten is a laptop
   my.isLaptop = true;
@@ -20,7 +22,7 @@
 
   # Look mum, I'm using all the new shiny stuff!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
@@ -34,7 +36,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
-  
+
   networking.hostName = "hiten";
 
   # This value determines the NixOS release from which the default
