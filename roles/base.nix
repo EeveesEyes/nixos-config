@@ -43,8 +43,6 @@
   # weekly trim
   services.fstrim.enable = true;
 
-  # Look mum, I'm using all the new shiny stuff!
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [ "root" "@wheel" ];
 
   # Enable proprietary firmware

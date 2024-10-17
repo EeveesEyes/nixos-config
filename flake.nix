@@ -6,6 +6,10 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
@@ -38,7 +42,7 @@
         defaultOverlay
       ];
       nixosModules = import ./modules;
-      homeManagerModules = (import ./home-manager);
+      homeManagerModules = (import ../modules/home-manager);
       legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {
           inherit system overlays;
@@ -66,7 +70,7 @@
           hiten = nixpkgs.lib.nixosSystem {
             inherit specialArgs;
             modules = defaultModules ++ [
-              ./machines/hiten
+              ./machines/hiten/configuration.nix
             ];
           };
           kaguya = nixpkgs.lib.nixosSystem {
@@ -76,6 +80,5 @@
             ];
           };
         };
-
     };
 }

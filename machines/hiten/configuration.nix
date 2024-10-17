@@ -18,6 +18,18 @@
   my.isLaptop = true;
   my.hwModel = "t480";
 
+  # Look mum, I'm using all the new shiny stuff!
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  environment.systemPackages = with pkgs; [
+    # Flakes clones its dependencies through the git command,
+    # so git must be installed first
+    git
+    vim
+    wget
+    curl
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

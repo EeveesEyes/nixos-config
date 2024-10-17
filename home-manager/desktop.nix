@@ -9,6 +9,7 @@
     modules/mako.nix
     modules/sway.nix
     modules/waybar.nix
+    modules/nix-colors.nix
     # ../secrets/ssh-config.nix
   ];
 

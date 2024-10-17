@@ -11,9 +11,5 @@ in
     "${home-manager}/nixos"
   ];
 
-
   home-manager.users.hagoromo = base ++ desktop
-
-
-
 }
