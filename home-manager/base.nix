@@ -20,7 +20,7 @@ let cfg = osConfig.my; in
     gpicview
     nix-output-monitor
     veracrypt
-
+    
     python3
     go
 

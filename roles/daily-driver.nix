@@ -9,21 +9,21 @@ in
     ../modules/earlyoom.nix
     ../modules/samba.nix
     ../modules/sway.nix
-#   ../modules/avahi.nix
-#   ../modules/borgbackup.nix
-#   ../modules/cups.nix
-#   ../modules/fwupd.nix
-#   ../modules/lix.nix
-#   ../modules/steam.nix
-#   ../secrets/remote-builder.nix
+    #   ../modules/avahi.nix
+    #   ../modules/borgbackup.nix
+    ../modules/cups.nix
+    #   ../modules/fwupd.nix
+    #   ../modules/lix.nix
+    #   ../modules/steam.nix
+    #   ../secrets/remote-builder.nix
   ];
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [ vesktop ];
-
   environment.variables = {
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
   };
+  virtualisation.vmware.host.enable = true;
 
   console.font = consoleFont config.my.highDPI;
 
@@ -35,7 +35,7 @@ in
 
   # TMP
   networking.firewall = {
-#   allowedTCPPorts = [ 3000 ];
+    #   allowedTCPPorts = [ 3000 ];
   };
 
   networking.extraHosts = ''

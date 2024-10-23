@@ -1,11 +1,11 @@
 { config, pkgs, ... }: {
   imports = [
-    modules/discord.nix
     modules/foot.nix
     modules/neovim.nix
     modules/overlay.nix
     modules/tig.nix
     modules/vscode.nix
+    modules/dropbox.nix
     modules/mako.nix
     modules/sway.nix
     modules/waybar.nix
@@ -27,7 +27,7 @@
     spotify # doesnt work. ick anyways
     dropbox
     protonmail-bridge
-    # darktable
+    darktable
 
     # silver-searcher # source code searching tool
     thunderbird

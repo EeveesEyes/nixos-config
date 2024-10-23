@@ -17,6 +17,8 @@
         home-manager.follows = "home-manager";
       };
     };
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -42,7 +44,7 @@
         defaultOverlay
       ];
       nixosModules = import ./modules;
-      homeManagerModules = (import ../modules/home-manager);
+      # homeManagerModules = (import ../modules/home-manager);
       legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {
           inherit system overlays;
@@ -51,7 +53,7 @@
       );
     in
     {
-      inherit legacyPackages nixosModules homeManagerModules;
+      inherit legacyPackages nixosModules; # homeManagerModules;
       overlays.default = defaultOverlay;
 
       formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
@@ -82,7 +84,14 @@
           kaguya = nixpkgs.lib.nixosSystem {
             inherit specialArgs;
             modules = defaultModules ++ [
-              ./machines/kaguya
+              ./machines/kaguya/configuration.nix
+              ./machines/kaguya/hardware-configuration.nix # import beforehand for nixos-anywhere, use with --generate-hardware-config nixos-generate-config ./machines/kaguya/hardware-configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.hagoromo = import ./machines/kaguya/home.nix;
+              }
             ];
           };
         };

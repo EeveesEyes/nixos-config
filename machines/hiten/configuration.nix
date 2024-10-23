@@ -5,7 +5,6 @@
 { inputs, config, lib, pkgs, ... }: {
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../customOptions.nix
       ../../roles/base.nix
@@ -13,7 +12,7 @@
       ../../roles/laptop.nix
       ../../users/hagoromo.nix
 
-      # import hardware specific settings
+      # import hardware specific settings as flake module instad of channel
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
     ];
   # Hiten is a laptop
