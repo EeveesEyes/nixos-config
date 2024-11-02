@@ -13,6 +13,7 @@
     };
     shellAliases = {
       "dl" = "ls -lhtr --color=always ~/Downloads | tail -n 10"; # Show the 10 newest Downloads
+      "prnt" = "lp -o job-sheets=standard,none -d Samsung_M283x_Series_SEC30CDA7A56D6E $1"; # print file
     };
     initExtra = ''
       autoload -U colors && colors
