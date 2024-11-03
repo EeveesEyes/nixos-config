@@ -4,7 +4,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "FiraCode:size=14";
+        font = "FiraCode:size=10";
         pad = "3x3";
       };
       scrollback = { lines = 100000; };

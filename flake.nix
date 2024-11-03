@@ -81,6 +81,18 @@
               }
             ];
           };
+          hakuto = nixpkgs.lib.nixosSystem {
+            inherit specialArgs;
+            modules = defaultModules ++ [
+              ./machines/hakuto/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.hagoromo = import ./machines/hakuto/home.nix;
+              }
+            ];
+          };
           kaguya = nixpkgs.lib.nixosSystem {
             inherit specialArgs;
             modules = defaultModules ++ [
