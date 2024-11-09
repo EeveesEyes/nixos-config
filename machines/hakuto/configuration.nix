@@ -20,9 +20,12 @@
   my.isLaptop = true;
   my.hwModel = "framework-13-7040-amd";
   my.includeTLP = false;
+  my.highDPI = true;
 
   # Look mum, I'm using all the new shiny stuff!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  hardware.framework.amd-7040.preventWakeOnAC = true;
 
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
@@ -38,7 +41,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "hiten";
+  networking.hostName = "hakuto";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

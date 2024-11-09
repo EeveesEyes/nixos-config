@@ -11,6 +11,7 @@
       "networkmanager" # Access to networkmanager
       "docker" # Access to the "/run/docker.sock"
       "dialout" # for serial access
+      "input" # for touchpad access
     ];
 
     # Allow ssh between all my machines

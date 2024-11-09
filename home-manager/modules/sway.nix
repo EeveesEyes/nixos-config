@@ -29,22 +29,16 @@ in
       };
       output = {
         "*".bg = "/etc/nixos/wallpaper.png fill";
-      } // lib.optionalAttrs (nixosConfig.networking.hostName == "cray") {
-        "DP-2" = {
-          mode = "3840x2160";
-          scale = "1.3";
-          position = "0,0";
-        };
-        "HDMI-A-1" = {
-          mode = "3840x2160";
-          scale = "1.3";
-          position = "2953,0";
-        };
-      } // lib.optionalAttrs (nixosConfig.networking.hostName == "smithers") {
-        "eDP-1" = {
-          mode = "2880x1920";
+      } // lib.optionalAttrs (nixosConfig.networking.hostName == "hakuto") {
+        "DP-3" = {
+          mode = "2560x1440";
           scale = "1";
           position = "0,0";
+        };
+        "eDP-1" = {
+          mode = "2880x1920";
+          scale = "1.5";
+          position = "340,1440";
         };
       };
 
@@ -227,5 +221,16 @@ in
         };
     };
   };
-
+  # libinput-gestures = {
+  #   enable = true;
+  #   config = {
+  #         # gestures
+  #         "gesture: swipe up" = "volumectl +1%";
+  #         "gesture: swipe down" = "volumectl -1%";
+  #         "gesture: swipe 3 left" = "swaymsg workspace prev";
+  #         "gesture: swipe 3 right" = "swaymsg workspace next";
+  #         "gesture: swipe 2 left"= "_internal alt+Left";
+  #         "gesture: swipe 2 right"= "_internal alt+Right";
+  #   };
+  # };
 }
