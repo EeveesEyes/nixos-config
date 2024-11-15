@@ -30,15 +30,15 @@ in
       output = {
         "*".bg = "/etc/nixos/wallpaper.png fill";
       } // lib.optionalAttrs (nixosConfig.networking.hostName == "hakuto") {
-        "DP-3" = {
-          mode = "2560x1440";
-          scale = "1";
-          position = "0,0";
-        };
         "eDP-1" = {
           mode = "2880x1920";
           scale = "1.5";
           position = "340,1440";
+        };
+         "DP-3" = {
+          mode = "2560x1440";
+          scale = "1";
+          position = "0,0";
         };
       };
 

@@ -12,7 +12,7 @@ in
     #   ../modules/avahi.nix
     #   ../modules/borgbackup.nix
     ../modules/cups.nix
-    #   ../modules/fwupd.nix
+    ../modules/fwupd.nix
     #   ../modules/lix.nix
     ../modules/steam.nix
     #   ../secrets/remote-builder.nix
@@ -45,10 +45,10 @@ in
   # bigger tty fonts
   #console.font =
   #  "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-  services.xserver.dpi = 180;
+  # services.xserver.dpi = 180;
   environment.variables = {
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
+    GDK_SCALE = "1";
+    GDK_DPI_SCALE = "1";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 }
