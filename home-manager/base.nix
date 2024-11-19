@@ -17,7 +17,7 @@ let cfg = osConfig.my; in
     firefox
     nextcloud-client
     gnupg
-    gpicview
+    gthumb
     nix-output-monitor
     veracrypt
     

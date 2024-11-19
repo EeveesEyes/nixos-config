@@ -1,9 +1,8 @@
 { pkgs, ... }: {
-  hardware.opengl = { # moved to hardware.graphics in unstable
+  hardware.graphics = { # moved to hardware.graphics in unstable
     enable = true;
-    driSupport = true;
   };
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
       # compute
       intel-compute-runtime
       intel-ocl
@@ -13,3 +12,4 @@
       intel-media-driver
     ];
 }
+

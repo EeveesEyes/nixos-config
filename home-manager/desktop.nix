@@ -20,7 +20,7 @@
     via
     deluge
     hicolor-icon-theme
-    cinnamon.nemo
+    nemo
     signal-desktop
     samba
     keepassxc
