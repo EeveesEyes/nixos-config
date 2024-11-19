@@ -84,6 +84,4 @@
 
   };
 
-  # Enable blueman-applet when the machine has bluetooth enabled
-  # services.blueman-applet.enable = config.hardware.bluetooth.enable == true;
 }
