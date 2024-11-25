@@ -15,3 +15,15 @@ nix-channel --update -v
 Symlink `/etc/nixos/configuration.nix` to the corresponding
 `machines/<hostname>/configuration.nix` entry and just keep using
 *nixos-rebuild* like nothing happend.
+
+
+## Todo
+
+* ssh key management
+** ssh client config
+* vs code config
+* dev environments
+* (borg)backup 
+* nix code completion
+* config split server <> laptop
+* kanji

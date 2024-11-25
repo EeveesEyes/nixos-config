@@ -4,10 +4,12 @@
 
 # nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./machines/kaguya/hardware-configuration.nix --disk-encryption-keys /tmp/secret.key <(keepassxc-cli show -s -y 2:18194253 ~/Dropbox/Apps/Keepass2Android/kinoxticket16042016-543_yubi.kdbx /DigitalKrams/Crypto/kaguya_encrypt | grep Password | awk -F '[ -]*' 'NR==1{print $NF;exit}') --flake .#kaguya root@192.168.178.190
 
+# reset root pw for ssh login:
+# root@kaguya# nixos-enter --root / -c 'passwd root'
 { inputs, config, lib, pkgs, ... }: {
   imports =
     [
-      ./disko-config.nix
+      # ./disko-config.nix # doesn't work :(
       # ./hardware-configuration.nix
       ../../customOptions.nix
       ../../roles/base.nix
@@ -78,6 +80,7 @@
       PermitRootLogin = "yes"; # "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
+  # todo: remove
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAJVYO7GTEvh+tvV/ywlnv1a7F8btnl/CFN1hEcLrJ6O hagoromo@hiten"
   ];
