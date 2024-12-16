@@ -171,7 +171,6 @@
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
       lua << EOF
-        require'netrw'.setup{}
         require("auto-session").setup {
           auto_save_enabled = true;
           auto_restore_enabled = true;

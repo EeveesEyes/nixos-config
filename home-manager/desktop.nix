@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     modules/foot.nix
     modules/neovim.nix
@@ -28,6 +28,7 @@
     dropbox
     protonmail-bridge
     darktable
+    joplin-desktop
 
     # silver-searcher # source code searching tool
     thunderbird
@@ -65,11 +66,13 @@
         "x-scheme-handler/https" = "vivaldi-stable.desktop";
         "x-scheme-handler/about" = "vivaldi-stable.desktop";
         "x-scheme-handler/unknown" = "vivaldi-stable.desktop";
-        "x-scheme-handler/mailto" = "userapp-Thunderbird-3CSQV2.desktop";
-        "message/rfc822" = "userapp-Thunderbird-3CSQV2.desktop";
-        "x-scheme-handler/mid" = "userapp-Thunderbird-3CSQV2.desktop";
+        "x-scheme-handler/mailto" = "userapp-Thunderbird-7S3ZX2.desktop";
+        "x-scheme-handler/mid" = "userapp-Thunderbird-7S3ZX2.desktop";
+        "message/rfc822" = "userapp-Thunderbird-7S3ZX2.desktop";
       };
     };
+    # overwrite mimeapps.list
+    configFile."mimeapps.list" = lib.mkIf config.xdg.mimeApps.enable { force = true; };
   };
 
   services.gammastep = {

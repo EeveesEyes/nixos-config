@@ -13,10 +13,14 @@
       mkhl.direnv
       yzhang.markdown-all-in-one
       k--kato.intellij-idea-keybindings
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-containers
     ];
 
     userSettings = {
-      "files.autoSave" = "on";
+      "files.autoSave" = "afterDelay";
+      "workbench.colorTheme" = "Hypnos";
+      "git.autofetch" = true;
       "[nix]"."editor.tabSize" = 2;
     };
   };

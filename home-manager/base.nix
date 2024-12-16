@@ -24,6 +24,7 @@ let cfg = osConfig.my; in
     python3
     go
 
+    imagemagick
     dnsutils
     fd
     fzf
