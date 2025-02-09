@@ -14,7 +14,7 @@
         "/home/hagoromo/.config/Code"
         "/home/hagoromo/.config/Element"
         "/home/hagoromo/.config/Signal"
-        "/home/hagoromo/.config/chromium"
+        "/home/hagoromo/.config/vivaldi"
         "/home/hagoromo/.config/discord"
         "/home/hagoromo/.thunderbird"
         "/home/hagoromo/.mozilla"

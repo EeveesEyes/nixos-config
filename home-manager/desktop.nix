@@ -12,7 +12,6 @@
     # modules/nix-colors.nix
     # ../secrets/ssh-config.nix
   ];
-
   home.packages = with pkgs; [
     httpie
     evince

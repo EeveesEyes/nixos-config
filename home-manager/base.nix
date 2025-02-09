@@ -32,6 +32,8 @@ let cfg = osConfig.my; in
     guvcview
     htop
     jq
+    lsof
+    unixtools.netstat
     magic-wormhole
     moreutils
     mosh

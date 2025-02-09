@@ -8,7 +8,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     agenix = {
       url = "github:ryantm/agenix";
@@ -51,9 +51,12 @@
           config.allowUnfree = true;
         }
       );
+      unstable = import nixpkgs-unstable { inherit forAllSystems;
+          config.allowUnfree = true; };
     in
     {
-      inherit legacyPackages nixosModules; # homeManagerModules;
+      
+      inherit legacyPackages nixosModules unstable; # homeManagerModules;
       overlays.default = defaultOverlay;
 
       formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
@@ -90,6 +93,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.hagoromo = import ./machines/hakuto/home.nix;
+                home-manager.extraSpecialArgs = { inherit unstable; };
               }
             ];
           };

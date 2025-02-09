@@ -13,7 +13,7 @@
     userName = "EeveesEyes";
     userEmail = "a@kailus.dev";
     signing = {
-      key = "6D5A0D835EC8769A";
+      key = "2B0353D272C78090C71AD3C0CB2C9F3DD408992A";
       signByDefault = true;
     };
     extraConfig = {
@@ -28,6 +28,9 @@
       };
       "push" = {
         autoSetupRemote = "true";
+      };
+      "rebase" = {
+        autoStash = "true";
       };
     };
 
