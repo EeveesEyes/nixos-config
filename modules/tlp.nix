@@ -1,5 +1,8 @@
 { lib, config, ... }:
 {
+  # To use TLP you have to explicitly disable power-profiles-deamon in your config.
+  services.power-profiles-daemon.enable = false;
+  
   services.tlp = lib.mkIf config.my.includeTLP {
     enable = true;
     settings = {
@@ -21,11 +24,11 @@
 
       # BAT 0 - Internal battery
       START_CHARGE_THRESH_BAT0 = 60;
-      STOP_CHARGE_THRESH_BAT0 = 95;
+      STOP_CHARGE_THRESH_BAT0 = 85;
 
       # BAT 1 - External Battery
       START_CHARGE_THRESH_BAT1 = 60;
-      STOP_CHARGE_THRESH_BAT1 = 95;
+      STOP_CHARGE_THRESH_BAT1 = 85;
     };
 
   };

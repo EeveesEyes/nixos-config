@@ -19,7 +19,7 @@
   # Hiten is a laptop
   my.isLaptop = true;
   my.hwModel = "framework-13-7040-amd";
-  my.includeTLP = false;
+  my.includeTLP = true;
   my.highDPI = true;
 
   # Look mum, I'm using all the new shiny stuff!

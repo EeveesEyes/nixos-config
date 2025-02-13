@@ -2,12 +2,9 @@
 
 The NixOS configuration for my workstations.
 
-## Add required channel Channel
+## Add required prefetch
 ```
-nix-channel --add https://channels.nixos.org/nixos-22.11 nixos
-nix-channel --add https://channels.nixos.org/nixos-unstable nixos-unstable
-nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
-nix-channel --update -v
+nix-prefetch-url --name displaylink-600.zip https://www.synaptics.com/sites/default/files/exe_files/2024-05/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.0-EXE.zip
 ```
 
 ## Usage
