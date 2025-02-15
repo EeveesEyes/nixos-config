@@ -33,12 +33,22 @@ in
         "eDP-1" = {
           mode = "2880x1920@59.951Hz";
           scale = "1.5";
-          position = "340,1440";
+          position = "2900,1440";
         };
          "DP-3" = {
           mode = "2560x1440@60Hz";
           scale = "1";
+          position = "2560,0";
+        };
+        "DVI-I-1" = {
+          mode = "2560x1440@59.951Hz";
+          scale = "1";
           position = "0,0";
+        };
+        "DVI-I-2" = {
+          mode = "2560x1440@59.951Hz";
+          scale = "1";
+          position = "2560,0";
         };
       };
 
