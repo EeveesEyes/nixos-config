@@ -2,7 +2,6 @@
 
 let
   home-manager = (import ../nix/sources.nix).home-manager;
-  unstable = import <nixos-unstable> { };
 in
 {
 

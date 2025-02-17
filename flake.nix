@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree?ref=nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -26,7 +25,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
       nixos-hardware,
       home-manager,
       agenix,
@@ -40,33 +38,21 @@
         "aarch64-linux"
         "x86_64-linux"
       ];
-      defaultOverlay = import ./overlay/default.nix;
       overlays = [
+        (import ./overlay/default.nix)
         agenix.overlays.default
-        (final: prev: {
-          unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-        })
-        defaultOverlay
       ];
       nixosModules = import ./modules;
-      # homeManagerModules = (import ../modules/home-manager);
-
       legacyPackages = forAllSystems (
         system:
         import inputs.nixpkgs {
           inherit system overlays;
-          config.allowUnfree = true;
         }
       );
-      unstable = import nixpkgs-unstable { config.allowUnfree = true; };
     in
     {
-      inherit legacyPackages nixosModules unstable; # homeManagerModules;
-      overlays.default = defaultOverlay;
-
+      inherit legacyPackages nixosModules;
       formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixfmt-rfc-style);
-
-      templates = import ./templates;
 
       nixosConfigurations =
         let
@@ -105,7 +91,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.hagoromo = import ./machines/hakuto/home.nix;
-                home-manager.extraSpecialArgs = { inherit unstable nixpkgs-unstable nixpkgs-unfree; };
+                home-manager.extraSpecialArgs = { inherit nixpkgs-unfree; };
               }
             ];
           };

@@ -2,8 +2,6 @@
   config,
   pkgs,
   lib,
-  nixpkgs-unstable,
-  unstable,
   nixpkgs-unfree,
   ...
 }:
