@@ -42,7 +42,7 @@ let cfg = osConfig.my; in
     ncdu
     nix-tree
     nixpkgs-fmt
-    nixfmt
+    nixfmt-rfc-style
     nmap
     pavucontrol
     pciutils

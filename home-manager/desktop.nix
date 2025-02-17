@@ -1,10 +1,19 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  nixpkgs-unstable,
+  unstable,
+  nixpkgs-unfree,
+  ...
+}:
+{
   imports = [
     modules/foot.nix
     modules/neovim.nix
     modules/overlay.nix
     modules/tig.nix
-    modules/vscode.nix
+    # modules/vscode.nix
     modules/dropbox.nix
     modules/mako.nix
     modules/sway.nix
@@ -12,41 +21,45 @@
     # modules/nix-colors.nix
     # ../secrets/ssh-config.nix
   ];
-  home.packages = with pkgs; [
-    httpie
-    evince
-    vivaldi
-    via
-    deluge
-    hicolor-icon-theme
-    nemo
-    signal-desktop
-    samba
-    keepassxc
-    spotify # doesnt work. ick anyways
-    dropbox
-    protonmail-bridge
-    darktable
-    joplin-desktop
 
-    # silver-searcher # source code searching tool
-    thunderbird
+  home.packages =
+    with pkgs;
+    [
+      httpie
+      evince
+      vivaldi
+      via
+      deluge
+      hicolor-icon-theme
+      nemo
+      signal-desktop
+      samba
+      keepassxc
+      spotify # doesnt work. ick anyways
+      dropbox
+      protonmail-bridge
+      darktable
+      joplin-desktop
 
-    swaylock
-    swayidle
-    sway-audio-idle-inhibit
-    brightnessctl
-    wl-clipboard
-    mako
-    sway-contrib.grimshot
-    foot
-    wofi
-    acpi
-    adw-gtk3
-    insomnia
-    inkscape
-    pwgen
-  ];
+      # silver-searcher # source code searching tool
+      thunderbird
+
+      swaylock
+      swayidle
+      sway-audio-idle-inhibit
+      brightnessctl
+      wl-clipboard
+      mako
+      sway-contrib.grimshot
+      foot
+      wofi
+      acpi
+      adw-gtk3
+      insomnia
+      inkscape
+      pwgen
+      nixpkgs-unfree.legacyPackages.${pkgs.system}.vscode
+    ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {

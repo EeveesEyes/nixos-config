@@ -35,20 +35,15 @@ in
           scale = "1.5";
           position = "2900,1440";
         };
-         "DP-3" = {
-          mode = "2560x1440@60Hz";
+        "Ancor Communications Inc ASUS MG278 0x0001D4B3" = {
+          mode = "2560x1440@59.951Hz";
           scale = "1";
           position = "2560,0";
         };
-        "DVI-I-1" = {
+        "Iiyama North America PL2792Q 1152180402418" = {
           mode = "2560x1440@59.951Hz";
           scale = "1";
           position = "0,0";
-        };
-        "DVI-I-2" = {
-          mode = "2560x1440@59.951Hz";
-          scale = "1";
-          position = "2560,0";
         };
       };
 

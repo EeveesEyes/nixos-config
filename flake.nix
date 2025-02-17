@@ -4,11 +4,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree?ref=nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
       url = "github:ryantm/agenix";
@@ -22,44 +23,48 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-unstable
-    , nixos-hardware
-    , home-manager
-    , agenix
-    , nix-colors
-    , ...
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      nixos-hardware,
+      home-manager,
+      agenix,
+      nix-colors,
+      nixpkgs-unfree,
+      ...
     }@inputs:
     let
-      inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ];
+      inherit (self) outputs lib;
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
       defaultOverlay = import ./overlay/default.nix;
       overlays = [
         agenix.overlays.default
         (final: prev: {
           unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-          inherit (nixpkgs-unstable.legacyPackages.${prev.system}) neovim-unwrapped;
         })
         defaultOverlay
       ];
       nixosModules = import ./modules;
       # homeManagerModules = (import ../modules/home-manager);
-      legacyPackages = forAllSystems (system:
+
+      legacyPackages = forAllSystems (
+        system:
         import inputs.nixpkgs {
           inherit system overlays;
           config.allowUnfree = true;
         }
       );
-      unstable = import nixpkgs-unstable { inherit forAllSystems;
-          config.allowUnfree = true; };
+      unstable = import nixpkgs-unstable { config.allowUnfree = true; };
     in
     {
-      
       inherit legacyPackages nixosModules unstable; # homeManagerModules;
       overlays.default = defaultOverlay;
 
-      formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixpkgs-fmt);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages."${system}".nixfmt-rfc-style);
 
       templates = import ./templates;
 
@@ -69,7 +74,14 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
           ];
-          specialArgs = { inherit inputs outputs overlays nix-colors; };
+          specialArgs = {
+            inherit
+              inputs
+              outputs
+              overlays
+              nix-colors
+              ;
+          };
         in
         {
           hiten = nixpkgs.lib.nixosSystem {
@@ -93,7 +105,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.hagoromo = import ./machines/hakuto/home.nix;
-                home-manager.extraSpecialArgs = { inherit unstable; };
+                home-manager.extraSpecialArgs = { inherit unstable nixpkgs-unstable nixpkgs-unfree; };
               }
             ];
           };
