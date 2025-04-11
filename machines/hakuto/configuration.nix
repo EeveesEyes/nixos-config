@@ -14,12 +14,11 @@
       ../../users/hagoromo.nix
 
       # import hardware specific settings
-      inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     ];
   # Hiten is a laptop
   my.isLaptop = true;
   my.hwModel = "framework-13-7040-amd";
-  my.includeTLP = true;
+  my.includeTLP = false;
   my.highDPI = true;
 
   # Look mum, I'm using all the new shiny stuff!

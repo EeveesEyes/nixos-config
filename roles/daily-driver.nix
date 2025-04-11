@@ -26,7 +26,6 @@ in
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
-      "vscode"
       "vivaldi"
       "spotify"
       "dropbox"
@@ -38,6 +37,7 @@ in
     vesktop
     displaylink
   ];
+
   environment.variables = {
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
     WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1"; # displayLink render device ls -l /dev/dri/by-path
@@ -46,7 +46,7 @@ in
     GDK_DPI_SCALE = "1";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
-  virtualisation.vmware.host.enable = true;
+  virtualisation.vmware.host.enable = false;
 
   console.font = consoleFont config.my.highDPI;
 

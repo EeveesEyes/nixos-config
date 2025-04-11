@@ -1,8 +1,10 @@
 { lib, config, ... }:
 {
   # To use TLP you have to explicitly disable power-profiles-deamon in your config.
-  services.power-profiles-daemon.enable = false;
-  
+  services.power-profiles-daemon = lib.mkIf config.my.includeTLP {
+    enable = false;
+  };
+
   services.tlp = lib.mkIf config.my.includeTLP {
     enable = true;
     settings = {

@@ -86,6 +86,7 @@
             inherit specialArgs;
             modules = defaultModules ++ [
               ./machines/hakuto/configuration.nix
+              nixos-hardware.nixosModules.framework-13-7040-amd
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;

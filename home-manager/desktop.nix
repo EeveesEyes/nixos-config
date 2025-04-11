@@ -20,44 +20,46 @@
     # ../secrets/ssh-config.nix
   ];
 
-  home.packages =
-    with pkgs;
-    [
-      httpie
-      evince
-      vivaldi
-      via
-      deluge
-      hicolor-icon-theme
-      nemo
-      signal-desktop
-      samba
-      keepassxc
-      spotify # doesnt work. ick anyways
-      dropbox
-      protonmail-bridge
-      darktable
-      joplin-desktop
+  home.packages = with pkgs; [
+    httpie
+    evince
+    vivaldi
+    via
+    deluge
+    hicolor-icon-theme
+    nemo
+    signal-desktop
+    samba
+    keepassxc
+    spotify # doesnt work. ick anyways
+    dropbox
+    protonmail-bridge
+    darktable
+    joplin-desktop
 
-      # silver-searcher # source code searching tool
-      thunderbird
+    # silver-searcher # source code searching tool
+    thunderbird
+    prusa-slicer
+    orca-slicer
+    strace
 
-      swaylock
-      swayidle
-      sway-audio-idle-inhibit
-      brightnessctl
-      wl-clipboard
-      mako
-      sway-contrib.grimshot
-      foot
-      wofi
-      acpi
-      adw-gtk3
-      insomnia
-      inkscape
-      pwgen
-      nixpkgs-unfree.legacyPackages.${pkgs.system}.vscode
-    ];
+    swaylock
+    swayidle
+    sway-audio-idle-inhibit
+    easyeffects
+    brightnessctl
+    wl-clipboard
+    mako
+    sway-contrib.grimshot
+    foot
+    wofi
+    acpi
+    adw-gtk3
+    insomnia
+    inkscape
+    pwgen
+    nixpkgs-unfree.legacyPackages.${pkgs.system}.vscode
+  ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -83,6 +85,11 @@
     };
     # overwrite mimeapps.list
     configFile."mimeapps.list" = lib.mkIf config.xdg.mimeApps.enable { force = true; };
+  };
+
+  home.file.".config/easyeffects" = {
+    source = ./.config/easyeffects;
+    recursive = true;
   };
 
   services.gammastep = {
