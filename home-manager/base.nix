@@ -58,7 +58,7 @@ let cfg = osConfig.my; in
     whois
     wirelesstools
     xdg-utils
-    xournal
+    xournalpp
     zip
   ] ++ lib.optionals (cfg.isLaptop) [
     networkmanager

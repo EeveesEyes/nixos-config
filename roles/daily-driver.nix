@@ -58,7 +58,13 @@ in
 
   # TMP
   networking.firewall = {
-    #   allowedTCPPorts = [ 3000 ];
+    allowedTCPPorts = [
+      5173
+      8123
+      5005
+      8080
+      8000
+    ];
   };
 
   networking.extraHosts = "";
@@ -68,20 +74,7 @@ in
   #  "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
   # services.xserver.dpi = 180;
 
-  # nix-prefetch-url --name displaylink-600.zip https://www.synaptics.com/sites/default/files/exe_files/2024-05/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.0-EXE.zip
-  nixpkgs.overlays = [
-    (final: prev: {
-      wlroots_0_18 = prev.wlroots_0_18.overrideAttrs (old: {
-        # you may need to use 0_18
-        patches = (old.patches or [ ]) ++ [
-          (prev.fetchpatch {
-            url = "https://gitlab.freedesktop.org/wlroots/wlroots/uploads/bd115aa120d20f2c99084951589abf9c/DisplayLink_v2.patch";
-            hash = "sha256-vWQc2e8a5/YZaaHe+BxfAR/Ni8HOs2sPJ8Nt9pfxqiE=";
-          })
-        ];
-      });
-    })
-  ];
+  # nix-prefetch-url --name displaylink-610.zip https://www.synaptics.com/sites/default/files/exe_files/2024-10/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.1-EXE.zip
   services.xserver = {
     enable = true;
     videoDrivers = [

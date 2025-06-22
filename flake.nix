@@ -2,12 +2,12 @@
   description = "My config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree?ref=nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
@@ -41,6 +41,16 @@
       overlays = [
         (import ./overlay/default.nix)
         agenix.overlays.default
+        (final: prev: {
+          wlroots_0_18 = prev.wlroots_0_18.overrideAttrs (old: {
+            patches = (old.patches or [ ]) ++ [
+              (prev.fetchpatch {
+                url = "https://gitlab.freedesktop.org/wlroots/wlroots/uploads/bd115aa120d20f2c99084951589abf9c/DisplayLink_v2.patch";
+                hash = "sha256-vWQc2e8a5/YZaaHe+BxfAR/Ni8HOs2sPJ8Nt9pfxqiE=";
+              })
+            ];
+          });
+        })
       ];
       nixosModules = import ./modules;
       legacyPackages = forAllSystems (
@@ -100,7 +110,7 @@
             inherit specialArgs;
             modules = defaultModules ++ [
               ./machines/kaguya/configuration.nix
-              ./machines/kaguya/hardware-configuration.nix # import beforehand for nixos-anywhere, use with --generate-hardware-config nixos-generate-config ./machines/kaguya/hardware-configuration.nix
+              ./machines/kaguya/hardware-configuration.nix
               home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;

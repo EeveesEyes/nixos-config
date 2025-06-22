@@ -13,7 +13,9 @@
     enableDefaultPackages = true;
     fontDir.enable = true;
     packages = with pkgs; [
-      nerdfonts
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
       dejavu_fonts
       fira-code
     ];

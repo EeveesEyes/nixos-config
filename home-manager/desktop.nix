@@ -37,6 +37,8 @@
     darktable
     joplin-desktop
 
+    tree
+
     # silver-searcher # source code searching tool
     thunderbird
     prusa-slicer
