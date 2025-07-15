@@ -1,0 +1,9 @@
+--- a/disko-destroy-format-mount
++++ b/disko-destroy-format-mount
+@@ -415
++ # shellcheck disable=SC2229
+  IFS= read -r -s "$var"
+
+@@ -425
++ # shellcheck disable=SC2154
+  [ "$password" = "$password_check" ]

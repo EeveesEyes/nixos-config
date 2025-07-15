@@ -17,7 +17,7 @@
         home-manager.follows = "home-manager";
       };
     };
-    disko.url = "github:nix-community/disko";
+    disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -42,7 +42,7 @@
         (import ./overlay/default.nix)
         agenix.overlays.default
         (final: prev: {
-          wlroots_0_18 = prev.wlroots_0_18.overrideAttrs (old: {
+          wlroots_0_19 = prev.wlroots_0_19.overrideAttrs (old: {
             patches = (old.patches or [ ]) ++ [
               (prev.fetchpatch {
                 url = "https://gitlab.freedesktop.org/wlroots/wlroots/uploads/bd115aa120d20f2c99084951589abf9c/DisplayLink_v2.patch";
@@ -70,12 +70,16 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
           ];
+          serverModules = [
+            agenix.nixosModules.default
+          ];
           specialArgs = {
             inherit
               inputs
               outputs
               overlays
               nix-colors
+              nixpkgs-unfree
               ;
           };
         in
@@ -108,15 +112,9 @@
           };
           kaguya = nixpkgs.lib.nixosSystem {
             inherit specialArgs;
-            modules = defaultModules ++ [
+            modules = serverModules ++ [
               ./machines/kaguya/configuration.nix
               ./machines/kaguya/hardware-configuration.nix
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.hagoromo = import ./machines/kaguya/home.nix;
-              }
             ];
           };
         };

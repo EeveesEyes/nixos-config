@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, nixpkgs-unfree, ... }: {
   environment.systemPackages = with pkgs; [ libinput-gestures wmctrl ];
 
   # enable sway, so we have a swaylock pam config
   programs.sway = {
     enable = true;
-    package = null;
+    package = nixpkgs-unfree.legacyPackages.${pkgs.system}.sway;
     extraOptions = [ "--verbose" "--debug" "--unsupported-gpu" ];
   };
 

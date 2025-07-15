@@ -10,7 +10,7 @@ in
 {
   imports = [
     # ../home-manager/default.nix
-
+    ../modules/displaylink.nix
     ../modules/earlyoom.nix
     ../modules/samba.nix
     ../modules/sway.nix
@@ -35,12 +35,10 @@ in
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     vesktop
-    displaylink
   ];
 
   environment.variables = {
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-    WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1"; # displayLink render device ls -l /dev/dri/by-path
     WLR_DRM_NO_MODIFIERS = 1;
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
@@ -73,14 +71,4 @@ in
   #console.font =
   #  "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
   # services.xserver.dpi = 180;
-
-  # nix-prefetch-url --name displaylink-610.zip https://www.synaptics.com/sites/default/files/exe_files/2024-10/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.1-EXE.zip
-  services.xserver = {
-    enable = true;
-    videoDrivers = [
-      "displaylink"
-      "modesetting"
-    ];
-  };
-  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 }

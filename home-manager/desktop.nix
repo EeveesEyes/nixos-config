@@ -36,6 +36,7 @@
     protonmail-bridge
     darktable
     joplin-desktop
+    kdeconnect
 
     tree
 
@@ -60,6 +61,7 @@
     insomnia
     inkscape
     pwgen
+    nixos-anywhere
     nixpkgs-unfree.legacyPackages.${pkgs.system}.vscode
   ];
 
