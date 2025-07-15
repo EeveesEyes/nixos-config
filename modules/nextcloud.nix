@@ -6,7 +6,8 @@
 
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud30;
+    config.dbtype = "sqlite";
+    package = pkgs.nextcloud31;
     hostName = "kaguya";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     configureRedis = true;

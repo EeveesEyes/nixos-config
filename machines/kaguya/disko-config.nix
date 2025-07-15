@@ -6,7 +6,8 @@
 #   disko.devices.disk.data1.device = "/dev/sdb";
 #   disko.devices.disk.data2.device = "/dev/sdc";
 # }
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [ inputs.disko.nixosModules.disko ];
   disko.devices = {
     disk = {
@@ -128,7 +129,7 @@
           compression = "zstd";
           "com.sun:auto-snapshot" = "true";
         };
-        postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^data@blank$' || zfs snapshot data@blank"; # create a blank snapshot after pool creation 
+        postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^data@blank$' || zfs snapshot data@blank"; # create a blank snapshot after pool creation
 
         datasets = {
           reserved = {
@@ -149,8 +150,9 @@
             };
             # use this to read the key during boot
             postCreateHook = ''
-              zfs set keylocation="prompt" "data/encrypted";
+              zfs load-key -l prompt "data/encrypted";
             '';
+            # zfs set keylocation="prompt" "data/encrypted";
           };
         };
       };
