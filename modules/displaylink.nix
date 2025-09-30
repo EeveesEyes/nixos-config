@@ -1,31 +1,36 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  nixpkgs-unfree,
+  lib,
+  ...
+}:
+{
+
+  ### NOTE ###
+  # 25.05 + DisplayLink + sway does not work :(
+  # Behavior:
+  # - sway and dlm starts, but the displaylink monitor is not detected
+  #
+
   environment.systemPackages = with pkgs; [
-    displaylink
+    nixpkgs-unfree.legacyPackages.${pkgs.system}.displaylink
   ];
+
   boot = {
     extraModulePackages = [ config.boot.kernelPackages.evdi ];
     initrd = {
-      # List of modules that are always loaded by the initrd.
       kernelModules = [
         "evdi"
       ];
     };
   };
+
   environment.variables = {
-    WLR_EVDI_RENDER_DEVICE = "/dev/dri/card2"; # displayLink render device: ls -l /dev/dri/by-path
+    WLR_EVDI_RENDER_DEVICE = "/dev/dri/card0"; # displayLink render device: ls -l /dev/dri/by-path
+    # WLR_DRM_DEVICES = "/dev/dri/card0"; # this renders sway on a dlm monitor, but not two and is consuming a lot of resources
   };
-  # weekly trim
-  services.fstrim.enable = true;
-  services = {
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-      defaultSession = "sway";
-    };
-  };
+
   # Enable proprietary firmware
   hardware.enableAllFirmware = true;
 
@@ -38,29 +43,18 @@
       "modesetting"
     ];
   };
-
-  # --- THIS IS THE CRUCIAL PART FOR ENABLING THE SERVICE ---
-  systemd.services.displaylink-server = {
-    enable = true;
-    # Ensure it starts after udev has done its work
-    requires = [ "systemd-udevd.service" ];
-    after = [ "systemd-udevd.service" ];
-    wantedBy = [ "multi-user.target" ]; # Start at boot
-    # *** THIS IS THE CRITICAL 'serviceConfig' BLOCK ***
-    serviceConfig = {
-      Type = "simple"; # Or "forking" if it forks (simple is common for daemons)
-      # The ExecStart path points to the DisplayLinkManager binary provided by the package
-      ExecStart = "${pkgs.displaylink}/bin/DisplayLinkManager";
-      # User and Group to run the service as (root is common for this type of daemon)
-      User = "root";
-      Group = "root";
-      # Environment variables that the service itself might need
-      Environment = [ "DISPLAY=:0" ]; # Might be needed in some cases, but generally not for this
-      Restart = "on-failure";
-      RestartSec = 5; # Wait 5 seconds before restarting
-    };
+  systemd.services.dlm = {
+    wantedBy = [ "multi-user.target" ];
   };
+  
 
+  # Udev rules for DisplayLink devices
+  # might fix dmsg > evdi evdi.1: [drm] Cannot find any crtc or sizes
+  services.udev.extraRules = ''
+    # DisplayLink USB devices
+    SUBSYSTEM=="usb", ATTR{idVendor}=="17e9", MODE="0666"
+    KERNEL=="card[0-9]*", SUBSYSTEM=="drm", ATTRS{vendor}=="0x17e9", TAG+="seat", TAG+="master-of-seat"
+  '';
 }
 
 # debug

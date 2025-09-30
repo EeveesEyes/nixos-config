@@ -38,25 +38,11 @@
         "aarch64-linux"
         "x86_64-linux"
       ];
-      overlays = [
-        (import ./overlay/default.nix)
-        agenix.overlays.default
-        (final: prev: {
-          wlroots_0_19 = prev.wlroots_0_19.overrideAttrs (old: {
-            patches = (old.patches or [ ]) ++ [
-              (prev.fetchpatch {
-                url = "https://gitlab.freedesktop.org/wlroots/wlroots/uploads/bd115aa120d20f2c99084951589abf9c/DisplayLink_v2.patch";
-                hash = "sha256-vWQc2e8a5/YZaaHe+BxfAR/Ni8HOs2sPJ8Nt9pfxqiE=";
-              })
-            ];
-          });
-        })
-      ];
       nixosModules = import ./modules;
       legacyPackages = forAllSystems (
         system:
         import inputs.nixpkgs {
-          inherit system overlays;
+          inherit system;
         }
       );
     in
@@ -77,7 +63,6 @@
             inherit
               inputs
               outputs
-              overlays
               nix-colors
               nixpkgs-unfree
               ;

@@ -4,8 +4,8 @@
   # enable sway, so we have a swaylock pam config
   programs.sway = {
     enable = true;
-    package = nixpkgs-unfree.legacyPackages.${pkgs.system}.sway;
-    extraOptions = [ "--verbose" "--debug" "--unsupported-gpu" ];
+    package = null;
+    extraOptions = [ "--verbose" "--debug" ];
   };
 
   # autologin
@@ -13,11 +13,11 @@
     enable = true;
     settings = {
       default_session = {
-        command = "sway --unsupported-gpu";
+        command = "sway";
         user = "hagoromo";
       };
       initial_session = {
-        command = "sway --unsupported-gpu";
+        command = "sway";
         user = "hagoromo";
       };
     };

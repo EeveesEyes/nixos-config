@@ -36,7 +36,8 @@
     protonmail-bridge
     darktable
     joplin-desktop
-    kdeconnect
+    plasma5Packages.kdeconnect-kde
+    libreoffice
 
     tree
 

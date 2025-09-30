@@ -10,7 +10,7 @@ in
 {
   imports = [
     # ../home-manager/default.nix
-    ../modules/displaylink.nix
+    # ../modules/displaylink.nix
     ../modules/earlyoom.nix
     ../modules/samba.nix
     ../modules/sway.nix
@@ -39,7 +39,6 @@ in
 
   environment.variables = {
     DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-    WLR_DRM_NO_MODIFIERS = 1;
     GDK_SCALE = "1";
     GDK_DPI_SCALE = "1";
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
@@ -53,7 +52,9 @@ in
 
   # Enable proprietary firmware
   hardware.enableAllFirmware = true;
-
+  
+  services.hardware.bolt.enable = true;
+  
   # TMP
   networking.firewall = {
     allowedTCPPorts = [
@@ -63,8 +64,19 @@ in
       8080
       8000
     ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      } # used by KDE Connect
+    ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      } # used by KDE Connect
+    ];
   };
-
   networking.extraHosts = "";
 
   # bigger tty fonts
