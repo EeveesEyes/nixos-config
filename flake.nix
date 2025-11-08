@@ -17,8 +17,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    disko.url = "github:nix-community/disko/latest";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -33,6 +31,8 @@
       ...
     }@inputs:
     let
+      overlays = [ (import ./overlay/displaylink.nix) ];
+      nixpkgsOverlaid = import inputs.nixpkgs { inherit overlays; };
       inherit (self) outputs lib;
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -43,6 +43,7 @@
         system:
         import inputs.nixpkgs {
           inherit system;
+          overlays = overlays;
         }
       );
     in
@@ -65,6 +66,7 @@
               outputs
               nix-colors
               nixpkgs-unfree
+              agenix
               ;
           };
         in
@@ -93,13 +95,6 @@
                 home-manager.users.hagoromo = import ./machines/hakuto/home.nix;
                 home-manager.extraSpecialArgs = { inherit nixpkgs-unfree; };
               }
-            ];
-          };
-          kaguya = nixpkgs.lib.nixosSystem {
-            inherit specialArgs;
-            modules = serverModules ++ [
-              ./machines/kaguya/configuration.nix
-              ./machines/kaguya/hardware-configuration.nix
             ];
           };
         };

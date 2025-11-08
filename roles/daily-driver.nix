@@ -10,7 +10,7 @@ in
 {
   imports = [
     # ../home-manager/default.nix
-    # ../modules/displaylink.nix
+    ../modules/displaylink.nix
     ../modules/earlyoom.nix
     ../modules/samba.nix
     ../modules/sway.nix

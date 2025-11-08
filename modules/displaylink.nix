@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [
     nixpkgs-unfree.legacyPackages.${pkgs.system}.displaylink
   ];
-
+  
   boot = {
     extraModulePackages = [ config.boot.kernelPackages.evdi ];
     initrd = {
@@ -36,6 +36,7 @@
 
   # nix-prefetch-url --name displaylink-610.zip https://www.synaptics.com/sites/default/files/exe_files/2024-10/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.1-EXE.zip
   # nix-prefetch-url --name displaylink-611.zip https://www.synaptics.com/sites/default/files/exe_files/2025-04/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.1.1-EXE.zip
+  # nix-prefetch-url --name displaylink-620.zip https://www.synaptics.com/sites/default/files/exe_files/2025-09/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.2-EXE.zip
   services.xserver = {
     enable = true;
     videoDrivers = [

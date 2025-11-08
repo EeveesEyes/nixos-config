@@ -64,6 +64,8 @@
     pwgen
     nixos-anywhere
     nixpkgs-unfree.legacyPackages.${pkgs.system}.vscode
+
+    rustdesk-flutter
   ];
 
   dconf.settings = {

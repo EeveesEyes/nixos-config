@@ -33,18 +33,23 @@ in
         "eDP-1" = {
           mode = "2880x1920@59.951Hz";
           scale = "1.5";
-          position = "2900,1440";
+          position = "2900,2000";
         };
         "Ancor Communications Inc ASUS MG278 0x0001D4B3" = {
           mode = "2560x1440@59.951Hz";
           scale = "1";
-          position = "2560,0";
+          position = "2560,560";
         };
         "Iiyama North America PL2792Q 1152180402418" = {
           mode = "2560x1440@59.951Hz";
           scale = "1";
-          position = "0,0";
+          position = "0,560";
         };
+        "LG Electronics LG Ultra HD 0x0005B20A" = {
+          mode = "3840x2160@30Hz";
+          scale = "1.4";
+          position = "2462,457";
+        };  
       };
 
       gaps = { inner = 5; };
@@ -52,6 +57,10 @@ in
       window.hideEdgeBorders = "smart";
       workspaceAutoBackAndForth = true;
       terminal = "foot";
+
+      seat."*" = {
+        xcursor_theme = "Adwaita 32";
+      };
 
       colors = {
         focused = {
