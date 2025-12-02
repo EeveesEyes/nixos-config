@@ -60,6 +60,9 @@ let cfg = osConfig.my; in
     xdg-utils
     xournalpp
     zip
+    wireguard-tools
+    tcpdump
+    openssl
   ] ++ lib.optionals (cfg.isLaptop) [
     networkmanager
   ] ++ lib.optionals (cfg.hwModel == "t480") [

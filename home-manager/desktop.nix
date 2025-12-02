@@ -33,6 +33,8 @@
     keepassxc
     spotify # doesnt work. ick anyways
     dropbox
+
+    gcr
     protonmail-bridge
     darktable
     joplin-desktop
@@ -47,6 +49,11 @@
     orca-slicer
     strace
 
+    age
+    sops
+    wakeonlan
+    sshfs
+    manix
     swaylock
     swayidle
     sway-audio-idle-inhibit

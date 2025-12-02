@@ -20,7 +20,7 @@ in
     ../modules/fwupd.nix
     #   ../modules/lix.nix
     ../modules/steam.nix
-    #   ../secrets/remote-builder.nix
+    ../modules/tailscale.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =
@@ -52,9 +52,9 @@ in
 
   # Enable proprietary firmware
   hardware.enableAllFirmware = true;
-  
+
   services.hardware.bolt.enable = true;
-  
+
   # TMP
   networking.firewall = {
     allowedTCPPorts = [

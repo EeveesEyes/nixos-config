@@ -17,6 +17,16 @@
         home-manager.follows = "home-manager";
       };
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-secrets = {
+      url = "path:/home/hagoromo/Projects/nixos/nixos-secrets";
+      # url = "git+file:///home/hagoromo/Projects/nixos/nixos-secrets?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -28,10 +38,14 @@
       agenix,
       nix-colors,
       nixpkgs-unfree,
+      sops-nix,
+      nixos-secrets,
       ...
     }@inputs:
     let
-      overlays = [ (import ./overlay/displaylink.nix) ];
+      overlays = [
+        (import ./overlay/displaylink.nix)
+      ];
       nixpkgsOverlaid = import inputs.nixpkgs { inherit overlays; };
       inherit (self) outputs lib;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -89,12 +103,18 @@
               ./machines/hakuto/configuration.nix
               nixos-hardware.nixosModules.framework-13-7040-amd
               home-manager.nixosModules.home-manager
+              sops-nix.nixosModules.sops
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.hagoromo = import ./machines/hakuto/home.nix;
                 home-manager.extraSpecialArgs = { inherit nixpkgs-unfree; };
+                environment.systemPackages = [
+                  agenix.packages.x86_64-linux.default
+                ];
               }
+              (nixos-secrets.nixosModules.sopsSecrets)
+              (nixos-secrets.nixosModules.ageSecrets)
             ];
           };
         };

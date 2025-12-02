@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   imports = [
     ../modules/docker.nix
     ../modules/fonts.nix
@@ -23,7 +24,12 @@
   programs.dconf.enable = true;
 
   # List packages installed in system profile
-  environment.systemPackages = with pkgs; [ vim wget curl git ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    curl
+    git
+  ];
 
   environment.variables = {
     EDITOR = "nvim";
@@ -37,10 +43,17 @@
     alias deploy-kaguya="nixos-rebuild --target-host hagoromo@192.168.178.190 --use-remote-sudo switch -I nixos-config=$NIXOS_CONFIG_PATH/machines/kaguya/configuration.nix"
   '';
 
+  sops = {
+    defaultSopsFile = "/root/.sops/secrets/example.yaml";
+  };
+
   # weekly trim
   services.fstrim.enable = true;
 
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   # Enable proprietary firmware
   hardware.enableAllFirmware = true;
@@ -49,7 +62,4 @@
   networking.firewall = {
     #   allowedTCPPorts = [ 3000 ];
   };
-
-  networking.extraHosts = ''
-  '';
 }

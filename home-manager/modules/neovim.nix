@@ -108,6 +108,8 @@
 
       ""Hotkeys
       set pastetoggle=<F10>
+      nnoremap <F10> :set paste!<CR>
+      inoremap <F10> <C-o>:set paste!<CR>
       nnoremap <silent><cr> :nohlsearch<CR>
       inoremap jj <Esc>
 
