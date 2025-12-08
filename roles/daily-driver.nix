@@ -21,6 +21,7 @@ in
     #   ../modules/lix.nix
     ../modules/steam.nix
     ../modules/tailscale.nix
+    ../modules/sftpclient.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =

@@ -27,7 +27,7 @@
   };
 
   environment.variables = {
-    WLR_EVDI_RENDER_DEVICE = "/dev/dri/card0"; # displayLink render device: ls -l /dev/dri/by-path
+    WLR_EVDI_RENDER_DEVICE = "/dev/dri/card1"; # displayLink render device: ls -l /dev/dri/by-path
     # WLR_DRM_DEVICES = "/dev/dri/card0"; # this renders sway on a dlm monitor, but not two and is consuming a lot of resources
   };
 

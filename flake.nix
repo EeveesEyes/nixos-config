@@ -27,6 +27,7 @@
       # url = "git+file:///home/hagoromo/Projects/nixos/nixos-secrets?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sftp-mount.url = "github:tupakkatapa/nixos-sftp-mount";
   };
 
   outputs =
@@ -40,6 +41,7 @@
       nixpkgs-unfree,
       sops-nix,
       nixos-secrets,
+      sftp-mount, 
       ...
     }@inputs:
     let
@@ -104,6 +106,7 @@
               nixos-hardware.nixosModules.framework-13-7040-amd
               home-manager.nixosModules.home-manager
               sops-nix.nixosModules.sops
+              sftp-mount.nixosModules.sftpClient
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
