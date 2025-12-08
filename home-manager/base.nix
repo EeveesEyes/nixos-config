@@ -74,12 +74,4 @@ let cfg = osConfig.my; in
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
-
-  services.gnome-keyring.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = "EeveesEyes";
-    userEmail = "a@kailus.dev";
-  };
 }

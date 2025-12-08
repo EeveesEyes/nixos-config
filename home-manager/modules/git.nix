@@ -1,4 +1,5 @@
-{pkgs, ...}:{
+{ pkgs, ... }:
+{
   programs.git = {
     enable = true;
     package = pkgs.gitSVN;
@@ -10,13 +11,15 @@
       ".direnv/"
       ".venv/"
     ];
-    userName = "EeveesEyes";
-    userEmail = "a@kailus.dev";
-    signing = {
-      key = "2B0353D272C78090C71AD3C0CB2C9F3DD408992A";
-      signByDefault = true;
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "EeveesEyes";
+        email = "a@kailus.dev";
+      };
+      alias = {
+        # checkout-pull-request from GitHub
+        cpr = "!f() { git fetch origin refs/pull/$1/head && git checkout FETCH_HEAD; }; f";
+      };
       "core" = {
         pager = "less -F -X";
       };
@@ -33,11 +36,10 @@
         autoStash = "true";
       };
     };
-
-
-    aliases = {
-      # checkout-pull-request from GitHub
-      cpr = "!f() { git fetch origin refs/pull/$1/head && git checkout FETCH_HEAD; }; f";
+    signing = {
+      key = "2B0353D272C78090C71AD3C0CB2C9F3DD408992A";
+      signByDefault = true;
     };
+
   };
 }

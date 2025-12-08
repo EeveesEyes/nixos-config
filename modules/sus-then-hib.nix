@@ -2,10 +2,10 @@
 {
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    suspendKey = "suspend-then-hibernate";
-    powerKey = "suspend-then-hibernate";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleSuspendKey = "suspend-then-hibernate";
+    HandlePowerKey = "suspend-then-hibernate";
   };
 }
 
