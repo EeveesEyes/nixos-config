@@ -31,7 +31,7 @@
     signal-desktop
     samba
     keepassxc
-    spotify # doesnt work. ick anyways
+    spotify
     dropbox
 
     gcr
@@ -39,10 +39,14 @@
     darktable
     joplin-desktop
     libreoffice
+    nixpkgs-unfree.legacyPackages.${pkgs.system}.esphome
+    nixpkgs-unfree.legacyPackages.${pkgs.system}.obsidian
 
     tree
 
-    # silver-searcher # source code searching tool
+    silver-searcher # source code searching tool
+    tree-sitter
+
     thunderbird
     prusa-slicer
     orca-slicer
@@ -73,7 +77,6 @@
 
     rustdesk-flutter
   ];
-
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";

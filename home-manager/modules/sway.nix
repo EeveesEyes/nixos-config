@@ -33,7 +33,7 @@ in
         "eDP-1" = {
           mode = "2880x1920@59.951Hz";
           scale = "1.5";
-          position = "2900,2000";
+          position = "300,2000";
         };
         "Ancor Communications Inc ASUS MG278 0x0001D4B3" = {
           mode = "2560x1440@59.951Hz";

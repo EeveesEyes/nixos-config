@@ -22,6 +22,7 @@ in
     ../modules/steam.nix
     ../modules/tailscale.nix
     ../modules/sftpclient.nix
+    ../modules/keyring.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate =
