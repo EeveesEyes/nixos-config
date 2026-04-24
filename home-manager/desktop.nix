@@ -31,6 +31,7 @@
     signal-desktop
     samba
     keepassxc
+    bitwarden-desktop 
     spotify
     dropbox
 
@@ -41,6 +42,7 @@
     libreoffice
     nixpkgs-unfree.legacyPackages.${pkgs.system}.esphome
     nixpkgs-unfree.legacyPackages.${pkgs.system}.obsidian
+    nixpkgs-unfree.legacyPackages.${pkgs.system}.winbox4
 
     tree
 
@@ -51,6 +53,7 @@
     prusa-slicer
     orca-slicer
     strace
+    traceroute
 
     age
     sops
