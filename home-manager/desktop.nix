@@ -52,6 +52,7 @@
     thunderbird
     prusa-slicer
     orca-slicer
+    freecad
     strace
     traceroute
 
