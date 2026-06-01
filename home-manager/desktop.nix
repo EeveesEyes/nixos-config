@@ -31,7 +31,7 @@
     signal-desktop
     samba
     keepassxc
-    bitwarden-desktop 
+    rbw
     spotify
     dropbox
 
